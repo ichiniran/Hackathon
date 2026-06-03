@@ -51,42 +51,53 @@ function ThemeToggle({ dark, onToggle, currentLang }) {
 function TabOverview({ onGoPlans, currentLang }) {
   return (
     <div>
-       {/* <div className="dash-claim-bar">
-        <div className="dash-claim-icon">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div className="dash-claim-txt">
-          {currentLang === 'en' ? (
-            <><strong>Verified Owner</strong> — You have full access to deep insights, raw reviews, and real-time alerts for this destination.</>
-          ) : (
-            <><strong>ยืนยันสิทธิ์ผู้ดูแลแล้ว</strong> — คุณได้รับสิทธิ์เข้าถึงข้อมูลอินไซต์เชิงลึก รีวิวดิบจากนักท่องเที่ยว และระบบแจ้งเตือนเรียลไทม์อย่างสมบูรณ์</>
-          )}
-        </div>
-        <div className="dash-claim-badge">{currentLang === 'en' ? "🔓 Unlocked" : "🔓 เปิดล็อกแล้ว"}</div>
-      </div>*/}
+      {/* ── 🟢 ปรับปรุงแถวการ์ดมาตรวัด (Metrics Row) ชุดใหม่ทั้งหมดให้สวยสมมาตรตามสเปก ── */}
+        <div className="dash-metrics">
+          
+          {/* การ์ดที่ 1: Sentiment Score */}
+          <div className="dash-metric">
+            <div className="dm-lbl">{currentLang === 'en' ? "Sentiment score" : "คะแนนดัชนีความรู้สึก"}</div>
+            <div className="dm-val pos" style={{ fontSize: '1.6rem', display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+              76% 
+              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#22C55E' }}>
+                {currentLang === 'en' ? "(Good)" : "(ดีมาก)"}
+              </span>
+            </div>
+            <div className="dm-delta up">{currentLang === 'en' ? "↑ +3% from last month" : "↑ +3% จากเดือนก่อนหน้า"}</div>
+          </div>
+          
+          {/* การ์ดที่ 2: Total Reviews */}
+          <div className="dash-metric">
+            <div className="dm-lbl">{currentLang === 'en' ? "Total reviews" : "ความคิดเห็นทั้งหมด"}</div>
+            <div className="dm-val">1,247</div>
+            <div className="dm-delta">{currentLang === 'en' ? "+82 new this month" : "+82 รายการใหม่เดือนนี้"}</div>
+          </div>
+          
+          {/* การ์ดที่ 3: Negative Reviews (เพิ่มตัวเลขเปอร์เซ็นต์กำกับให้สมดุลกัน) */}
+          <div className="dash-metric">
+            <div className="dm-lbl">{currentLang === 'en' ? "Negative reviews" : "ความคิดเห็นเชิงลบ"}</div>
+            <div className="dm-val neg" style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+              87
+              <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#EF4444' }}>
+                {currentLang === 'en' ? "(7% of total)" : "(7% ของทั้งหมด)"}
+              </span>
+            </div>
+            <div className="dm-delta dn">{currentLang === 'en' ? "↑ +5 this week" : "↑ +5 รายการสัปดาห์นี้"}</div>
+          </div>
+          
+          {/* การ์ดที่ 4: Positive Reviews (ดีไซน์ถอดบล็อกล้อกันมาแบบเป๊ะๆ 100%) */}
+          <div className="dash-metric">
+            <div className="dm-lbl">{currentLang === 'en' ? "Positive reviews" : "ความคิดเห็นเชิงบวก"}</div>
+            <div className="dm-val pos" style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+              947
+              <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#22C55E' }}>
+                {currentLang === 'en' ? "(76% of total)" : "(76% ของทั้งหมด)"}
+              </span>
+            </div>
+            <div className="dm-delta up">{currentLang === 'en' ? "↑ +12 this week" : "↑ +12 รายการสัปดาห์นี้"}</div>
+          </div>
 
-      <div className="dash-metrics">
-        <div className="dash-metric">
-          <div className="dm-lbl">{currentLang === 'en' ? "Sentiment score" : "คะแนนดัชนีความรู้สึก"}</div>
-          <div className="dm-val pos">76%</div>
-          <div className="dm-delta up">{currentLang === 'en' ? "↑ +3% from last month" : "↑ +3% จากเดือนก่อนหน้า"}</div>
         </div>
-        <div className="dash-metric">
-          <div className="dm-lbl">{currentLang === 'en' ? "Total reviews" : "ความคิดเห็นทั้งหมด"}</div>
-          <div className="dm-val">1,247</div>
-          <div className="dm-delta">{currentLang === 'en' ? "+82 new this month" : "+82 รายการใหม่เดือนนี้"}</div>
-        </div>
-        <div className="dash-metric">
-          <div className="dm-lbl">{currentLang === 'en' ? "Negative reviews" : "ความคิดเห็นเชิงลบ"}</div>
-          <div className="dm-val neg">87</div>
-          <div className="dm-delta dn">{currentLang === 'en' ? "↑ +5 this week" : "↑ +5 รายการสัปดาห์นี้"}</div>
-        </div>
-        <div className="dash-metric">
-          <div className="dm-lbl">{currentLang === 'en' ? "Response rate" : "อัตราการตอบกลับ"}</div>
-          <div className="dash-metric-val" style={{ fontSize: '1.8rem', fontWeight: 700, margin: '4px 0', color: '#EAB308' }}>34%</div>
-          <div className="dm-delta">{currentLang === 'en' ? "Industry avg: 58%" : "ค่าเฉลี่ยอุตสาหกรรม: 58%"}</div>
-        </div>
-      </div>
 
       <div className="dash-row2 dash-row2-overview">
         <div className="dash-panel">
@@ -138,7 +149,9 @@ function TabOverview({ onGoPlans, currentLang }) {
 
       <div className="dash-row3">
         <div className="dash-panel">
-          <div className="dp-title">{currentLang === 'en' ? "Top keywords" : "คำสำคัญยอดนิยม"}</div>
+          <div className="dp-title">
+            {currentLang === 'en' ? "Top keywords" : "คำสำคัญยอดนิยม"}
+          </div>
           <div className="d-sec-lbl">{currentLang === 'en' ? "Positive" : "เชิงบวก"}</div>
           <div className="d-kw-cloud" style={{ marginBottom: 10 }}>
             {[
@@ -263,11 +276,11 @@ function TabReviews({ onGoPlans, currentLang }) {
         </div>
         
       </div>
-          <div style={{ marginBottom: 16,marginLeft: 10, fontSize: 13, color: 'var(--text-muted)' }}>
-                  {currentLang === 'en'
-                    ? `Showing ${filteredReviews.length} filtered reviews · Sorted by newest`
-                    : `กำลังแสดงรีวิวที่กรองแล้ว ${filteredReviews.length} รายการ · เรียงตามล่าสุด`}
-                </div>
+      <div style={{ marginBottom: 16, marginLeft: 10, fontSize: 13, color: 'var(--text-muted)' }}>
+        {currentLang === 'en'
+          ? `Showing ${filteredReviews.length} filtered reviews · Sorted by newest`
+          : `กำลังแสดงรีวิวที่กรองแล้ว ${filteredReviews.length} รายการ · เรียงตามล่าสุด`}
+      </div>
 
       <div className="dash-panel" style={{ marginBottom: 12 }}>
         {filteredReviews.map((r, i) => (
@@ -296,7 +309,9 @@ function TabReviews({ onGoPlans, currentLang }) {
             {currentLang === 'en' ? "See how competing destinations are reviewed compared to yours." : "ประเมินและเปรียบเทียบคะแนนรีวิวของสถานที่ท่องเที่ยวคู่แข่งเทียบกับคุณ"}
           </div>
         </div>
-        <button className="upgrade-btn" onClick={onGoPlans}>{currentLang === 'en' ? "View Plans" : "ดูแผนแพ็กเกจ"}</button>
+        <div className="upgrade-btn-wrap" style={{ marginLeft: 'auto' }}>
+          <button className="upgrade-btn" onClick={onGoPlans}>{currentLang === 'en' ? "View Plans" : "ดูแผนแพ็กเกจ"}</button>
+        </div>
       </div>
     </div>
   );
@@ -412,7 +427,7 @@ function TabReports({ onGoPlans, currentLang }) {
         ))}
       </div>
       <div className="upgrade-prompt">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#var(--coral-dark)" strokeWidth="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--coral-dark)" strokeWidth="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         <div className="upgrade-txt">
           <div className="upgrade-title">
             {currentLang === 'en' ? "Competitor & Regional reports available in Enterprise" : "รายงานเชิงเปรียบเทียบคู่แข่งและภาพรวมภูมิภาคมีให้เฉพาะระดับ Enterprise"}
@@ -450,7 +465,7 @@ function TabPlaces({ onGoPlans, currentLang }) {
         </div>
       </div>
       <div className="upgrade-prompt">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#var(--coral-dark)" strokeWidth="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--coral-dark)" strokeWidth="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <div className="upgrade-txt">
           <div className="upgrade-title">
             {currentLang === 'en' ? "Professional Plan: up to 3 destinations" : "แผนบริการ Professional: สิทธิ์ดูแลสูงสุด 3 สถานที่"}
@@ -482,10 +497,8 @@ export default function DashboardPage({ onLogout, onGoPlans, currentLang = 'en' 
     return localStorage.getItem('ts-theme') === 'dark';
   });
 
-  // 🟢 รับและสร้าง State ภายในแดชบอร์ดเพื่อให้ปุ่มสวิตช์สามารถควบคุมแปลหน้าจอได้จริงแบบเบ็ดเสร็จ
   const [internalLang, setInternalLang] = useState(currentLang);
 
-  // คอยอัปเดตภาษาภายในตามภาษาหลักที่ถูกเลือกมาจากภายนอก
   useEffect(() => {
     setInternalLang(currentLang);
   }, [currentLang]);
@@ -502,11 +515,9 @@ export default function DashboardPage({ onLogout, onGoPlans, currentLang = 'en' 
 
   function switchTab(id) { setTab(id); window.scrollTo(0, 0); }
 
-  // 🟢 ฟังก์ชันสำหรับสลับภาษาและผูกติดเก็บค่าลงสู่ LocalStorage
   function handleLangSwitch(selectedLang) {
     localStorage.setItem('app_lang', selectedLang);
     setInternalLang(selectedLang);
-    // บังคับยิง Event จำลองเพื่อบอกให้ Navbar หลักรู้ตัวเผื่อผู้ใช้กดย้อนกลับหน้าเดิม
     window.dispatchEvent(new Event('storage')); 
   }
 
@@ -575,7 +586,7 @@ export default function DashboardPage({ onLogout, onGoPlans, currentLang = 'en' 
             </div>
             <div className="dash-topbar-right" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               
-              {/* 🟢 ส่วนที่เพิ่ม: ปุ่มสลับภาษา (Custom Swift Toggle) สไตล์มินิมอลโมเดิร์นฝังบนแถบเมนูขวา */}
+              {/* ปุ่มสลับภาษา (Custom Swift Toggle) */}
               <div className="dash-lang-toggle">
                 <button 
                   onClick={() => handleLangSwitch('en')}
