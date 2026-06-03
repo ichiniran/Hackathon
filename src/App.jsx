@@ -309,16 +309,50 @@ export default function App() {
   const [page, setPage] = useState(() => sessionStorage.getItem('page') || 'home');
   const [place, setPlace] = useState(null);
   const [autoLogin, setAutoLogin] = useState(false);
-  
+  const [placeHistory, setPlaceHistory] = useState([]);
   // 🟢 เพิ่ม State ควบคุมภาษาของระบบ (EN เป็นค่าเริ่มต้น)
   const [lang, setLang] = useState(() => localStorage.getItem('app_lang') || 'en');
 
-  function go(p) {
+function go(p) {
     sessionStorage.setItem('page', p);
     setPage(p);
     window.scrollTo(0, 0);
+    
+    // 🔥 แก้ไขจุดบั๊ก: ถ้าผู้ใช้ถอยร่นกลับมาที่หน้าบอร์ดค้นหาหลักแล้ว ให้ทำการล้างโครงสร้าง Stack ทันที ป้องกันขยะค้าง!
+    if (p === 'explore' || p === 'home') {
+      setPlaceHistory([]);
+    }
   }
 
+  const handleSelectPlace = (targetPlace) => {
+    // 🛡️ เช็คเงื่อนไขความปลอดภัย: ป้องกันการกดเบิ้ลหรือบันทึกสถานที่ซ้ำซ้อนลง Stack โดยไม่จำเป็น
+    if (place && place.id !== targetPlace.id) {
+      setPlaceHistory(prev => [...prev, place]);
+    }
+    setPlace(targetPlace);
+    go('detail');
+  };
+
+  const handlePlaceBack = () => {
+    if (placeHistory.length > 0) {
+      // ดึงสถานที่ก่อนหน้าล่าสุดขึ้นมาแสดงผลต่อ
+      const previousPlace = placeHistory[placeHistory.length - 1];
+      
+      // ตัดชิ้นข้อมูลท้ายสุดออกจาก Stack อาร์เรย์ประวัติ
+      setPlaceHistory(prev => prev.slice(0, -1));
+      setPlace(previousPlace);
+      
+      // บังคับสแตนด์บายอยู่ที่หน้าเพจรายละเอียดเหมือนเดิมแบบไหลลื่น
+      sessionStorage.setItem('page', 'detail');
+      setPage('detail');
+      window.scrollTo(0, 0);
+    } else {
+      // 🛡️ หากแกะประวัติจนเกลี้ยงหมดตัวค้างแล้ว ให้ส่งผู้ใช้กลับสู่หน้าค้นหาพร้อมเครียร์ค่าตัวแปรทั้งหมดให้บริสุทธิ์
+      setPlace(null);
+      setPlaceHistory([]);
+      go('explore');
+    }
+  };
   // ฟังก์ชันสลับภาษา
   function toggleLang(selectedLang) {
     localStorage.setItem('app_lang', selectedLang);
@@ -398,16 +432,16 @@ if (page === 'dashboard') {
       {/* ── Pages ── */}
   {/* ── Pages ── */}
       {page === 'home'     && <HomePage onExplore={() => go('explore')} onBusiness={() => go('business')} lang={lang} />}
-      {page === 'explore'  && <ExplorePage  onSelectPlace={p => { setPlace(p); go('detail'); }} currentLang={lang} />}
+      {page === 'explore'  && <ExplorePage  onSelectPlace={handleSelectPlace} currentLang={lang} />}
       
-      {/* 🟢 แก้ไขจุดวิกฤต: ใส่พร็อพ onSelectPlace ส่งต่อฟังก์ชันให้ตัวลูก เพื่อกดสลับดูสถานที่แนะนําต่อได้จริง */}
+      {/* 🟢 ปรับจุดที่ 2: ผูกฟังก์ชัน handlePlaceBack และ handleSelectPlace ลงใน DetailPage */}
       {page === 'detail'   && place && (
         <DetailPage 
           place={place} 
-          onBack={() => go('explore')} 
+          onBack={handlePlaceBack} 
           allPlaces={PLACES_DATA} 
           currentLang={lang} 
-          onSelectPlace={(targetPlace) => setPlace(targetPlace)} 
+          onSelectPlace={handleSelectPlace} 
         />
       )}
       

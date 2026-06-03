@@ -24,6 +24,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
   
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [selectedKeyword, setSelectedKeyword] = useState(null);
+  const [lightboxSrc, setLightboxSrc] = useState(null);
 
   useEffect(() => { 
     window.scrollTo({ top: 0, behavior: 'smooth' }); 
@@ -50,7 +51,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
     }
   };
 
-  // 🟢 ตรรกะดึงสถานที่ใกล้เคียง/แนะนำเพิ่มเติม (คัดกรองจากภูมิภาคเดียวกัน)
   const getNearbyRecommendations = () => {
     return PLACES_DATA.filter(p => 
       p.id !== place.id && 
@@ -68,24 +68,33 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
 
       <div className="detail-content">
         
-        {/* ── ส่วนหัวหลัก (Header) ── */}
-        <div className="detail-header-main" style={{ marginBottom: '24px' }}>
+        {/* ── 🟢 ส่วนบนสุด (Hero Section) แสดงข้อความยาวเต็มฝั่งซ้าย ไม่มีรูปมาแชร์ ── */}
+        <div className="detail-header-main" style={{ marginBottom: '12px' }}>
           <div className="detail-top">
             <h1 className="detail-title">
               <span className="grad-text">{currentLang === 'en' ? place.name : (place.name_th || place.name)}</span>
             </h1>
             <span className={`detail-sent-badge ${cls}`}>{label}</span>
           </div>
-          <div className="detail-loc">
+          <div className="detail-loc" style={{ marginBottom: '16px' }}>
             <MapPin size={14} /> {currentLang === 'en' ? place.loc : (place.loc_th || place.loc)}
           </div>
         </div>
 
-        {/* ── โครงสร้าง GRID หลัก (โฟกัสตัวระบบวิเคราะห์และรีวิวก่อนด้านบน) ── */}
-        <div className="detail-grid">
+        {/* บล็อกรายละเอียดเกี่ยวกับสถานที่ (สยายปีกกว้างเต็มหน้าจอ) */}
+        <div className="place-desc-wrapper" style={{ marginBottom: '24px' }}>
+          <p className="place-desc" style={{ color: 'var(--text-muted, #555)', fontSize: '0.92rem', lineHeight: '1.6', margin: 0 }}>
+            {currentLang === 'en' ? place.description : (place.description_th || place.description || 'ไม่มีข้อมูลรายละเอียดภาษาไทยในขณะนี้')}
+          </p>
+        </div>
+
+        {/* ── โครงสร้าง GRID ระบบวิเคราะห์ ── */}
+        <div className="detail-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '24px' }}>
+          
+          {/* 🖥️ แผงควบคุมข้อมูลฝั่งซ้าย (วิเคราะห์รีวิว, คีย์เวิร์ด, บทสรุป AI, ไกด์กิจกรรม) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             
-            {/* กล่อง 1: Sentiment Analysis */}
+            {/* บล็อก 1: Sentiment Analysis */}
             <div className="detail-panel">
               <div className="panel-title">{currentLang === 'en' ? 'Sentiment Analysis' : 'การวิเคราะห์รีวิว'}</div>
               <div className="sent-bars">
@@ -99,7 +108,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
               </div>
             </div>
 
-            {/* กล่อง 2: ตัวกรองคำสำคัญ (Keywords Group) */}
+            {/* บล็อก 2: ตัวกรองคำสำคัญตามกรอบงานวิจัย */}
             <div className="detail-panel">
               <div className="panel-title">{currentLang === 'en' ? 'Filter Keywords by Research Framework' : 'กรองคำสำคัญตามกรอบงานวิจัย'}</div>
               <div className="category-tabs">
@@ -124,7 +133,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
               </div>
             </div>
 
-            {/* กล่อง 3: บทสรุปและสกัดข้อมูลด้วย AI */}
+            {/* บล็อก 3: บทสรุปสกัดสดอินไซต์โดย AI */}
             <div className={`ai-box ${selectedKeyword ? 'filtered' : ''}`}>
               <div className="ai-box-label">
                 {selectedKeyword ? (currentLang === 'en' ? `✦ AI Live Extract: "${selectedKeyword}"` : `✦ ข้อมูลสกัดสดโดย AI: "${selectedKeyword}"`) : (currentLang === 'en' ? '✦ AI Overall Key Insight' : '✦ บทสรุปอินไซต์ภาพรวมโดย AI')}
@@ -138,37 +147,8 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
               {selectedKeyword && <button className="ai-reset-btn" onClick={() => setSelectedKeyword(null)}>{currentLang === 'en' ? '← Reset to Overall Summary' : '← รีเซ็ตกลับเป็นบทสรุปภาพรวม'}</button>}
             </div>
 
-            {/* ส่วนคำแนะนำสถานที่-รูปภาพด้านล่างกล่องรีวิว */}
-            <div className="detail-info-footer-section" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '24px', marginTop: '15px' }}>
-              <div>
-                <div className="panel-title" style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '10px' }}>
-                  {currentLang === 'en' ? '📍 About this destination' : '📍 เกี่ยวกับสถานที่นี้คร่าวๆ'}
-                </div>
-                <p className="place-desc" style={{ color: 'var(--text-muted, #555)', fontSize: '0.92rem', lineHeight: '1.6', background: 'var(--bg-panel, #f9f9f9)', padding: '14px', borderRadius: '8px', marginBottom: '14px' }}>
-                  {currentLang === 'en' ? place.description : (place.description_th || place.description || 'ไม่มีข้อมูลรายละเอียดภาษาไทยในขณะนี้')}
-                </p>
-
-                {/* ปุ่มปักหมุดเปิดเข้าแผนที่ Google Maps */}
-                {place.map_url && (
-                  <a href={place.map_url} target="_blank" rel="noreferrer" className="action-btn action-btn-outline" style={{ display: 'inline-flex', textDecoration: 'none', gap: '6px', alignItems: 'center', fontSize: '0.85rem' }}>
-                    <Map size={14} /> {currentLang === 'en' ? 'Open in Google Maps' : 'เปิดดูหมุดนำทางบนแผนที่'}
-                  </a>
-                )}
-              </div>
-
-              {/* บล็อกแกลเลอรีรูปภาพเพิ่มเติม */}
-              <div className="place-gallery-container" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <img src={place.img} alt={place.name} style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }} />
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  {(place.gallery || [place.img]).slice(0, 2).map((imgUrl, idx) => (
-                    <img key={idx} src={imgUrl} alt="gallery" style={{ width: '100%', height: '70px', objectFit: 'cover', borderRadius: '8px' }} />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* แผนวางทริปกิจกรรมท่องเที่ยวและไฮไลท์เด่น */}
-            <div className="detail-panel travel-plan-panel" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '10px' }}>
+            {/* บล็อก 4: แผนวางทริปกิจกรรมท่องเที่ยวและไฮไลท์จุดเด่น */}
+            <div className="detail-panel travel-plan-panel" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
               <div>
                 <div className="panel-title" style={{ color: 'var(--coral-dark)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <ActionIcon size={14} /> {currentLang === 'en' ? 'Recommended Activities' : 'กิจกรรมท่องเที่ยวแนะนำ'}
@@ -191,31 +171,82 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
               </div>
             </div>
 
+            {/* บาร์หมุดแผนที่ Google Maps ปิดท้ายฟลอร์ข้อมูลท่องเที่ยวฝั่งซ้าย */}
+            {place.map_url && (
+              <div className="detail-map-inline-footer" style={{ marginTop: '-5px' }}>
+                <a 
+                  href={place.map_url} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="action-btn action-btn-outline" 
+                  style={{ display: 'flex', textDecoration: 'none', gap: '8px', alignItems: 'center', justifyContent: 'center', padding: '12px', borderRadius: '8px', fontSize: '0.9rem', fontWeight: 600, width: '100%' }}
+                >
+                  <Map size={15} /> {currentLang === 'en' ? 'Open Destination in Google Maps' : 'เปิดแผนที่นำทางไปยังสถานที่แห่งนี้บน Google Maps'}
+                </a>
+              </div>
+            )}
           </div>
 
-          {/* แถบกล่องคะแนนและปุ่ม Action ด้านขวา (Sticky Sidebar) */}
-          <div className="action-sidebar">
+          {/* 🧳 แผงควบคุมดีไซน์ฝั่งขวา (การ์ดคะแนนทับรูป, ปุ่มกด, และแกลเลอรีแผงล่างล้อตาม image_00dee4.jpg) */}
+          <div className="action-sidebar" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {/* กล่องคะแนนรีวิวตัวใหญ่สไตล์ดั้งเดิม สะอาดตาตามสเปกเดิม */}
             <div className="score-big-card">
               <div className="score-big-label">{currentLang === 'en' ? 'Sentiment Score' : 'คะแนนรีวิว'}</div>
               <div className={`score-big-num ${cls}`}>{place.pos}%</div>
               <div className="score-big-sub">{currentLang === 'en' ? 'positive reviews' : 'รีวิวเชิงบวก'}</div>
             </div>
-            <div className="action-btns">
-              <button className="action-btn action-btn-primary" onClick={() => alert(`Booking near ${place.name}`)}><Hotel size={15} /> {currentLang === 'en' ? 'Book Hotel' : 'จองโรงแรมใกล้เคียง'}</button>
-              <button className="action-btn action-btn-outline" onClick={() => alert(`Tours at ${place.name}`)}><Compass size={15} /> {currentLang === 'en' ? 'View Tours' : 'ดูแพ็กเกจทัวร์'}</button>
-              <button className="action-btn action-btn-outline" onClick={() => setShowCompare(true)}><BarChart2 size={15} /> {currentLang === 'en' ? 'Compare Destinations' : 'เปรียบเทียบจุดหมาย'}</button>
+
+            {/* แผงกลุ่มปุ่มกดจองและเปรียบเทียบ */}
+            <div className="action-btns" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button className="action-btn action-btn-primary" style={{ background: '#f67c7c', border: 'none', color: '#fff' }} onClick={() => alert(`Booking near ${place.name}`)}>
+                <Hotel size={15} /> {currentLang === 'en' ? 'Book Hotel' : 'จองโรงแรมใกล้เคียง'}
+              </button>
+              <button className="action-btn action-btn-outline" onClick={() => alert(`Tours at ${place.name}`)}>
+                <Compass size={15} /> {currentLang === 'en' ? 'View Tours' : 'ดูแพ็กเกจทัวร์'}
+              </button>
+              <button className="action-btn action-btn-outline" onClick={() => setShowCompare(true)}>
+                <BarChart2 size={15} /> {currentLang === 'en' ? 'Compare Destinations' : 'เปรียบเทียบจุดหมาย'}
+              </button>
             </div>
+
+            {/* ── 🟢 บล็อกย้ายแกลเลอรีรูปภาพ: ย้ายมาต่อท้ายปุ่มกดฝั่งขวาตามภาพ image_00dee4.jpg เป๊ะๆ ── */}
+            <div className="place-gallery-sidebar-container" style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', marginTop: '8px' }}>
+              {/* ภาพรองขนาดยาวแนวนอน */}
+              <img src={(place.gallery && place.gallery[0]) || place.img} alt={place.name} style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }} onClick={() => setLightboxSrc((place.gallery && place.gallery[0]) || place.img)} />
+              
+              {/* ภาพย่อยคู่ล่างพร้อมเขียนดีไซน์ badge ซ้อนคำว่า +23 รายการครอบไว้ */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <img src={(place.gallery && place.gallery[1]) || place.img} alt="gallery-sub-1" style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '8px', cursor: 'pointer' }} onClick={() => setLightboxSrc((place.gallery && place.gallery[1]) || place.img)} />
+                
+                <div style={{ position: 'relative', width: '100%', height: '120px' }}>
+                  <img src={place.img} alt="gallery-sub-2" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px', cursor: 'pointer' }} onClick={() => setLightboxSrc(place.img)} />
+                  <a
+                    href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(currentLang === 'en' ? place.name : (place.name_th || place.name))}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+                      background: 'rgba(0,0,0,0.5)', borderRadius: '8px',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: '#fff', fontSize: '1.05rem', fontWeight: 700, textDecoration: 'none'
+                    }}
+                  >
+                    {currentLang === 'en' ? 'View more' : 'ดูเพิ่มเติม'}
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {/* ── 🟢 ส่วนล่างสุด: แนะนำสถานที่ใกล้เคียง (ที่ถอดแบบการทำงานและการดีไซน์มาจาก PlaceCard ใน ExplorePage) ── */}
-        <div className="nearby-recommendations-section" style={{ marginTop: '36px', paddingTop: '24px', borderTop: '1px solid var(--border-color, #eee)' }}>
+        {/* ส่วนล่างสุด: แนะนำสถานที่ใกล้เคียงในภูมิภาค */}
+        <div className="nearby-recommendations-section" style={{ marginTop: '48px', paddingTop: '24px', borderTop: '1px solid var(--border-color, #eee)' }}>
           <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '20px', color: 'var(--text-primary)' }}>
             {currentLang === 'en' ? '⚡ Travelers Also Viewed (Nearby Attractions)' : '⚡ นักท่องเที่ยวรายอื่นยังสนใจ (สถานที่ใกล้เคียงในภูมิภาค)'}
           </h3>
           <div className="nearby-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
             {getNearbyRecommendations().map(p => {
-              // 🟢 ถอดสูตร Logic แปลงและคำนวณสี Score มาจาก PlaceCard โดยตรง
               const cardLabel = getSentimentLabel(p.pos, currentLang);
               const cardCls   = getSentimentClass(p.pos);
               const scoreColor =
@@ -227,8 +258,11 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
                 <div 
                   key={p.id} 
                   className="place-card" 
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => onSelectPlace ? onSelectPlace(p) : alert(`Maps to ${p.name}`)}
+                  style={{ cursor: 'pointer', zIndex: 1 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onSelectPlace) onSelectPlace(p);
+                  }}
                 >
                   <div className="card-img-wrap">
                     <img src={p.img} alt={p.name} loading="lazy" />
@@ -242,7 +276,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
                       <MapPin size={16} fill="#EF4444" stroke="#ffffff" strokeWidth={1} /> 
                       {currentLang === 'en' ? p.loc : (p.loc_th || p.loc)}
                     </div>
-                    {/* แถบสัดส่วนรีวิวสามสีเหมือนหน้าหลัก */}
                     <div className="mini-bar">
                       <div style={{ flex: p.pos, background: '#04a13b' }} />
                       <div style={{ flex: p.neu, background: '#774b00' }} />
@@ -264,6 +297,22 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
         </div>
 
       </div>
+
+      {lightboxSrc && (
+        <div
+          className="image-lightbox"
+          onClick={() => setLightboxSrc(null)}
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999,
+          }}
+        >
+          <img
+            src={lightboxSrc}
+            alt="preview"
+            style={{ maxWidth: '92%', maxHeight: '92%', borderRadius: 10, boxShadow: '0 12px 40px rgba(0,0,0,0.6)' }}
+          />
+        </div>
+      )}
 
       {showCompare && <CompareModal currentPlace={place} allPlaces={allPlaces} onClose={() => setShowCompare(false)} />}
     </div>

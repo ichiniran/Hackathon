@@ -200,7 +200,7 @@
 .score-big-card {
   border: 1.5px solid transparent;
   background:
-    linear-gradient(-180deg,  #ffffff, #fffbfb) padding-box,
+    linear-gradient(-180deg,  #ffffff, #ffffff) padding-box,
     linear-gradient(-180deg, #fddfdf, #ffe7e9) border-box;
   border-radius: 16px;
   padding: 28px;
