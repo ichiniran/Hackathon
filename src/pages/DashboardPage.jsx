@@ -113,7 +113,7 @@ function TabOverview({ onGoPlans, currentLang }) {
           {[
             [currentLang === 'en' ? 'Positive' : 'แง่บวก', 76, '#22C55E'],
             [currentLang === 'en' ? 'Neutral' : 'ทั่วไป', 17, '#F59E0B'],
-            [currentLang === 'en' ? 'Negative' : 'แง่ลบ', 7, '#var(--coral-dark)']
+            [currentLang === 'en' ? 'Negative' : 'แง่ลบ', 7, 'var(--coral-dark)']
           ].map(([l, p, c]) => (
             <div key={l} className="d-sent-row">
               <div className="d-sent-lbl">{l}</div>
@@ -166,13 +166,13 @@ function TabOverview({ onGoPlans, currentLang }) {
         <div className="dash-panel">
           <div className="dp-title">
             {currentLang === 'en' ? "Negative alerts" : "ระบบแจ้งเตือนกรณีรีวิวเชิงลบ"}{' '}
-            <span style={{ background: 'var(--alert-badge-bg)', color: '#var(--coral-dark)', fontSize: 10, padding: '2px 7px', borderRadius: 100, textTransform: 'none', fontWeight: 500, letterSpacing: 0, marginLeft: 4 }}>
+            <span style={{ background: 'var(--alert-badge-bg)', color: 'var(--coral-dark)', fontSize: 10, padding: '2px 7px', borderRadius: 100, textTransform: 'none', fontWeight: 500, letterSpacing: 0, marginLeft: 4 }}>
               {currentLang === 'en' ? "2 new" : "ใหม่ 2 รายการ"}
             </span>
           </div>
           {[
-            { c: '#var(--coral-dark)', en: '"Too crowded, couldn\'t enjoy the wildlife at all"', th: '"แออัดเกินไป ไม่สามารถเพลิดเพลินกับการชมสัตว์ป่าธรรมชาติได้เลย"', s: 'TripAdvisor', time: currentLang === 'en' ? '2h ago' : '2 ชม. ที่แล้ว' },
-            { c: '#var(--coral-dark)', en: '"No proper restrooms near the main trail"', th: '"ไม่มีห้องน้ำที่ถูกสุขลักษณะจัดเตรียมไว้ใกล้กับเส้นทางเดินป่าหลัก"', s: 'Google', time: currentLang === 'en' ? '5h ago' : '5 ชม. ที่แล้ว' },
+            { c: 'var(--coral-dark)', en: '"Too crowded, couldn\'t enjoy the wildlife at all"', th: '"แออัดเกินไป ไม่สามารถเพลิดเพลินกับการชมสัตว์ป่าธรรมชาติได้เลย"', s: 'TripAdvisor', time: currentLang === 'en' ? '2h ago' : '2 ชม. ที่แล้ว' },
+            { c: 'var(--coral-dark)', en: '"No proper restrooms near the main trail"', th: '"ไม่มีห้องน้ำที่ถูกสุขลักษณะจัดเตรียมไว้ใกล้กับเส้นทางเดินป่าหลัก"', s: 'Google', time: currentLang === 'en' ? '5h ago' : '5 ชม. ที่แล้ว' },
             { c: '#F59E0B', en: '"Fee increased but service hasn\'t improved"', th: '"ปรับเพิ่มค่าธรรมเนียม แต่การบริการและการจัดการยังไม่พัฒนา"', s: 'Booking.com', time: currentLang === 'en' ? 'Yesterday' : 'เมื่อวานนี้' },
           ].map((a, i) => (
             <div key={i} className="d-alert-item">
@@ -287,7 +287,7 @@ function TabReviews({ onGoPlans, currentLang }) {
         )}
       </div>
       <div className="upgrade-prompt">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#var(--coral-dark)" strokeWidth="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--coral-dark)" strokeWidth="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         <div className="upgrade-txt">
           <div className="upgrade-title">
             {currentLang === 'en' ? "Upgrade to Enterprise for competitor review access" : "อัปเกรดเป็นระดับ Enterprise เพื่อสิทธิ์เข้าถึงรีวิวของคู่แข่ง"}
@@ -311,7 +311,7 @@ function TabTrends({ onGoPlans, currentLang }) {
           {currentLang === 'en' ? "Monthly sentiment — 12 months" : "สถิติดัชนีความรู้สึกรายเดือน — ย้อนหลัง 12 เดือน"}
         </div>
         {[
-          ['Jul', 52, '#F59E0B'], ['Aug', 58, '#var(--coral-dark)'], ['Sep', 65, '#F59E0B'], ['Oct', 70, '#22C55E'], ['Nov', 72, '#22C55E'], ['Dec', 69, '#F59E0B'],
+          ['Jul', 52, '#F59E0B'], ['Aug', 58, 'var(--coral-dark)'], ['Sep', 65, '#F59E0B'], ['Oct', 70, '#22C55E'], ['Nov', 72, '#22C55E'], ['Dec', 69, '#F59E0B'],
           ['Jan', 68, '#F59E0B'], ['Feb', 71, '#22C55E'], ['Mar', 65, '#F59E0B'], ['Apr', 73, '#22C55E'], ['May', 74, '#22C55E'], ['Jun', 76, '#22C55E']
         ].map(([m, p, c]) => (
           <div key={m} className="d-trend-row">
@@ -348,7 +348,7 @@ function TabTrends({ onGoPlans, currentLang }) {
           </div>
         ))}
         <div className="upgrade-prompt" style={{ marginTop: 16 }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#var(--coral-dark)" strokeWidth="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--coral-dark)" strokeWidth="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <div className="upgrade-txt">
             <div className="upgrade-title">
               {currentLang === 'en' ? "Competitor comparison available in Enterprise" : "ฟังก์ชันเปรียบเทียบคู่แข่งใช้งานได้เฉพาะระดับ Enterprise"}
@@ -370,8 +370,8 @@ function TabAlerts({ currentLang }) {
       </div>
       <div className="dash-panel">
         {[
-          { c: '#var(--coral-dark)', et: '"Too crowded, couldn\'t enjoy the wildlife at all during the weekend. We came from overseas specifically for this and were very disappointed."', tt: '"ความหนาแน่นมากเกินไป ไม่ได้รับความสนุกในการรับชมสัตว์ป่าธรรมชาติเลยช่วงวันหยุด เราเดินทางข้ามประเทศมาเพื่อสิ่งนี้โดยเฉพาะและรู้สึกผิดหวังมาก"', s: 'TripAdvisor', time: currentLang === 'en' ? '2 hours ago' : '2 ชม. ที่แล้ว', isNew: true },
-          { c: '#var(--coral-dark)', et: '"No proper restrooms near the main trail entrance — very disappointing for an international park."', tt: '"ไม่มีห้องน้ำที่จัดการดีๆ ใกล้กับจุดเส้นทางเดินป่าหลักเลย น่าผิดหวังมากสำหรับอุทยานระดับสากล"', s: 'Google', time: currentLang === 'en' ? '5 hours ago' : '5 ชม. ที่แล้ว', isNew: true },
+          { c: 'var(--coral-dark)', et: '"Too crowded, couldn\'t enjoy the wildlife at all during the weekend. We came from overseas specifically for this and were very disappointed."', tt: '"ความหนาแน่นมากเกินไป ไม่ได้รับความสนุกในการรับชมสัตว์ป่าธรรมชาติเลยช่วงวันหยุด เราเดินทางข้ามประเทศมาเพื่อสิ่งนี้โดยเฉพาะและรู้สึกผิดหวังมาก"', s: 'TripAdvisor', time: currentLang === 'en' ? '2 hours ago' : '2 ชม. ที่แล้ว', isNew: true },
+          { c: 'var(--coral-dark)', et: '"No proper restrooms near the main trail entrance — very disappointing for an international park."', tt: '"ไม่มีห้องน้ำที่จัดการดีๆ ใกล้กับจุดเส้นทางเดินป่าหลักเลย น่าผิดหวังมากสำหรับอุทยานระดับสากล"', s: 'Google', time: currentLang === 'en' ? '5 hours ago' : '5 ชม. ที่แล้ว', isNew: true },
           { c: '#F59E0B', et: '"Entrance fee increased significantly but the quality of service and facilities remains the same."', tt: '"ราคาค่าธรรมเนียมปรับเพิ่มขึ้นอย่างมาก แต่คุณภาพการจัดการและสิ่งอำนวยความสะดวกยังคงเท่าเดิม"', s: 'Booking.com', time: currentLang === 'en' ? 'Yesterday' : 'เมื่อวานนี้', isNew: false },
           { c: '#F59E0B', et: '"Parking is a mess on weekends. Took 45 minutes just to find a spot."', tt: '"การจอดรถวุ่นวายมากช่วงวันหยุด ใช้เวลาเดินหาที่จอดรถตั้ง 45 นาที"', s: 'Google', time: currentLang === 'en' ? '2 days ago' : '2 วันที่แล้ว', isNew: false },
         ].map((a, i) => (
@@ -382,7 +382,7 @@ function TabAlerts({ currentLang }) {
               <div className="d-alert-meta">
                 <span className="d-plat">{a.s}</span>
                 <span className="d-plat">{a.time}</span>
-                {a.isNew && <span style={{ color: '#var(--coral-dark)', fontSize: 10, fontWeight: 600 }}>{currentLang === 'en' ? "● New" : "● ใหม่"}</span>}
+                {a.isNew && <span style={{ color: 'var(--coral-dark)', fontSize: 10, fontWeight: 600 }}>{currentLang === 'en' ? "● New" : "● ใหม่"}</span>}
               </div>
             </div>
           </div>

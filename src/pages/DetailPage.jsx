@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, MapPin, Star, Hotel, Compass, BarChart2, Layers } from 'lucide-react';
-// เพิ่ม KEYWORD_INSIGHTS_MAP เข้ามาในแถบนำเข้าข้อมูล
 import { getSentimentLabel, getSentimentClass, KEYWORD_INSIGHTS_MAP } from '../data/places';
 import './DetailPage.css';
 import CompareModal from './CompareModal';
@@ -18,7 +17,6 @@ function AnimatedBar({ pct, color, delay = 0 }) {
   );
 }
 
-// 🟢 เพิ่มการรับ Prop "currentLang" เข้ามาจาก App.jsx
 export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en' })  {
   const cls   = getSentimentClass(place.pos);
   const label = getSentimentLabel(place.pos, currentLang);
@@ -33,7 +31,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
     setSelectedKeyword(null);
   }, [place]);
 
-  // ปรับแต่งระบบคัดกรองคำสำคัญแยกหมวดหมู่ตามโครงสร้างอาเรย์ของข้อมูล
   const getFilteredKeywords = () => {
     if (activeCategory === 'ALL') return place.kws;
     
@@ -66,7 +63,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
         <div className="detail-top">
           <div>
             <h1 className="detail-title">
-              {/* 🟢 สลับแสดงชื่อสถานที่ตามภาษา */}
               <span className="grad-text">{currentLang === 'en' ? place.name : (place.name_th || place.name)}</span>
             </h1>
           </div>
@@ -74,7 +70,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
         </div>
 
         <div className="detail-loc">
-          {/* 🟢 สลับแสดงที่อยู่ตามภาษา */}
           <MapPin size={14} /> {currentLang === 'en' ? place.loc : (place.loc_th || place.loc)}
         </div>
 
@@ -141,7 +136,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
                 ))}
               </div>
 
-              {/* 🟢 อธิบายความหมายของแต่ละสี (Legend) ตามภาษา */}
               <div style={{ display: 'flex', gap: '16px', marginBottom: '16px', flexWrap: 'wrap' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#555' }}>
                   <span style={{ display: 'inline-block', width: '10px', height: '10px', borderRadius: '50%', background: '#22C55E' }}></span>
@@ -166,7 +160,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
                       onClick={() => handleKeywordClick(k.w)}
                       title={currentLang === 'en' ? "Click to view live extractive sentence summary" : "คลิกเพื่อดูสรุปประโยคแบบดึงข้อมูลสด"}
                     >
-                      {/* 🟢 สลับการแสดงข้อความคำสำคัญด้านใน */}
                       {currentLang === 'en' ? k.w : (k.w_th || k.w)}
                     </span>
                   ))
@@ -186,8 +179,11 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
                 }
               </div>
               <div className="ai-box-text">
+                {/* 🟢 แก้ไขจุดสำคัญ: เช็ค Object สองภาษาก่อนดึงค่าอินไซต์สดของคีย์เวิร์ดขึ้นมาแสดงผล */}
                 {selectedKeyword 
-                  ? (KEYWORD_INSIGHTS_MAP[selectedKeyword] || (currentLang === 'en' ? `The system detected highly matching numerical vector weights (via Cosine Similarity) for "${selectedKeyword}" in recent international traveler reviews.` : `ระบบตรวจพบค่าน้ำหนักเวกเตอร์เชิงตัวเลขที่มีความเข้ากันได้สูง (ผ่าน Cosine Similarity) สำหรับคำว่า "${selectedKeyword}" ในรีวิวล่าสุดจากนักท่องเที่ยวต่างชาติ`))
+                  ? (typeof KEYWORD_INSIGHTS_MAP[selectedKeyword] === 'object'
+                      ? KEYWORD_INSIGHTS_MAP[selectedKeyword]?.[currentLang === 'th' ? 'th' : 'en']
+                      : (KEYWORD_INSIGHTS_MAP[selectedKeyword] || (currentLang === 'en' ? `The system detected highly matching numerical vector weights (via Cosine Similarity) for "${selectedKeyword}" in recent international traveler reviews.` : `ระบบตรวจพบค่าน้ำหนักเวกเตอร์เชิงตัวเลขที่มีความเข้ากันได้สูง (ผ่าน Cosine Similarity) สำหรับคำว่า "${selectedKeyword}" ในรีวิวล่าสุดจากนักท่องเที่ยวต่างชาติ`)))
                   : (currentLang === 'en' ? place.ai : (place.ai_th || place.ai))
                 }
               </div>
@@ -205,29 +201,6 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
               <div className="score-big-label">{currentLang === 'en' ? 'Sentiment Score' : 'คะแนนความรู้สึก'}</div>
               <div className={`score-big-num ${cls}`}>{place.pos}%</div>
               <div className="score-big-sub">{currentLang === 'en' ? 'positive reviews' : 'รีวิวเชิงบวก'}</div>
-              {/*<div className="score-mini-bars">
-                <div className="score-mini-row">
-                  <span className="score-mini-lbl">{currentLang === 'en' ? 'Positive' : 'แง่บวก'}</span>
-                  <div className="score-mini-track">
-                    <div className="score-mini-fill" style={{ width: `${place.pos}%`, background: '#22C55E' }} />
-                  </div>
-                  <span className="score-mini-pct">{place.pos}%</span>
-                </div>
-                <div className="score-mini-row">
-                  <span className="score-mini-lbl">{currentLang === 'en' ? 'Neutral' : 'ทั่วไป'}</span>
-                  <div className="score-mini-track">
-                    <div className="score-mini-fill" style={{ width: `${place.neu}%`, background: '#F59E0B' }} />
-                  </div>
-                  <span className="score-mini-pct">{place.neu}%</span>
-                </div>
-                <div className="score-mini-row">
-                  <span className="score-mini-lbl">{currentLang === 'en' ? 'Negative' : 'แง่ลบ'}</span>
-                  <div className="score-mini-track">
-                    <div className="score-mini-fill" style={{ width: `${place.neg}%`, background: '#EF4444' }} />
-                  </div>
-                  <span className="score-mini-pct">{place.neg}%</span>
-                </div>
-              </div>*/}
             </div>
 
             <div className="action-btns">

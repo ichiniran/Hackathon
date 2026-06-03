@@ -6,10 +6,10 @@ export const PLACES_DATA = [
     nameEn: 'Phang Nga Bay',
     loc: 'Phang Nga',
     loc_th: 'พังงา',
-    province: 'Phang Nga',       // 🟢 เพิ่มจังหวัดภาษาอังกฤษ
-    province_th: 'พังงา',         // 🟢 เพิ่มจังหวัดภาษาไทย
-    region: ['south'],            // 🟢 ปรับโครงสร้างเป็น Array
-    type: ['nature'],             // 🟢 ปรับโครงสร้างเป็น Array
+    province: 'Phang Nga',
+    province_th: 'พังงา',
+    region: ['south'],
+    type: ['nature'],
     pos: 91, neu: 7, neg: 2,
     reviews: 876,
     emoji: '🌊',
@@ -119,7 +119,7 @@ export const PLACES_DATA = [
     loc: 'Nakhon Ratchasima',
     loc_th: 'นครราชสีมา',
     province: 'Nakhon Ratchasima',
-    province_th: 'นครราชสีมา',
+    province_th: 'นครราชสีма',
     region: ['central'],
     type: ['nature'],
     pos: 76, neu: 14, neg: 10,
@@ -204,8 +204,8 @@ export const PLACES_DATA = [
     loc_th: 'เชียงราย',
     province: 'Chiang Rai',
     province_th: 'เชียงราย',
-    region: ['north'],              // 🟢 รองรับการเลือกปุ่มหมวดหมู่ภาคเหนือ
-    type: ['culture', 'nature'],     // 🟢 โลดแล่นอยู่ทั้งหมวดวัฒนธรรมและธรรมชาติอย่างสมบูรณ์ตามความต้องการ
+    region: ['north'],
+    type: ['culture', 'nature'],
     pos: 89, neu: 8, neg: 3,
     reviews: 1102,
     emoji: '⛩',
@@ -233,7 +233,7 @@ export const PLACES_DATA = [
     province: 'Chonburi',
     province_th: 'ชลบุรี',
     region: ['central'],
-    type: ['zoo', 'nature',],      
+    type: ['zoo', 'nature'],
     pos: 86, neu: 9, neg: 5,
     reviews: 1450,
     emoji: '🦛',
@@ -260,12 +260,12 @@ export const PLACES_DATA = [
     loc_th: 'กรุงเทพฯ',
     province: 'Bangkok',
     province_th: 'กรุงเทพฯ',
-    region: ['BKK'],                    // 🟢 อยู่หมวดกรุงเทพฯ
-    type: ['zoo', 'culture'],           // 🟢 อยู่ได้ทั้งหมวดสวนสัตว์ และหมวดกิจกรรมความบันเทิงเชิงวัฒนธรรม
+    region: ['BKK'],
+    type: ['zoo', 'culture'],
     pos: 84, neu: 10, neg: 6,
     reviews: 2840,
     emoji: '🦁',
-    img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAHiY-TAsLDBxCkgPTyYqRwrQwyNhGjqWbQkEnYNRNh_MTzFf2p8-TldjYishooQ0D1U0EpqBb08QfIwO7JByYi9eIQQyuc5WXlMfMntrJmeIE_P3KuvrXbVDZy8i6tGB6pPKOSKYg=s1360-w1360-h1020-rw', // รูปภาพประกอบสไตล์ซาฟารีสัตว์ป่า
+    img: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80',
     kws: [
       { w: 'incredible drive-through safari', w_th: 'โซนขับรถชมสัตว์ป่าเปิดที่น่าตื่นตาตื่นใจ', s: 'pos' },
       { w: 'world-class dolphin show', w_th: 'การแสดงปลาโลมามาตรฐานระดับโลก', s: 'pos' },
@@ -289,8 +289,8 @@ export const PLACES_DATA = [
     province: 'Surat Thani',
     province_th: 'สุราษฎร์ธานี',
     region: ['south'],
-    type: ['beach', 'culture'], // พ่วงหมวดกิจกรรมวัฒนธรรมปาร์ตี้ร่วมสมัย
-    pos: 48, neu: 20, neg: 32,  // 🔴 คะแนนลบสูงถึง 32% (จัดอยู่ในหมวดควรปรับปรุง)
+    type: ['beach', 'culture'],
+    pos: 48, neu: 20, neg: 32,
     reviews: 1980,
     emoji: '🌕',
     img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
@@ -318,7 +318,7 @@ export const PLACES_DATA = [
     province_th: 'ราชบุรี',
     region: ['central'],
     type: ['culture'],
-    pos: 42, neu: 18, neg: 40,  // 🔴 คะแนนเชิงลบสูงที่สุดในระบบ (Neg 40%) ดิ่งลงไปกลุ่มดักนักท่องเที่ยว
+    pos: 42, neu: 18, neg: 40,
     reviews: 3120,
     emoji: '🛶',
     img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&q=80',
@@ -336,238 +336,814 @@ export const PLACES_DATA = [
     ai_th: 'พื้นที่ที่ได้รับคำวิจารณ์เชิงลบเรื่องกับดักนักท่องเที่ยวรุนแรงที่สุดในระบบ วิเคราะห์พบบริบทข้อความเชิงลบเข้มข้นต่อเนื่องเจาะจงเรื่องราคาค่าเช่าเรือที่แพงมหาโหด (บางรายเรียกเก็บถึง 2,000 บาท) รวมถึงกลยุทธ์การขายที่ก้าวร้าวบีบบังคับ ซึ่งทำลายภาพลักษณ์สถาปัตยกรรมทางวัฒนธรรมดั้งเดิมอย่างมาก',
   }
 ];
+
+// 🟢 แก้ไขจุดสำคัญ: แปลง KEYWORD_INSIGHTS_MAP เป็นวัตถุ Object 2 ภาษา { en, th } ของทุกคำสำคัญในระบบ
 export const KEYWORD_INSIGHTS_MAP = {
   // === Phang Nga Bay ===
-  'stunning limestone cliffs': 'Attraction Insight: Vector clustering shows near 100% positive validation for geological rock formations.',
-  'หน้าผาหินปูนที่สวยงามตระการตา': 'ข้อมูลสิ่งดึงดูดใจ: การจัดกลุ่มเวกเตอร์แสดงการยอมรับเชิงบวกเกือบ 100% สำหรับสถาปัตยกรรมทางธรณีวิทยาของแท่งหินปูน',
-  'breathtaking scenery': 'Attraction Insight: Widely captured in reviews as an unforgettable global maritime panorama.',
-  'ทัศนียภาพอันน่าทึ่ง': 'ข้อมูลสิ่งดึงดูดใจ: ถูกบันทึกในรีวิวอย่างกว้างขวางว่าเป็นทัศนียภาพทางทะเลระดับโลกที่ยากจะลืมเลือน',
-  'smooth boat access': 'Accessibility Fact: Modern pier facilities offer smooth transitions to speedboats during stable seasons.',
-  'การเดินทางด้วยเรือที่สะดวกสบาย': 'ข้อเท็จจริงการเข้าถึง: สิ่งอำนวยความสะดวกของท่าเรือที่ทันสมัยช่วยให้การเปลี่ยนผ่านไปขี่เรือสปีดโบ๊ทเป็นไปอย่างราบรื่นในฤดูกาลที่คลื่นลมสงบ',
-  'crowded boat pier': 'Friction Point: Heavy queues observed around midday. High negative concentration on peak-hour congestion.',
-  'ท่าเรือมีความแออัด': 'จุดติดขัด: พบการต่อคิวอย่างหนาแน่นในช่วงเที่ยงวัน มีความไม่พึงพอใจกระจุกตัวสูงในช่วงเวลาเร่งด่วน',
-  'standard admission fee': 'Neutral Fact: Standard national park fees apply. Most foreign tourists view this as an ordinary administrative policy.',
-  'ค่าธรรมเนียมการเข้าชมระดับมาตรฐาน': 'ข้อเท็จจริงทั่วไป: มีการเก็บค่าธรรมเนียมอุทยานตามมาตรฐาน ซึ่งนักท่องเที่ยวต่างชาติส่วนใหญ่เห็นว่าเป็นนโยบายการบริหารทั่วไป',
-  'overpriced local food': 'Amenity Issue: Multiple reviews suggest bringing personal snacks due to inflated tourist premiums on food.',
-  'อาหารท้องถิ่นราคาแพงเกินไป': 'ปัญหาสิ่งอำนวยความสะดวก: หลายรีวิวแนะนำให้พกอาหารว่างมาเองเนื่องจากราคาอาหารในแหล่งท่องเที่ยวถูกปรับสูงขึ้นตามค่านิยม',
-  'fantastic kayaking': 'Activity Praise: Highlighted by independent travelers as an intimate way to explore hidden sea caves.',
-  'กิจกรรมพายเรือคายัคที่ยอดเยี่ยม': 'คำชมกิจกรรม: ถูกเน้นย้ำจากกลุ่มนักท่องเที่ยวอิสระว่าเป็นวิธีการเดินทางสำรวจถ้ำทะเลที่ใกล้ชิดและดีที่สุด',
-  'rushed island tour': 'Activity Limitation: Package groups express annoyance over strictly limited times allowed on-shore.',
-  'ทัวร์เที่ยวเกาะที่เร่งรีบเกินไป': 'ข้อจำกัดกิจกรรม: กลุ่มนักท่องเที่ยวที่ซื้อแพ็กเกจทัวร์แสดงความไม่พอใจกับเวลาที่จำกัดในการขึ้นชมเกาะต่างๆ',
+  'stunning limestone cliffs': {
+    en: 'Attraction Insight: Vector clustering shows near 100% positive validation for geological rock formations.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การจัดกลุ่มเวกเตอร์แสดงการยอมรับเชิงบวกเกือบ 100% สำหรับลักษณะทางธรณีวิทยาของกลุ่มหน้าผาหินปูน'
+  },
+  'หน้าผาหินปูนที่สวยงามตระการตา': {
+    en: 'Attraction Insight: Vector clustering shows near 100% positive validation for geological rock formations.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การจัดกลุ่มเวกเตอร์แสดงการยอมรับเชิงบวกเกือบ 100% สำหรับลักษณะทางธรณีวิทยาของกลุ่มหน้าผาหินปูน'
+  },
+  'breathtaking scenery': {
+    en: 'Attraction Insight: Widely captured in reviews as an unforgettable global maritime panorama.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ถูกบันทึกในรีวิวอย่างกว้างขวางว่าเป็นทัศนียภาพทางทะเลระดับโลกที่งดงามยากจะลืมเลือน'
+  },
+  'ทัศนียภาพอันน่าทึ่ง': {
+    en: 'Attraction Insight: Widely captured in reviews as an unforgettable global maritime panorama.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ถูกบันทึกในรีวิวอย่างกว้างขวางว่าเป็นทัศนียภาพทางทะเลระดับโลกที่งดงามยากจะลืมเลือน'
+  },
+  'smooth boat access': {
+    en: 'Accessibility Fact: Modern pier facilities offer smooth transitions to speedboats during stable seasons.',
+    th: 'ข้อเท็จจริงการเข้าถึง: สิ่งอำนวยความสะดวกของท่าเรือที่ทันสมัยช่วยให้การขึ้นเรือท่องเที่ยวและเรือสปีดโบ๊ทสะดวกราบรื่นดี'
+  },
+  'การเดินทางด้วยเรือที่สะดวกสบาย': {
+    en: 'Accessibility Fact: Modern pier facilities offer smooth transitions to speedboats during stable seasons.',
+    th: 'ข้อเท็จจริงการเข้าถึง: สิ่งอำนวยความสะดวกของท่าเรือที่ทันสมัยช่วยให้การขึ้นเรือท่องเที่ยวและเรือสปีดโบ๊ทสะดวกราบรื่นดี'
+  },
+  'crowded boat pier': {
+    en: 'Friction Point: Heavy queues observed around midday. High negative concentration on peak-hour congestion.',
+    th: 'จุดติดขัด: พบแถวต่อคิวหนาแน่นในช่วงเที่ยงวัน มีกระแสความไม่พึงพอใจกระจุกตัวสูงในช่วงเวลาเร่งด่วน'
+  },
+  'ท่าเรือมีความแออัด': {
+    en: 'Friction Point: Heavy queues observed around midday. High negative concentration on peak-hour congestion.',
+    th: 'จุดติดขัด: พบแถวต่อคิวหนาแน่นในช่วงเที่ยงวัน มีความไม่พึงพอใจกระจุกตัวสูงในช่วงเวลาเร่งด่วน'
+  },
+  'standard admission fee': {
+    en: 'Neutral Fact: Standard national park fees apply. Most foreign tourists view this as an ordinary administrative policy.',
+    th: 'ข้อเท็จจริงทั่วไป: อัตราค่าเข้าชมอุทยานเป็นไปตามเกณฑ์มาตรฐานปกติ นักท่องเที่ยวต่างชาติส่วนใหญ่มองว่าเป็นนโยบายทั่วไป'
+  },
+  'ค่าธรรมเนียมการเข้าชมระดับมาตรฐาน': {
+    en: 'Neutral Fact: Standard national park fees apply. Most foreign tourists view this as an ordinary administrative policy.',
+    th: 'ข้อเท็จจริงทั่วไป: อัตราค่าเข้าชมอุทยานเป็นไปตามเกณฑ์มาตรฐานปกติ นักท่องเที่ยวต่างชาติส่วนใหญ่มองว่าเป็นนโยบายทั่วไป'
+  },
+  'overpriced local food': {
+    en: 'Amenity Issue: Multiple reviews suggest bringing personal snacks due to inflated tourist premiums on food.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: รีวิวหลายรายการแนะนำให้พกขนมขบเคี้ยวมาเอง เนื่องจากร้านค้าในพื้นที่ปรับราคาอาหารสูงขึ้นสำหรับนักท่องเที่ยว'
+  },
+  'อาหารท้องถิ่นราคาแพงเกินไป': {
+    en: 'Amenity Issue: Multiple reviews suggest bringing personal snacks due to inflated tourist premiums on food.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: รีวิวหลายรายการแนะนำให้พกขนมขบเคี้ยวมาเอง เนื่องจากร้านค้าในพื้นที่ปรับราคาอาหารสูงขึ้นสำหรับนักท่องเที่ยว'
+  },
+  'fantastic kayaking': {
+    en: 'Activity Praise: Highlighted by independent travelers as an intimate way to explore hidden sea caves.',
+    th: 'คำชมกิจกรรม: นักท่องเที่ยวอิสระเน้นย้ำว่าเป็นกิจกรรมพายเรือที่ยอดเยี่ยมในการเข้าไปสำรวจความมหัศจรรย์ของถ้ำทะเล'
+  },
+  'กิจกรรมพายเรือคายัคที่ยอดเยี่ยม': {
+    en: 'Activity Praise: Highlighted by independent travelers as an intimate way to explore hidden sea caves.',
+    th: 'คำชมกิจกรรม: นักท่องเที่ยวอิสระเน้นย้ำว่าเป็นกิจกรรมพายเรือที่ยอดเยี่ยมในการเข้าไปสำรวจความมหัศจรรย์ของถ้ำทะเล'
+  },
+  'rushed island tour': {
+    en: 'Activity Limitation: Package groups express annoyance over strictly limited times allowed on-shore.',
+    th: 'ข้อจำกัดกิจกรรม: นักท่องเที่ยวกลุ่มทัวร์แสดงความอึดอัดใจกับกำหนดการขึ้นชมแต่ละเกาะที่จำกัดเวลาเร่งรีบจนเกินไป'
+  },
+  'ทัวร์เที่ยวเกาะที่เร่งรีบเกินไป': {
+    en: 'Activity Limitation: Package groups express annoyance over strictly limited times allowed on-shore.',
+    th: 'ข้อจำกัดกิจกรรม: นักท่องเที่ยวกลุ่มทัวร์แสดงความอึดอัดใจกับกำหนดการขึ้นชมแต่ละเกาะที่จำกัดเวลาเร่งรีบจนเกินไป'
+  },
 
   // === Doi Inthanon ===
-  'beautiful misty sunrise': 'Attraction Insight: The Kew Mae Pan viewpoint receives outstanding remarks for atmospheric visuals.',
-  'ทัศนียภาพพระอาทิตย์ขึ้นท่ามกลางทะเลหมอก': 'ข้อมูลสิ่งดึงดูดใจ: จุดชมวิวกิ่วแม่ปานได้รับคำชื่นชมอย่างโดดเด่นในเรื่องภาพทิวทัศน์และบรรยากาศหมอกยามเช้า',
-  'ordinary landmark sign': 'Neutral Comment: The highest peak sign is noted by visitors merely as a typical spot for a quick milestone photo.',
-  'ป้ายจุดเช็คอินบนยอดเขาค่อนข้างธรรมดา': 'ความคิดเห็นทั่วไป: ป้ายจุดสูงสุดแดนสยามถูกบันทึกว่าเป็นเพียงจุดถ่ายภาพที่ระลึกทั่วไปแบบสั้นๆ เท่านั้น',
-  'scenic paved road': 'Accessibility Praise: Major infrastructure routes are smooth, well-paved, and highly safe for motorbikes.',
-  'เส้นทางถนนลาดยางวิวสวยงาม': 'คำชมการเข้าถึง: เส้นทางโครงสร้างพื้นฐานหลักมีความเรียบ ลาดยางอย่างดี และมีความปลอดภัยสูงสำหรับผู้ขับขี่รถจักรยานยนต์',
-  'exhausting long drive': 'Accessibility Warning: Demands nearly 2 hours of steep alpine accent from downtown Chiang Mai.',
-  'ระยะเวลาการขับรถที่ยาวนานและเหน็ดเหนื่อย': 'คำเตือนการเข้าถึง: ต้องใช้เวลาขับรถขึ้นเขาสูงชันเกือบ 2 ชั่วโมงจากตัวเมืองเชียงใหม่',
-  'clean visitor facilities': 'Amenity Praise: National park offices and primary hubs are commended for cleanliness and support.',
-  'สิ่งอำนวยความสะดวกสำหรับนักท่องเที่ยวสะอาดดี': 'คำชมสิ่งอำนวยความสะดวก: ที่ทำการอุทยานแห่งชาติและจุดบริการหลักได้รับการชื่นชมในเรื่องความสะอาดและการสนับสนุนที่ดี',
-  'limited restaurant choices': 'Amenity Issue: Reviews mention a scarcity of versatile international dining spots near the summit.',
-  'ตัวเลือกของร้านอาหารมีจำกัด': 'ปัญหาสิ่งอำนวยความสะดวก: รีวิวระบุถึงความขาดแคลนของร้านอาหารนานาชาติที่หลากหลายในบริเวณใกล้กับยอดดอย',
-  'amazing nature trekking': 'Activity Praise: Guided waterfall walk trails are heavily applauded for pristine preservation.',
-  'เส้นทางเดินศึกษาธรรมชาติที่ยอดเยี่ยม': 'คำชมกิจกรรม: เส้นทางเดินชมน้ำตกแบบมีคนนำทางได้รับเสียงปรบมืออย่างมากในแง่การอนุรักษ์ธรรมชาติที่สมบูรณ์',
-  'slippery hiking paths': 'Activity Warning: Heavy humidity and mist make wooden steps highly slippery; caution advised for elderly.',
-  'ทางเดินเท้ามีความลื่น': 'คำเตือนกิจกรรม: ความชื้นและหมอกที่หนาแน่นทำให้บันไดไม้ลื่นมาก ควรระมัดระวังเป็นพิเศษสำหรับผู้สูงอายุ',
+  'beautiful misty sunrise': {
+    en: 'Attraction Insight: The Kew Mae Pan viewpoint receives outstanding remarks for atmospheric visuals.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: จุดชมวิวกิ่วแม่ปานได้รับคะแนนความประทับใจดีเยี่ยมในเรื่องแสงสีช่วงพระอาทิตย์ขึ้นคู่ทะเลหมอก'
+  },
+  'ทัศนียภาพพระอาทิตย์ขึ้นท่ามกลางทะเลหมอก': {
+    en: 'Attraction Insight: The Kew Mae Pan viewpoint receives outstanding remarks for atmospheric visuals.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: จุดชมวิวกิ่วแม่ปานได้รับคะแนนความประทับใจดีเยี่ยมในเรื่องแสงสีช่วงพระอาทิตย์ขึ้นคู่ทะเลหมอก'
+  },
+  'ordinary landmark sign': {
+    en: 'Neutral Comment: The highest peak sign is noted by visitors merely as a typical spot for a quick milestone photo.',
+    th: 'ความคิดเห็นทั่วไป: ป้ายจุดสูงสุดแดนสยามถูกบันทึกว่าเป็นเพียงจุดแวะยืนถ่ายภาพเป็นที่ระลึกรูปแบบทั่วไปเท่านั้น'
+  },
+  'ป้ายจุดเช็คอินบนยอดเขาค่อนข้างธรรมดา': {
+    en: 'Neutral Comment: The highest peak sign is noted by visitors merely as a typical spot for a quick milestone photo.',
+    th: 'ความคิดเห็นทั่วไป: ป้ายจุดสูงสุดแดนสยามถูกบันทึกว่าเป็นเพียงจุดแวะยืนถ่ายภาพเป็นที่ระลึกรูปแบบทั่วไปเท่านั้น'
+  },
+  'scenic paved road': {
+    en: 'Accessibility Praise: Major infrastructure routes are smooth, well-paved, and highly safe for motorbikes.',
+    th: 'คำชมการเข้าถึง: เส้นทางถนนยางมะตอยหลักขึ้นเขาค่อนข้างเรียบ ขับขี่ง่าย และปลอดภัยสำหรับรถจักรยานยนต์'
+  },
+  'เส้นทางถนนลาดยางวิวสวยงาม': {
+    en: 'Accessibility Praise: Major infrastructure routes are smooth, well-paved, and highly safe for motorbikes.',
+    th: 'คำชมการเข้าถึง: เส้นทางถนนยางมะตอยหลักขึ้นเขาค่อนข้างเรียบ ขับขี่ง่าย และปลอดภัยสำหรับรถจักรยานยนต์'
+  },
+  'exhausting long drive': {
+    en: 'Accessibility Warning: Demands nearly 2 hours of steep alpine accent from downtown Chiang Mai.',
+    th: 'คำเตือนการเข้าถึง: ทางค่อนข้างชันและต้องใช้ระยะเวลาขับขี่ไกลเกือบ 2 ชั่วโมงเต็มหากเดินทางจากตัวเมืองเชียงใหม่'
+  },
+  'ระยะเวลาการขับรถที่ยาวนานและเหน็ดเหนื่อย': {
+    en: 'Accessibility Warning: Demands nearly 2 hours of steep alpine accent from downtown Chiang Mai.',
+    th: 'คำเตือนการเข้าถึง: ทางค่อนข้างชันและต้องใช้ระยะเวลาขับขี่ไกลเกือบ 2 ชั่วโมงเต็มหากเดินทางจากตัวเมืองเชียงใหม่'
+  },
+  'clean visitor facilities': {
+    en: 'Amenity Praise: National park offices and primary hubs are commended for cleanliness and support.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ที่ทำการอุทยาน ศูนย์บริการนักท่องเที่ยว และห้องน้ำสะอาดเรียบร้อยดี'
+  },
+  'สิ่งอำนวยความสะดวกสำหรับนักท่องเที่ยวสะอาดดี': {
+    en: 'Amenity Praise: National park offices and primary hubs are commended for cleanliness and support.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ที่ทำการอุทยาน ศูนย์บริการนักท่องเที่ยว และห้องน้ำสะอาดเรียบร้อยดี'
+  },
+  'limited restaurant choices': {
+    en: 'Amenity Issue: Reviews mention a scarcity of versatile international dining spots near the summit.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: รีวิวระบุว่าร้านอาหารและเมนูอาหารนานาชาติบนยอดเขามีตัวเลือกให้เลือกทานน้อยเกินไป'
+  },
+  'ตัวเลือกของร้านอาหารมีจำกัด': {
+    en: 'Amenity Issue: Reviews mention a scarcity of versatile international dining spots near the summit.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: รีวิวระบุว่าร้านอาหารและเมนูอาหารนานาชาติบนยอดเขามีตัวเลือกให้เลือกทานน้อยเกินไป'
+  },
+  'amazing nature trekking': {
+    en: 'Activity Praise: Guided waterfall walk trails are heavily applauded for pristine preservation.',
+    th: 'คำชมกิจกรรม: นักท่องเที่ยวชื่นชมเส้นทางศึกษาธรรมชาติเดินป่าชมน้ำตกและผืนป่าที่อุดมสมบูรณ์'
+  },
+  'เส้นทางเดินศึกษาธรรมชาติที่ยอดเยี่ยม': {
+    en: 'Activity Praise: Guided waterfall walk trails are heavily applauded for pristine preservation.',
+    th: 'คำชมกิจกรรม: นักท่องเที่ยวชื่นชมเส้นทางศึกษาธรรมชาติเดินป่าชมน้ำตกและผืนป่าที่อุดมสมบูรณ์'
+  },
+  'slippery hiking paths': {
+    en: 'Activity Warning: Heavy humidity and mist make wooden steps highly slippery; caution advised for elderly.',
+    th: 'คำเตือนกิจกรรม: ละอองหมอกและความชื้นสูงทำตามทางเดินบันไดไม้ค่อนข้างลื่นมาก ควรระวังเป็นพิเศษหากมีผู้สูงอายุเดินทางมาด้วย'
+  },
+  'ทางเดินเท้ามีความลื่น': {
+    en: 'Activity Warning: Heavy humidity and mist make wooden steps highly slippery; caution advised for elderly.',
+    th: 'คำเตือนกิจกรรม: ละอองหมอกและความชื้นสูงทำตามทางเดินบันไดไม้ค่อนข้างลื่นมาก ควรระวังเป็นพิเศษหากมีผู้สูงอายุเดินทางมาด้วย'
+  },
 
   // === Ayutthaya ===
-  'magnificent ancient temples': 'Attraction Insight: Historic ruins evoke extreme structural and archeological wonder in foreign reviews.',
-  'โบราณสถานและวัดเก่าแก่ที่งดงามวิจิตร': 'ข้อมูลสิ่งดึงดูดใจ: ซากปรักหักพังทางประวัติศาสตร์สร้างความตื่นตาตื่นใจในเชิงสถาปัตยกรรมและโบราณคดีอย่างมากในรีวิวของชาวต่างชาติ',
-  'extremely hot weather': 'Environmental Obstacle: Drastic heat levels around noon trigger heavy negative sentiment tags.',
-  'สภาพอากาศร้อนจัด': 'อุปสรรคทางสิ่งแวดล้อม: ระดับความร้อนที่สูงมากในช่วงเที่ยงวันส่งผลให้เกิดการติดแท็กความรู้สึกเชิงลบจำนวนมาก',
-  'easy train access': 'Accessibility Praise: Highly rated for budgetary independent travelers coming straight from Bangkok.',
-  'การเดินทางด้วยรถไฟสะดวกสบาย': 'คำชมการเข้าถึง: ได้รับคะแนนความพึงพอใจสูงจากกลุ่มนักท่องเที่ยวอิสระที่เดินทางประหยัดตรงมาจากกรุงเทพฯ',
-  'aggressive tuktuk scams': 'Friction Alert: Text analysis captures persistent warnings regarding unregulated local driver overcharges.',
-  'การตื๊อโก่งราคาจากรถตุ๊กตุ๊กในพื้นที่': 'การแจ้งเตือนความขัดแย้ง: ผลวิเคราะห์ข้อความตรวจพบคำเตือนอย่างต่อเนื่องเกี่ยวกับการเรียกเก็บราคาเกินจริงของคนขับรถท้องถิ่นที่ไม่เป็นระบบ',
-  'typical information boards': 'Neutral Observation: Educational signs provide standard historical context. Visitors find them ordinary but informative.',
-  'ป้ายข้อมูลประวัติศาสตร์รูปแบบทั่วไป': 'ข้อสังเกตทั่วไป: ป้ายให้ความรู้ประวัติศาสตร์ตามมาตรฐานทั่วไป นักท่องเที่ยวรู้สึกว่าธรรมดาแต่ให้ข้อมูลที่เป็นประโยชน์ดี',
-  'lacks shaded rest areas': 'Amenity Deficit: Tourists urge authorities to construct canopy structures to shield against the intense sun.',
-  'ขาดแคลนพื้นที่นั่งพักใต้ร่มเงา': 'สิ่งอำนวยความสะดวกบกพร่อง: นักท่องเที่ยวเรียกร้องให้มีการสร้างซุ้มหลังคาเพื่อช่วยกำบังแสงแดดที่ร้อนจัด',
-  'enjoyable bicycle riding': 'Activity Praise: Flat terrains make bike rentals the definitive, pleasant way to cross park boundaries.',
-  'การปั่นจักรยานท่องเที่ยวที่เพลิดเพลิน': 'คำชมกิจกรรม: ลักษณะภูมิประเทศที่เป็นที่ราบทำให้การเช่าจักรยานเป็นทางเลือกที่ดีที่สุดในการเที่ยวชมรอบอุทยานอย่างเพลิดเพลิน',
-  'congested walking routes': 'Activity Friction: Heavy tour-bus drops cause brief pedestrian bottlenecks near focal altars.',
-  'เส้นทางเดินเท้ามีความหนาแน่นบางช่วง': 'ความขัดแย้งในกิจกรรม: การลงรถทัวร์ขนาดใหญ่พร้อมกันทำให้เกิดการกระจุกตัวของคนเดินเท้าชั่วคราวบริเวณแท่นบูชาหลัก',
+  'magnificent ancient temples': {
+    en: 'Attraction Insight: Historic ruins evoke extreme structural and archeological wonder in foreign reviews.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ซากปรักหักพังของโบราณสถานและวัดเก่าสร้างความตื่นตาตื่นใจในเชิงสถาปัตยกรรมแก่ชาวต่างชาติอย่างมาก'
+  },
+  'โบราณสถานและวัดเก่าแก่ที่งดงามวิจิตร': {
+    en: 'Attraction Insight: Historic ruins evoke extreme structural and archeological wonder in foreign reviews.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ซากปรักหักพังของโบราณสถานและวัดเก่าสร้างความตื่นตาตื่นใจในเชิงสถาปัตยกรรมแก่ชาวต่างชาติอย่างมาก'
+  },
+  'extremely hot weather': {
+    en: 'Environmental Obstacle: Drastic heat levels around noon trigger heavy negative sentiment tags.',
+    th: 'อุปสรรคทางสิ่งแวดล้อม: อุณหภูมิแดดและอากาศร้อนจัดในช่วงเที่ยงวันและบ่ายเป็นปัจจัยหลักที่ทำให้ติดแท็กเชิงลบ'
+  },
+  'สภาพอากาศร้อนจัด': {
+    en: 'Environmental Obstacle: Drastic heat levels around noon trigger heavy negative sentiment tags.',
+    th: 'อุปสรรคทางสิ่งแวดล้อม: อุณหภูมิแดดและอากาศร้อนจัดในช่วงเที่ยงวันและบ่ายเป็นปัจจัยหลักที่ทำให้ติดแท็กเชิงลบ'
+  },
+  'easy train access': {
+    en: 'Accessibility Praise: Highly rated for budgetary independent travelers coming straight from Bangkok.',
+    th: 'คำชมการเข้าถึง: ได้รับคำชมสูงในกลุ่มนักท่องเที่ยวสายเดินทางประหยัด (Backpacker) ที่นั่งรถไฟตรงมาจากกรุงเทพฯ'
+  },
+  'การเดินทางด้วยรถไฟสะดวกสบาย': {
+    en: 'Accessibility Praise: Highly rated for budgetary independent travelers coming straight from Bangkok.',
+    th: 'คำชมการเข้าถึง: ได้รับคำชมสูงในกลุ่มนักท่องเที่ยวสายเดินทางประหยัด (Backpacker) ที่นั่งรถไฟตรงมาจากกรุงเทพฯ'
+  },
+  'aggressive tuktuk scams': {
+    en: 'Friction Alert: Text analysis captures persistent warnings regarding unregulated local driver overcharges.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: อัลกอริทึมตรวจจับพบคำเตือนหนาแน่นเรื่องคนขับรถตุ๊กตุ๊กท้องถิ่นบางส่วนตื๊อและเรียกเก็บค่าบริการแพงเกินจริง'
+  },
+  'การตื๊อโก่งราคาจากรถตุ๊กตุ๊กในพื้นที่': {
+    en: 'Friction Alert: Text analysis captures persistent warnings regarding unregulated local driver overcharges.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: อัลกอริทึมตรวจจับพบคำเตือนหนาแน่นเรื่องคนขับรถตุ๊กตุ๊กท้องถิ่นบางส่วนตื๊อและเรียกเก็บค่าบริการแพงเกินจริง'
+  },
+  'typical information boards': {
+    en: 'Neutral Observation: Educational signs provide standard historical context. Visitors find them ordinary but informative.',
+    th: 'ข้อสังเกตทั่วไป: ป้ายอธิบายประวัติศาสตร์ติดตั้งตามเกณฑ์ปกติ นักท่องเที่ยวพบว่าดูธรรมดาทั่วไปแต่ข้อมูลครบถ้วนดี'
+  },
+  'ป้ายข้อมูลประวัติศาสตร์รูปแบบทั่วไป': {
+    en: 'Neutral Observation: Educational signs provide standard historical context. Visitors find them ordinary but informative.',
+    th: 'ข้อสังเกตทั่วไป: ป้ายอธิบายประวัติศาสตร์ติดตั้งตามเกณฑ์ปกติ นักท่องเที่ยวพบว่าดูธรรมดาทั่วไปแต่ข้อมูลครบถ้วนดี'
+  },
+  'lacks shaded rest areas': {
+    en: 'Amenity Deficit: Tourists urge authorities to construct canopy structures to shield against the intense sun.',
+    th: 'สิ่งอำนวยความสะดวกบกพร่อง: นักท่องเที่ยวแนะนำให้สร้างซุ้มศาลาหรือจุดนั่งพักหลบแดดใต้ร่มเงาเพิ่มขึ้น'
+  },
+  'ขาดแคลนพื้นที่นั่งพักใต้ร่มเงา': {
+    en: 'Amenity Deficit: Tourists urge authorities to construct canopy structures to shield against the intense sun.',
+    th: 'สิ่งอำนวยความสะดวกบกพร่อง: นักท่องเที่ยวแนะนำให้สร้างซุ้มศาลาหรือจุดนั่งพักหลบแดดใต้ร่มเงาเพิ่มขึ้น'
+  },
+  'enjoyable bicycle riding': {
+    en: 'Activity Praise: Flat terrains make bike rentals the definitive, pleasant way to cross park boundaries.',
+    th: 'คำชมกิจกรรม: พื้นที่รอบโบราณสถานเป็นทางราบเรียบ การเช่าจักรยานปั่นจึงเป็นกิจกรรมที่เพลิดเพลินและคุ้มค่าที่สุด'
+  },
+  'การปั่นจักรยานท่องเที่ยวที่เพลิดเพลิน': {
+    en: 'Activity Praise: Flat terrains make bike rentals the definitive, pleasant way to cross park boundaries.',
+    th: 'คำชมกิจกรรม: พื้นที่รอบโบราณสถานเป็นทางราบเรียบ การเช่าจักรยานปั่นจึงเป็นกิจกรรมที่เพลิดเพลินและคุ้มค่าที่สุด'
+  },
+  'congested walking routes': {
+    en: 'Activity Friction: Heavy tour-bus drops cause brief pedestrian bottlenecks near focal altars.',
+    th: 'ข้อขัดแย้งกิจกรรม: ช่วงเวลาที่รถทัวร์คณะใหญ่ลงจอดพร้อมกัน อาจทำให้ทางเดินเท้าเข้าอุโบสถหลักติดขัดหนาแน่นชั่วคราว'
+  },
+  'เส้นทางเดินเท้ามีความหนาแน่นบางช่วง': {
+    en: 'Activity Friction: Heavy tour-bus drops cause brief pedestrian bottlenecks near focal altars.',
+    th: 'ข้อขัดแย้งกิจกรรม: ช่วงเวลาที่รถทัวร์คณะใหญ่ลงจอดพร้อมกัน อาจทำให้ทางเดินเท้าเข้าอุโบสถหลักติดขัดหนาแน่นชั่วคราว'
+  },
 
   // === Wat Phra Kaew ===
-  'magnificent architecture': 'Attraction Insight: Gilded structures and mural precision generate elite positive feedback ranks.',
-  'สถาปัตยกรรมที่งดงามวิจิตรบรรจง': 'ข้อมูลสิ่งดึงดูดใจ: โครงสร้างสีทองและความละเอียดของจิตรกรรมฝาผนังสร้างคะแนนความพึงพอใจเชิงบวกในระดับสูงสุด',
-  'overwhelming crowds': 'Friction Alert: Extreme density creates a high sensory overload, affecting relaxing review values.',
-  'ฝูงชนหนาแน่นและแออัดมากเกินไป': 'การแจ้งเตือนความขัดแย้ง: ความหนาแน่นของประชากรที่สูงมากทำให้เกิดความอึดอัด ซึ่งส่งผลต่อบรรยากาศการท่องเที่ยวเพื่อพักผ่อน',
-  'central city location': 'Accessibility Praise: Superb transit pathways via Chao Phraya express boats right to the gates.',
-  'ทำเลที่ตั้งใจกลางเมืองเดินทางสะดวก': 'คำชมการเข้าถึง: เส้นทางคมนาคมยอดเยี่ยมผ่านเรือด่วนเจ้าพระยาที่มาส่งตรงถึงหน้าประตูอุทยาน',
-  'chaotic traffic outside': 'Accessibility Warning: Surrounding street blocks suffer intense gridlocks and aggressive scam touts.',
-  'การจราจรด้านนอกรอบพื้นที่วุ่นวาย': 'คำเตือนการเข้าถึง: บล็อกถนนโดยรอบประสบปัญหารถติดขัดอย่างหนัก รวมถึงกลุ่มมิจฉาชีพที่เข้ามาหลอกลวงราคาค่ารถ',
-  'standard ticket counter': 'Neutral Data: Standard entry queues are reported. It is processed regularly without major praise or complaints.',
-  'เคาน์เตอร์จำหน่ายตั๋วระดับทั่วไป': 'ข้อมูลทั่วไป: คิวซื้อตั๋วเป็นไปตามระบบมาตรฐานปกติ ไม่พบคำชื่นชมหรือคำบ่นที่เด่นชัดในส่วนนี้',
-  'strict dress code': 'Friction Point: Severe dissatisfaction from tourists forced to buy or rent cover sarongs due to minor violations.',
-  'กฎระเบียบการแต่งกายที่เข้มงวด': 'จุดติดขัด: ความไม่พอใจอย่างมากจากนักท่องเที่ยวที่ถูกบังคับให้ซื้อหรือเช่าผ้าโสร่งคลุมเนื่องจากการแต่งกายผิดระเบียบเล็กน้อย',
-  'deeply cultural experience': 'Activity Praise: Unmatched historical exposure regarding royal Thai heritage and Buddhist customs.',
-  'ประสบการณ์ทางวัฒนธรรมที่ลึกซึ้ง': 'คำชมกิจกรรม: การเปิดรับประสบการณ์ทางประวัติศาสตร์ที่ไม่มีใครเทียบได้เกี่ยวกับมรดกราชสำนักไทยและขนบธรรมเนียมพุทธศาสนา',
-  'tiring walking loops': 'Activity Warning: Massive open brick courtyards with minimal seating induce quick exhaustion.',
-  '# เส้นทางการเดินชมระยะไกลทำให้เหนื่อยล้า': 'คำเตือนกิจกรรม: ลานอิฐกลางแจ้งขนาดใหญ่ที่ขาดแคลนที่นั่งพักทำให้ร่างกายเกิดความเหนื่อยล้าได้ง่าย',
+  'magnificent architecture': {
+    en: 'Attraction Insight: Gilded structures and mural precision generate elite positive feedback ranks.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: พระอุโบสถสีทองประกายและความวิจิตรของจิตรกรรมฝาผนังดึงดูดคะแนนเชิงบวกพึงพอใจขั้นสูงสุด'
+  },
+  'สถาปัตยกรรมที่งดงามวิจิตรบรรจง': {
+    en: 'Attraction Insight: Gilded structures and mural precision generate elite positive feedback ranks.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: พระอุโบสถสีทองประกายและความวิจิตรของจิตรกรรมฝาผนังดึงดูดคะแนนเชิงบวกพึงพอใจขั้นสูงสุด'
+  },
+  'overwhelming crowds': {
+    en: 'Friction Alert: Extreme density creates a high sensory overload, affecting relaxing review values.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: ปริมาณคณะทัวร์ต่างชาติที่แออัดมากทำให้เกิดความอึดอัด รบกวนความเงียบสงบในการเข้าชม'
+  },
+  'ฝูงชนหนาแน่นและแออัดมากเกินไป': {
+    en: 'Friction Alert: Extreme density creates a high sensory overload, affecting relaxing review values.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: ปริมาณคณะทัวร์ต่างชาติที่แออัดมากทำให้เกิดความอึดอัด รบกวนความเงียบสงบในการเข้าชม'
+  },
+  'central city location': {
+    en: 'Accessibility Praise: Superb transit pathways via Chao Phraya express boats right to the gates.',
+    th: 'คำชมการเข้าถึง: ทำเลใจกลางเมืองชั้นในเดินทางมาง่ายมากโดยเฉพาะการนั่งเรือด่วนเจ้าพระยามาลงที่ท่าเรือหน้าวัด'
+  },
+  'ทำเลที่ตั้งใจกลางเมืองเดินทางสะดวก': {
+    en: 'Accessibility Praise: Superb transit pathways via Chao Phraya express boats right to the gates.',
+    th: 'คำชมการเข้าถึง: ทำเลใจกลางเมืองชั้นในเดินทางมาง่ายมากโดยเฉพาะการนั่งเรือด่วนเจ้าพระยามาลงที่ท่าเรือหน้าวัด'
+  },
+  'chaotic traffic outside': {
+    en: 'Accessibility Warning: Surrounding street blocks suffer intense gridlocks and aggressive scam touts.',
+    th: 'คำเตือนการเข้าถึง: การจราจรบนบล็อกถนนด้านนอกติดขัดวุ่นวาย และมีกลุ่มรถรับจ้างตื๊อหลอกลวงราคาจอดรอบพื้นที่'
+  },
+  'การจราจรด้านนอกรอบพื้นที่วุ่นวาย': {
+    en: 'Accessibility Warning: Surrounding street blocks suffer intense gridlocks and aggressive scam touts.',
+    th: 'คำเตือนการเข้าถึง: การจราจรบนบล็อกถนนด้านนอกติดขัดวุ่นวาย และมีกลุ่มรถรับจ้างตื๊อหลอกลวงราคาจอดรอบพื้นที่'
+  },
+  'standard ticket counter': {
+    en: 'Neutral Data: Standard entry queues are reported. It is processed regularly without major praise or complaints.',
+    th: 'ข้อมูลทั่วไป: แถวรอซื้อตั๋วเข้าชมตรงเคาน์เตอร์รันระบบระเบียบตามปกติ ไม่ได้เป็นจุดเด่นชื่นชมหรือจุดร้องเรียนหลัก'
+  },
+  'เคาน์เตอร์จำหน่ายตั๋วระดับทั่วไป': {
+    en: 'Neutral Data: Standard entry queues are reported. It is processed regularly without major praise or complaints.',
+    th: 'ข้อมูลทั่วไป: แถวรอซื้อตั๋วเข้าชมตรงเคาน์เตอร์รันระบบระเบียบตามปกติ ไม่ได้เป็นจุดเด่นชื่นชมหรือจุดร้องเรียนหลัก'
+  },
+  'strict dress code': {
+    en: 'Friction Point: Severe dissatisfaction from tourists forced to buy or rent cover sarongs due to minor violations.',
+    th: 'จุดติดขัด: นักท่องเที่ยวต่างชาติบ่นเรื่องการตรวจระเบียบเสื้อผ้าที่ตึงเกินไป ทำให้ต้องเสียเงินซื้อหรือเช่าผ้าคลุมเพิ่ม'
+  },
+  'กฎระเบียบการแต่งกายที่เข้มงวด': {
+    en: 'Friction Point: Severe dissatisfaction from tourists forced to buy or rent cover sarongs due to minor violations.',
+    th: 'จุดติดขัด: นักท่องเที่ยวต่างชาติบ่นเรื่องการตรวจระเบียบเสื้อผ้าที่ตึงเกินไป ทำให้ต้องเสียเงินซื้อหรือเช่าผ้าคลุมเพิ่ม'
+  },
+  'deeply cultural experience': {
+    en: 'Activity Praise: Unmatched historical exposure regarding royal Thai heritage and Buddhist customs.',
+    th: 'คำชมกิจกรรม: มอบประสบการณ์การเรียนรู้ขนบธรรมเนียมพุทธศาสนาและมรดกประวัติศาสตร์ราชสำนักไทยที่หาจากที่อื่นไม่ได้'
+  },
+  'ประสบการณ์ทางวัฒนธรรมที่ลึกซึ้ง': {
+    en: 'Activity Praise: Unmatched historical exposure regarding royal Thai heritage and Buddhist customs.',
+    th: 'คำชมกิจกรรม: มอบประสบการณ์การเรียนรู้ขนบธรรมเนียมพุทธศาสนาและมรดกประวัติศาสตร์ราชสำนักไทยที่หาจากที่อื่นไม่ได้'
+  },
+  'tiring walking loops': {
+    en: 'Activity Warning: Massive open brick courtyards with minimal seating induce quick exhaustion.',
+    th: 'คำเตือนกิจกรรม: พื้นที่ระเบียงคดและลานอิฐกว้างกลางแจ้งไม่มีร่มเงาและที่นั่งพัก ทำให้ร่างกายเหนื่อยล้าแดดได้ง่าย'
+  },
+  'เส้นทางการเดินชมระยะไกลทำให้เหนื่อยล้า': {
+    en: 'Activity Warning: Massive open brick courtyards with minimal seating induce quick exhaustion.',
+    th: 'คำเตือนกิจกรรม: พื้นที่ระเบียงคดและลานอิฐกว้างกลางแจ้งไม่มีร่มเงาและที่นั่งพัก ทำให้ร่างกายเหนื่อยล้าแดดได้ง่าย'
+  },
 
   // === Khao Yai ===
-  'rich biodiversity': 'Attraction Insight: Over 2,010 foreign reviews are highly fascinated by encountering wild hornbills and mammals.',
-  'ความหลากหลายทางชีวภาพที่อุดมสมบูรณ์': 'ข้อมูลสิ่งดึงดูดใจ: รีวิวชาวต่างเวลากว่า 2,010 รายการแสดงความตื่นตาตื่นใจกับการได้พบเห็นนกเงือกและสัตว์เลี้ยงลูกด้วยนมในป่าธรรมชาติ',
-  'stunning waterfall': 'Attraction Insight: Beautiful and highly recommended during the wet season. Beware steep stairs without rails.',
-  'น้ำตกที่สวยงามตระการตา': 'ข้อมูลสิ่งดึงดูดใจ: มีความสวยงามและแนะนำอย่างยิ่งในช่วงฤดูฝน แต่ควรระวังบันไดที่ชันและไม่มีราวจับในบางจุด',
-  'dual pricing system': 'ALERT (Sentiment Bias): Over 2,912 high-rating reviews express severe irritation over the 400 THB entry charge.',
-  'ระบบการเก็บราคาค่าเข้าชมสองมาตรฐาน': 'แจ้งเตือน (ความลำเอียงเชิงรู้สึก): รีวิวมากกว่า 2,912 รายการแสดงความหงุดหงิดอย่างรุนแรงเกี่ยวกับค่าธรรมเนียมเข้าชม 400 บาทสำหรับต่างชาติ',
-  'inconvenient public transport': 'Critical Infrastructure Issue: Analysis confirms vast sub-attraction distances make a private car mandatory.',
-  'ระบบขนส่งสาธารณะภายในไม่สะดวก': 'ปัญหาโครงสร้างพื้นฐานวิกฤต: ผลวิเคราะห์ยืนยันว่าระยะทางระหว่างจุดท่องเที่ยวภายในอุทยานอยู่ห่างกันมาก จำเป็นต้องเดินทางด้วยรถยนต์ส่วนตัวเท่านั้น',
-  'basic visitor amenities': 'Neutral Evaluation: Restrooms and information desks are standard. Visitors find them plain but acceptable.',
-  'สิ่งอำนวยความสะดวกขั้นพื้นฐานทั่วไป': 'การประเมินทั่วไป: ห้องน้ำและเคาน์เตอร์ข้อมูลอยู่ในระดับเกณฑ์มาตรฐาน นักท่องเที่ยวรู้สึกว่าเรียบๆ แต่ยอมรับได้',
-  'language barrier staff': 'Amenity Deficit: Communication gaps prevent travelers from acquiring deep ecological safety data.',
-  'กำแพงภาษาในการสื่อสารของเจ้าหน้าที่': 'ข้อบกพร่องสิ่งอำนวยความสะดวก: ช่องว่างในการสื่อสารภาษาอังกฤษทำให้ผู้เดินทางไม่สามารถสอบถามข้อมูลความปลอดภัยหรือระบบนิเวศเชิงลึกได้',
-  'wonderful bird watching': 'Activity Praise: A global hotspot destination for ornithologists and professional photographers.',
-  'กิจกรรมส่องนกที่ยอดเยี่ยม': 'คำชมกิจกรรม: จุดหมายปลายทางระดับโลก (Hotspot) สำหรับนักปักษีวิทยาและช่างภาพสัตว์ป่ามืออาชีพ',
-  'disorganized campsite': 'Activity Friction: Campsites lack structural order and are prone to nocturnal wildlife foraging.',
-  'พื้นที่กางเต็นท์ขาดความเป็นระเบียบ': 'ความขัดแย้งในกิจกรรม: พื้นที่กางเต็นท์ยังขาดการจัดระเบียบโครงสร้างที่ดี และมักมีสัตว์ป่าเข้ามาคุ้ยเขี่ยหาอาหารในเวลากลางคืน',
+  'rich biodiversity': {
+    en: 'Attraction Insight: Over 2,010 foreign reviews are highly fascinated by encountering wild hornbills and mammals.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: รีวิวของชาวต่างชาติประทับใจมากกับการมีโอกาสเดินป่าส่องพบเจอนกเงือก นกป่า และสัตว์ป่าธรรมชาติตัวเป็นๆ'
+  },
+  'ความหลากหลายทางชีวภาพที่อุดมสมบูรณ์': {
+    en: 'Attraction Insight: Over 2,010 foreign reviews are highly fascinated by encountering wild hornbills and mammals.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: รีวิวของชาวต่างชาติประทับใจมากกับการมีโอกาสเดินป่าส่องพบเจอนกเงือก นกป่า และสัตว์ป่าธรรมชาติตัวเป็นๆ'
+  },
+  'stunning waterfall': {
+    en: 'Attraction Insight: Beautiful and highly recommended during the wet season. Beware steep stairs without rails.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: น้ำตกสวยงามระยิบระยับแนะนำให้มาช่วงฤดูฝน ทว่าควรระวังบันไดเดินเท้าลงจุดชมวิวที่ชันและลื่น'
+  },
+  'น้ำตกที่สวยงามตระการตา': {
+    en: 'Attraction Insight: Beautiful and highly recommended during the wet season. Beware steep stairs without rails.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: น้ำตกสวยงามระยิบระยับแนะนำให้มาช่วงฤดูฝน ทว่าควรระวังบันไดเดินเท้าลงจุดชมวิวที่ชันและลื่น'
+  },
+  'dual pricing system': {
+    en: 'ALERT (Sentiment Bias): Over 2,912 high-rating reviews express severe irritation over the 400 THB entry charge.',
+    th: 'แจ้งเตือน (อคติเชิงความรู้สึก): รีวิวจำนวนมากระบุว่าไม่พึงพอใจกับระบบราคาตั๋วเข้าสองมาตรฐานที่เก็บชาวต่างชาติสูงถึง 400 บาท'
+  },
+  'ระบบการเก็บราคาค่าเข้าชมสองมาตรฐาน': {
+    en: 'ALERT (Sentiment Bias): Over 2,912 high-rating reviews express severe irritation over the 400 THB entry charge.',
+    th: 'แจ้งเตือน (อคติเชิงความรู้สึก): รีวิวจำนวนมากระบุว่าไม่พึงพอใจกับระบบราคาตั๋วเข้าสองมาตรฐานที่เก็บชาวต่างชาติสูงถึง 400 บาท'
+  },
+  'inconvenient public transport': {
+    en: 'Critical Infrastructure Issue: Analysis confirms vast sub-attraction distances make a private car mandatory.',
+    th: 'ปัญหาโครงสร้างพื้นฐาน: จุดท่องเที่ยวและจุดกางเต็นท์ห่างกันหลายกิโลเมตร จำเป็นต้องขับรถส่วนตัวเข้ามาเท่านั้น ไม่มีรถสาธารณะรองรับ'
+  },
+  'ระบบขนส่งสาธารณะภายในไม่สะดวก': {
+    en: 'Critical Infrastructure Issue: Analysis confirms vast sub-attraction distances make a private car mandatory.',
+    th: 'ปัญหาโครงสร้างพื้นฐาน: จุดท่องเที่ยวและจุดกางเต็นท์ห่างกันหลายกิโลเมตร จำเป็นต้องขับรถส่วนตัวเข้ามาเท่านั้น ไม่มีรถสาธารณะรองรับ'
+  },
+  'basic visitor amenities': {
+    en: 'Neutral Evaluation: Restrooms and information desks are standard. Visitors find them plain but acceptable.',
+    th: 'ข้อเท็จจริงทั่วไป: ห้องสุขาและเคาน์เตอร์ให้คำแนะนำอยู่เกณฑ์มาตรฐานใช้งานทั่วไป นักท่องเที่ยวรู้สึกเรียบๆ แต่รับได้'
+  },
+  'สิ่งอำนวยความสะดวกขั้นพื้นฐานทั่วไป': {
+    en: 'Neutral Evaluation: Restrooms and information desks are standard. Visitors find them plain but acceptable.',
+    th: 'ข้อเท็จจริงทั่วไป: ห้องสุขาและเคาน์เตอร์ให้คำแนะนำอยู่เกณฑ์มาตรฐานใช้งานทั่วไป นักท่องเที่ยวรู้สึกเรียบๆ แต่รับได้'
+  },
+  'language barrier staff': {
+    en: 'Amenity Deficit: Communication gaps prevent travelers from acquiring deep ecological safety data.',
+    th: 'ข้อบกพร่องสิ่งอำนวยความสะดวก: ช่องว่างทางภาษาอังกฤษของเจ้าหน้าที่หน้างาน ทำให้สื่อสารแนะนำเรื่องความปลอดภัยระบบนิเวศได้ไม่ลึกพอ'
+  },
+  'กำแพงภาษาในการสื่อสารของเจ้าหน้าที่': {
+    en: 'Amenity Deficit: Communication gaps prevent travelers from acquiring deep ecological safety data.',
+    th: 'ข้อบกพร่องสิ่งอำนวยความสะดวก: ช่องว่างทางภาษาอังกฤษของเจ้าหน้าที่หน้างาน ทำให้สื่อสารแนะนำเรื่องความปลอดภัยระบบนิเวศได้ไม่ลึกพอ'
+  },
+  'wonderful bird watching': {
+    en: 'Activity Praise: A global hotspot destination for ornithologists and professional photographers.',
+    th: 'คำชมกิจกรรม: พื้นที่ป่าอุทยานเป็นสวรรค์ของนักดูนกและช่างภาพสัตว์ป่าระดับสากลในการส่องนกหายาก'
+  },
+  'กิจกรรมส่องนกที่ยอดเยี่ยม': {
+    en: 'Activity Praise: A global hotspot destination for ornithologists and professional photographers.',
+    th: 'คำชมกิจกรรม: พื้นที่ป่าอุทยานเป็นสวรรค์ของนักดูนกและช่างภาพสัตว์ป่าระดับสากลในการส่องนกหายาก'
+  },
+  'disorganized campsite': {
+    en: 'Activity Friction: Campsites lack structural order and are prone to nocturnal wildlife foraging.',
+    th: 'ข้อขัดแย้งกิจกรรม: บริเวณลานกางเต็นท์ขาดความเป็นระเบียบและบางครั้งมีสัตว์ป่า (กวาง/ลิง) เข้ามารบกวนคุ้ยขยะตอนดึก'
+  },
+  'พื้นที่กางเต็นท์ขาดความเป็นระเบียบ': {
+    en: 'Activity Friction: Campsites lack structural order and are prone to nocturnal wildlife foraging.',
+    th: 'ข้อขัดแย้งกิจกรรม: บริเวณลานกางเต็นท์ขาดความเป็นระเบียบและบางครั้งมีสัตว์ป่า (กวาง/ลิง) เข้ามารบกวนคุ้ยขยะตอนดึก'
+  },
 
   // === Koh Samui ===
-  'gorgeous white beach': 'Attraction Insight: Chaweng and Lamai shorelines capture peak aesthetic scores for tropical relaxation.',
-  'ชายหาดทรายขาวที่สวยงามระยิบระยับ': 'ข้อมูลสิ่งดึงดูดใจ: แนวชายหาดเฉวงและหาดละไมได้รับคะแนนด้านความสวยงามสูงสุดสำหรับการพักผ่อนสไตล์เขตร้อน',
-  'polluted beach areas': 'Friction Alert: Flash storms occasionally washed marine garbage debris onto unmanaged sand patches.',
-  'พบคราบขยะมลพิษบนชายหาดบางส่วน': 'การแจ้งเตือนความขัดแย้ง: พายุฝนมักจะพัดพาเอาขยะทะเลขึ้นมาสะสมบนผืนทรายในจุดที่ไม่มีเจ้าหน้าที่ดูแลเป็นประจำ',
-  'ordinary ferry schedule': 'Neutral Routine: Ferry timetables to the mainland run as normal. Tourists report a standard, unremarkable transit experience.',
-  'ตารางการเดินเรือข้ามฟากระดับปกติ': 'ขั้นตอนทั่วไป: ตารางเวลาเดินเรือไปกลับฝั่งแผ่นดินใหญ่รันตามปกติ นักท่องเที่ยวระบุว่าเป็นประสบการณ์เดินทางที่เรียบง่ายและไม่มีอะไรโดดเด่น',
-  'highly expensive taxis': 'Critical Infrastructure Issue: Massive negative density on unmetered local transit cartels.',
-  'รถแท็กซี่ท้องถิ่นราคาแพงมาก': 'ปัญหาโครงสร้างพื้นฐานวิกฤต: พบข้อคิดเห็นเชิงลบหนาแน่นมากเกี่ยวกับการผูกขาดราคารถท้องถิ่นที่ไม่มีการเปิดมิเตอร์ตามมาตรฐาน',
-  'luxurious resort amenities': 'Amenity Praise: Premium beachfront wellness architectures receive exceptional global ratings.',
-  'สิ่งอำนวยความสะดวกในรีสอร์ทหรูหรา': 'คำชมสิ่งอำนวยความสะดวก: บริการดูแลสุขภาพริมชายหาดระดับพรีเมียมและรีสอร์ทหรูได้รับคะแนนประเมินในเกณฑ์ดีเยี่ยมจากทั่วโลก',
-  'overpriced food options': 'Amenity Issue: High tourist clustering inflates standard meal valuations compared to northern cities.',
-  'ราคาอาหารตามแหล่งท่องเที่ยวแพงเกินไป': 'ปัญหาสิ่งอำนวยความสะดวก: การหนาแน่นของนักท่องเที่ยวส่งผลให้ราคาอาหารมาตรฐานพุ่งสูงขึ้นมากเมื่อเทียบกับจังหวัดทางภาคเหนือ',
-  'exciting water sports': 'Activity Praise: Jet-skiing and scuba transit packages are highly vibrant and easily bookable.',
-  'กิจกรรมกีฬาทางน้ำที่ตื่นเต้นเร้าใจ': 'คำชมกิจกรรม: แพ็กเกจเจ็ทสกีและทริปดำน้ำลึกมีความสนุกสนานและสามารถจองล่วงหน้าได้ง่ายมาก',
-  'noisy beach parties': 'Activity Friction: Polarized feedback; beloved by nightlife seekers but hated by families seeking quiet.',
-  'งานปาร์ตี้ริมหาดส่งเสียงดังรบกวน': 'ความขัดแย้งในกิจกรรม: ผลตอบรับแตกออกเป็นสองฝั่ง เป็นที่ชื่นชอบของสายปาร์ตี้แต่ไม่เป็นที่พึงพอใจสำหรับครอบครัวที่ต้องการความสงบ',
+  'gorgeous white beach': {
+    en: 'Attraction Insight: Chaweng and Lamai shorelines capture peak aesthetic scores for tropical relaxation.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ชายหาดหาดเฉวงและหาดละไมทรายขาวนุ่ม ได้รับเกรดความงามอันดับหนึ่งด้านการนอนพักผ่อนชายทะเล'
+  },
+  'ชายหาดทรายขาวที่สวยงามระยิบระยับ': {
+    en: 'Attraction Insight: Chaweng and Lamai shorelines capture peak aesthetic scores for tropical relaxation.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ชายหาดหาดเฉวงและหาดละไมทรายขาวนุ่ม ได้รับเกรดความงามอันดับหนึ่งด้านการนอนพักผ่อนชายทะเล'
+  },
+  'polluted beach areas': {
+    en: 'Friction Alert: Flash storms occasionally washed marine garbage debris onto unmanaged sand patches.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: มรสุมหรือคลื่นซัดบางฤดูส่งผลให้มีคราบเศษขยะทะเลพัดขึ้นมาสะสมบนหาดในจุดที่ไร้คนดูแล'
+  },
+  'พบคราบขยะมลพิษบนชายหาดบางส่วน': {
+    en: 'Friction Alert: Flash storms occasionally washed marine garbage debris onto unmanaged sand patches.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: มรสุมหรือคลื่นซัดบางฤดูส่งผลให้มีคราบเศษขยะทะเลพัดขึ้นมาสะสมบนหาดในจุดที่ไร้คนดูแล'
+  },
+  'ordinary ferry schedule': {
+    en: 'Neutral Routine: Ferry timetables to the mainland run as normal. Tourists report a standard, unremarkable transit experience.',
+    th: 'ขั้นตอนทั่วไป: รอบเที่ยวเรือเฟอร์รี่ข้ามฟากวิ่งตามเวลาปกติ นักท่องเที่ยวรายงานว่าเป็นประสบการณ์เดินทางข้ามเกาะแบบทั่วไป'
+  },
+  'ตารางการเดินเรือข้ามฟากระดับปกติ': {
+    en: 'Neutral Routine: Ferry timetables to the mainland run as normal. Tourists report a standard, unremarkable transit experience.',
+    th: 'ขั้นตอนทั่วไป: รอบเที่ยวเรือเฟอร์รี่ข้ามฟากวิ่งตามเวลาปกติ นักท่องเที่ยวรายงานว่าเป็นประสบการณ์เดินทางข้ามเกาะแบบทั่วไป'
+  },
+  'highly expensive taxis': {
+    en: 'Critical Infrastructure Issue: Massive negative density on unmetered local transit cartels.',
+    th: 'ปัญหาโครงสร้างพื้นฐานวิกฤต: รีวิวบ่นหนาแน่นมากเรื่องระบบรถแท็กซี่เหมาบนเกาะราคาแพงมหาโหดและไม่ยอมเปิดมิเตอร์วิ่งตามเกณฑ์'
+  },
+  'รถแท็กซี่ท้องถิ่นราคาแพงมาก': {
+    en: 'Critical Infrastructure Issue: Massive negative density on unmetered local transit cartels.',
+    th: 'ปัญหาโครงสร้างพื้นฐานวิกฤต: รีวิวบ่นหนาแน่นมากเรื่องระบบรถแท็กซี่เหมาบนเกาะราคาแพงมหาโหดและไม่ยอมเปิดมิเตอร์วิ่งตามเกณฑ์'
+  },
+  'luxurious resort amenities': {
+    en: 'Amenity Praise: Premium beachfront wellness architectures receive exceptional global ratings.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: บรรดารีสอร์ทหรูหราติดชายหาดและสปาดูแลสุขภาพได้รับคำชื่นชมและคะแนนดีเยี่ยมระดับโลก'
+  },
+  'สิ่งอำนวยความสะดวกในรีสอร์ทหรูหรา': {
+    en: 'Amenity Praise: Premium beachfront wellness architectures receive exceptional global ratings.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: บรรดารีสอร์ทหรูหราติดชายหาดและสปาดูแลสุขภาพได้รับคำชื่นชมและคะแนนดีเยี่ยมระดับโลก'
+  },
+  'overpriced food options': {
+    en: 'Amenity Issue: High tourist clustering inflates standard meal valuations compared to northern cities.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: การกระจุกตัวของย่านท่องเที่ยวทำค่าอาหารริมหาดปรับราคาสูงลิ่วเมื่อเทียบกับภาคอื่นๆ'
+  },
+  'ราคาอาหารตามแหล่งท่องเที่ยวแพงเกินไป': {
+    en: 'Amenity Issue: High tourist clustering inflates standard meal valuations compared to northern cities.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: การกระจุกตัวของย่านท่องเที่ยวทำค่าอาหารริมหาดปรับราคาสูงลิ่วเมื่อเทียบกับภาคอื่นๆ'
+  },
+  'exciting water sports': {
+    en: 'Activity Praise: Jet-skiing and scuba transit packages are highly vibrant and easily bookable.',
+    th: 'คำชมกิจกรรม: แพ็กเกจขับเจ็ทสกี พาราเซลลิ่ง และวันเดย์ทริปดำน้ำลึกสนุกสนานและหาจองบริการได้ง่ายมาก'
+  },
+  'กิจกรรมกีฬาทางน้ำที่ตื่นเต้นเร้าใจ': {
+    en: 'Activity Praise: Jet-skiing and scuba transit packages are highly vibrant and easily bookable.',
+    th: 'คำชมกิจกรรม: แพ็กเกจขับเจ็ทสกี พาราเซลลิ่ง และวันเดย์ทริปดำน้ำลึกสนุกสนานและหาจองบริการได้ง่ายมาก'
+  },
+  'noisy beach parties': {
+    en: 'Activity Friction: Polarized feedback; beloved by nightlife seekers but hated by families seeking quiet.',
+    th: 'ข้อขัดแย้งกิจกรรม: ความเห็นแตกเป็นสองฝั่ง เป็นสวรรค์ของสายท่องราตรีแต่สร้างความปวดหัวให้กลุ่มครอบครัวที่ต้องการนอนสงบ'
+  },
+  'งานปาร์ตี้ริมหาดส่งเสียงดังรบกวน': {
+    en: 'Activity Friction: Polarized feedback; beloved by nightlife seekers but hated by families seeking quiet.',
+    th: 'ข้อขัดแย้งกิจกรรม: ความเห็นแตกเป็นสองฝั่ง เป็นสวรรค์ของสายท่องราตรีแต่สร้างความปวดหัวให้กลุ่มครอบครัวที่ต้องการนอนสงบ'
+  },
 
   // === Patong Beach ===
-  'lively beach activities': 'Attraction Insight: Parasailing and vibrant beach volleyball draw extensive active crowds.',
-  'กิจกรรมริมชายหาดที่คึกคักมีชีวิตชีวา': 'ข้อมูลสิ่งดึงดูดใจ: กิจกรรมร่มร่อน (Parasailing) และวอลเลย์บอลชายหาดดึงดูดกลุ่มนักท่องเที่ยวสายกิจกรรมจำนวนมาก',
-  'stressful tourist traps': 'Friction Alert: Lexicon modeling records heavy keyword clusters warning against pushy tailors and bars.',
-  'กับดักนัดท่องเที่ยวที่ทำให้อึดอัด': 'การแจ้งเตือนความขัดแย้ง: ระบบคลังคำบันทึกการเตือนภัยจากนักท่องเที่ยวเรื่องการโดนตื๊อขายของจากร้านตัดสูทและบาร์ในพื้นที่',
-  'standard airport bus': 'Neutral Transportation: The local bus operates on regular hours. It provides a plain, functional option without extra comfort.',
-  'รถบัสรับส่งสนามบินระดับมาตรฐานทั่วไป': 'การขนส่งทั่วไป: รถบัสประจำทางวิ่งตามเวลาปกติ เป็นทางเลือกที่เน้นการใช้งานทั่วไปโดยไม่มีความสะดวกสบายเพิ่มเติม',
-  'dangerous tuktuk drivers': 'Accessibility Warning: High negative correlation with aggressive nighttime driving and price manipulation.',
-  'คนขับรถตุ๊กตุ๊กขับขี่อันตราย': 'คำเตือนการเข้าถึง: มีความเชื่อมโยงในเชิงลบสูงมากกับการขับขี่ที่อันตรายในเวลากลางคืนและการปั่นป่วนโก่งราคาค่าโดยสาร',
-  'abundant hotel choices': 'Amenity Praise: Exceptional density of sleep accommodations fitting every financial tier.',
-  'มีตัวเลือกโรงแรมที่พักจำนวนมาก': 'คำชมสิ่งอำนวยความสะดวก: ความหนาแน่นของโรงแรมที่พักสูงมาก มีตัวเลือกรองรับทุกระดับงบประมาณเงินทุน',
-  'overpriced beach chairs': 'Amenity Friction: Repetitive comments criticizing aggressive localized leasing of beachfront space.',
-  'ค่าเช่าเตียงผ้าใบชายหาดราคาแพงเกินไป': 'ความขัดแย้งสิ่งอำนวยความสะดวก: พบการบ่นซ้ำๆ เกี่ยวกับการผูกขาดและเก็บค่าเช่าพื้นที่ผ้าใบชายหาดที่แพงเกินควรจากกลุ่มมาเฟียท้องถิ่น',
-  'vibrant nightlife experience': 'Activity Praise: Bangla Road sets the standard for high-energy bars, clubs, and neon performances.',
-  'ประสบการณ์แสงสียามค่ำคืนที่คึกคัก': 'คำชมกิจกรรม: ถนนบางลากรณีตั้งมาตรฐานความสนุกของบาร์ คลับ และการแสดงแสงสีเสียงที่เต็มไปด้วยพลังงาน',
-  'aggressive street vendors': 'Activity Friction: Tourists indicate physical crowding by vendors disrupts walking relaxation.',
-  'คนขายของริมทางเดินตื๊อลูกค้าเกินไป': 'ความขัดแย้งในกิจกรรม: นักท่องเที่ยวระบุว่าการโดนรุมล้อมจากพ่อค้าแม่ค้าเดินเท้าทำลายบรรยากาศการเดินเล่นพักผ่อนริมหาด',
+  'lively beach activities': {
+    en: 'Attraction Insight: Parasailing and vibrant beach volleyball draw extensive active crowds.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: กิจกรรมพาราเซลลิ่ง เจ็ทสกี และการเล่นวอลเลย์บอลชายหาดสร้างความคึกคักดึงดูดใจฝูงชนอย่างมาก'
+  },
+  'กิจกรรมริมชายหาดที่คึกคักมีชีวิตชีวา': {
+    en: 'Attraction Insight: Parasailing and vibrant beach volleyball draw extensive active crowds.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: กิจกรรมพาราเซลลิ่ง เจ็ทสกี และการเล่นวอลเลย์บอลชายหาดสร้างความคึกคักดึงดูดใจฝูงชนอย่างมาก'
+  },
+  'stressful tourist traps': {
+    en: 'Friction Alert: Lexicon modeling records heavy keyword clusters warning against pushy tailors and bars.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: ระบบวิเคราะห์พบคีย์เวิร์ดเตือนภัยเรื่องการตื๊อขายของอย่างรุนแรงจากร้านตัดสูท บาร์ และแท็กซี่'
+  },
+  'กับดักนัดท่องเที่ยวที่ทำให้อึดอัด': {
+    en: 'Friction Alert: Lexicon modeling records heavy keyword clusters warning against pushy tailors and bars.',
+    th: 'การแจ้งเตือนข้อขัดแย้ง: ระบบวิเคราะห์พบคีย์เวิร์ดเตือนภัยเรื่องการตื๊อขายของอย่างรุนแรงจากร้านตัดสูท บาร์ และแท็กซี่'
+  },
+  'standard airport bus': {
+    en: 'Neutral Transportation: The local bus operates on regular hours. It provides a plain, functional option without extra comfort.',
+    th: 'การขนส่งทั่วไป: รถบัสส้มเข้าเมืองและไปสนามบินวิ่งตามรอบปกติ เป็นทางเลือกเน้นใช้งานราคาประหยัดแบบทั่วไป ไม่ได้หรูหรา'
+  },
+  'รถบัสรับส่งสนามบินระดับมาตรฐานทั่วไป': {
+    en: 'Neutral Transportation: The local bus operates on regular hours. It provides a plain, functional option without extra comfort.',
+    th: 'การขนส่งทั่วไป: รถบัสส้มเข้าเมืองและไปสนามบินวิ่งตามรอบปกติ เป็นทางเลือกเน้นใช้งานราคาประหยัดแบบทั่วไป ไม่ได้หรูหรา'
+  },
+  'dangerous tuktuk drivers': {
+    en: 'Accessibility Warning: High negative correlation with aggressive nighttime driving and price manipulation.',
+    th: 'คำเตือนการเข้าถึง: คนขับรถตุ๊กตุ๊กบางรายมีพฤติกรรมขับซิ่งน่ากลัวตอนดึกๆ และมีการรวมกลุ่มปั่นราคาค่าโดยสาร'
+  },
+  'คนขับรถตุ๊กตุ๊กขับขี่อันตราย': {
+    en: 'Accessibility Warning: High negative correlation with aggressive nighttime driving and price manipulation.',
+    th: 'คำเตือนการเข้าถึง: คนขับรถตุ๊กตุ๊กบางรายมีพฤติกรรมขับซิ่งน่ากลัวตอนดึกๆ และมีการรวมกลุ่มปั่นราคาค่าโดยสาร'
+  },
+  'abundant hotel choices': {
+    en: 'Amenity Praise: Exceptional density of sleep accommodations fitting every financial tier.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: มีความหนาแน่นของโรงแรม โฮสเทล และรีสอร์ทสูงมาก ตอบโจทย์ความต้องการครบทุกระดับงบประมาณ'
+  },
+  'มีตัวเลือกโรงแรมที่พักจำนวนมาก': {
+    en: 'Amenity Praise: Exceptional density of sleep accommodations fitting every financial tier.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: มีความหนาแน่นของโรงแรม โฮสเทล และรีสอร์ทสูงมาก ตอบโจทย์ความต้องการครบทุกระดับงบประมาณ'
+  },
+  'overpriced beach chairs': {
+    en: 'Amenity Friction: Repetitive comments criticizing aggressive localized leasing of beachfront space.',
+    th: 'ข้อขัดแย้งสิ่งอำนวยความสะดวก: มีเสียงบ่นหนาแน่นเกี่ยวกับการจัดโซนล็อคเตียงผ้าใบและร่มชายหาดที่เรียกเก็บค่าเช่าแพงเกินเหตุ'
+  },
+  'ค่าเช่าเตียงผ้าใบชายหาดราคาแพงเกินไป': {
+    en: 'Amenity Friction: Repetitive comments criticizing aggressive localized leasing of beachfront space.',
+    th: 'ข้อขัดแย้งสิ่งอำนวยความสะดวก: มีเสียงบ่นหนาแน่นเกี่ยวกับการจัดโซนล็อคเตียงผ้าใบและร่มชายหาดที่เรียกเก็บค่าเช่าแพงเกินเหตุ'
+  },
+  'vibrant nightlife experience': {
+    en: 'Activity Praise: Bangla Road sets the standard for high-energy bars, clubs, and neon performances.',
+    th: 'คำชมกิจกรรม: ซอยบางลาเป็นจุดเด่นอันดับหนึ่งในเรื่องแสงสีเสียง ผับบาร์ และความบันเทิงยามค่ำคืนที่เต็มไปด้วยพลังงาน'
+  },
+  'ประสบการณ์แสงสียามค่ำคืนที่คึกคัก': {
+    en: 'Activity Praise: Bangla Road sets the standard for high-energy bars, clubs, and neon performances.',
+    th: 'คำชมกิจกรรม: ซอยบางลาเป็นจุดเด่นอันดับหนึ่งในเรื่องแสงสีเสียง ผับบาร์ และความบันเทิงยามค่ำคืนที่เต็มไปด้วยพลังงาน'
+  },
+  'aggressive street vendors': {
+    en: 'Activity Friction: Tourists indicate physical crowding by vendors disrupts walking relaxation.',
+    th: 'ข้อขัดแย้งกิจกรรม: พ่อค้าแม่ค้าหาบเร่เดินเท้าตื๊อเสนอขายของขายทัวร์ถี่เกินไป รบกวนบรรยากาศการเดินเล่นผ่อนคลายริมหาด'
+  },
+  'คนขายของริมทางเดินตื๊อลูกค้าเกินไป': {
+    en: 'Activity Friction: Tourists indicate physical crowding by vendors disrupts walking relaxation.',
+    th: 'ข้อขัดแย้งกิจกรรม: พ่อค้าแม่ค้าหาบเร่เดินเท้าตื๊อเสนอขายของขายทัวร์ถี่เกินไป รบกวนบรรยากาศการเดินเล่นผ่อนคลายริมหาด'
+  },
 
   // === White Temple ===
-  'stunning unique architecture': 'Attraction Insight: Complete artistic shock value. Near-perfect positive weightings for visual originality.',
-  'สถาปัตยกรรมที่มีเอกลักษณ์สวยงามโดดเด่น': 'ข้อมูลสิ่งดึงดูดใจ: คุณค่าทางศิลปะระดับสูง ได้รับคะแนนเชิงบวกเกือบเต็มในแง่ความแปลกใหม่และงดงามของดีไซน์ทางสายตา',
-  'incredible artistic details': 'Attraction Insight: Surreal contemporary art implementations generate extreme intellectual awe.',
-  'รายละเอียดงานศิลปะที่น่าทึ่ง': 'ข้อมูลสิ่งดึงดูดใจ: การผสมผสานศิลปะร่วมสมัยเหนือจริงช่วยสร้างความตื่นตาตื่นใจและความประทับใจแก่ผู้เข้าชมเป็นอย่างมาก',
-  'typical highway route': 'Neutral Accessibility: Road conditions are standard for Thailand highways. The path is functional and straightforward.',
-  'เส้นทางถนนไฮเวย์รูปแบบปกติทั่วไป': 'การเข้าถึงทั่วไป: สภาพถนนเป็นไปตามเกณฑ์มาตรฐานทางหลวงของไทย เส้นทางใช้งานได้ดีตรงไปตรงมาไม่มีอุปสรรค',
-  'disorganized parking area': 'Accessibility Friction: Tour bus overlaps create immense vehicle maneuvering blocks during midday.',
-  'พื้นที่จอดรถขาดการจัดระเบียบที่ดี': 'ความขัดแย้งการเข้าถึง: การจอดซ้อนคันของรถบัสทัวร์ขนาดใหญ่ทำให้เกิดปัญหารถติดขัดในการเข้าจอดช่วงเที่ยงวัน',
-  'ordinary souvenir shops': 'Neutral Observation: Shops sell typical local crafts. Prices and selections are plain and expected.',
-  'ร้านขายของที่ระลึกระดับธรรมดาทั่วไป': 'ข้อสังเกตทั่วไป: ร้านค้าจำหน่ายงานฝีมือท้องถิ่นรูปแบบทั่วไป ราคาและตัวเลือกสินค้าอยู่ในระดับที่คาดหมายได้ทั่วไป',
-  'crowded public restrooms': 'Amenity Issue: Peak traveler loads occasionally overwhelm cleaning cycles during winter seasons.',
-  'ห้องน้ำสาธารณะมีความหนาแน่นแออัด': 'ปัญหาสิ่งอำนวยความสะดวก: ปริมาณนักท่องเที่ยวที่หนาแน่นเกินไปในช่วงฤดูท่องเที่ยวบางครั้งทำให้เกินขีดความสามารถของรอบการทำความสะอาด',
-  'fascinating art viewing': 'Activity Praise: Tourists are deeply engaged by the profound heaven-and-hell philosophical architecture.',
-  'การเข้าชมงานศิลปะที่น่าหลงใหล': 'คำชมกิจกรรม: นักท่องเที่ยวมีความเข้าถึงและอินกับสถาปัตยกรรมที่สะท้อนปรัชญาเรื่องนรกและสวรรค์อย่างลึกซึ้ง',
-  'restrictive photo rules': 'Activity Friction: Heavy enforcement of strict no-camera bans inside the primary white pavilion.',
-  'กฎระเบียบการห้ามถ่ายภาพที่เข้มงวดเกินไป': 'ความขัดแย้งในกิจกรรม: การบังคับใช้กฎห้ามใช้กล้องถ่ายภาพภายในศาลาสีขาวหลังหลักอย่างเข้มงวดทำให้นักท่องเที่ยวรู้สึกอึดอัด',
+  'stunning unique architecture': {
+    en: 'Attraction Insight: Complete artistic shock value. Near-perfect positive weightings for visual originality.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: คุณค่าความประทับใจทางสถาปัตยกรรมระดับสูง โบสถ์สีขาวประดับกระจกสะท้อนดีไซน์เชิงศิลปะที่วิจิตรไม่เหมือนใคร'
+  },
+  'สถาปัตยกรรมที่มีเอกลักษณ์สวยงามโดดเด่น': {
+    en: 'Attraction Insight: Complete artistic shock value. Near-perfect positive weightings for visual originality.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: คุณค่าความประทับใจทางสถาปัตยกรรมระดับสูง โบสถ์สีขาวประดับกระจกสะท้อนดีไซน์เชิงศิลปะที่วิจิตรไม่เหมือนใคร'
+  },
+  'incredible artistic details': {
+    en: 'Attraction Insight: Surreal contemporary art implementations generate extreme intellectual awe.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การใส่ดีเทลงานประติมากรรมและภาพวาดร่วมสมัยสร้างความตื่นตาตาใจเชิงปรัชญาแก่ผู้เข้าชมอย่างลึกซึ้ง'
+  },
+  'รายละเอียดงานศิลปะที่น่าทึ่ง': {
+    en: 'Attraction Insight: Surreal contemporary art implementations generate extreme intellectual awe.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การใส่ดีเทลงานประติมากรรมและภาพวาดร่วมสมัยสร้างความตื่นตาตาใจเชิงปรัชญาแก่ผู้เข้าชมอย่างลึกซึ้ง'
+  },
+  'typical highway route': {
+    en: 'Neutral Accessibility: Road conditions are standard for Thailand highways. The path is functional and straightforward.',
+    th: 'การเข้าถึงทั่วไป: เส้นทางสัญจรจากตัวเมืองมายังวัดตั้งอยู่ริมทางหลวงหลัก ถนนเรียบขับง่ายและตรงไปตรงมาตามระบบปกติ'
+  },
+  'เส้นทางถนนไฮเวย์รูปแบบปกติทั่วไป': {
+    en: 'Neutral Accessibility: Road conditions are standard for Thailand highways. The path is functional and straightforward.',
+    th: 'การเข้าถึงทั่วไป: เส้นทางสัญจรจากตัวเมืองมายังวัดตั้งอยู่ริมทางหลวงหลัก ถนนเรียบขับง่ายและตรงไปตรงมาตามระบบปกติ'
+  },
+  'disorganized parking area': {
+    en: 'Accessibility Friction: Tour bus overlaps create immense vehicle maneuvering blocks during midday.',
+    th: 'ข้อขัดแย้งการเข้าถึง: บริเวณลานจอดรถด้านหน้ามีการจอดซ้อนคันของรถบัสทัวร์ขนาดใหญ่ ทำให้รถยนต์หมุนเวียนติดขัดช่วงเที่ยง'
+  },
+  'พื้นที่จอดรถขาดการจัดระเบียบที่ดี': {
+    en: 'Accessibility Friction: Tour bus overlaps create immense vehicle maneuvering blocks during midday.',
+    th: 'ข้อขัดแย้งการเข้าถึง: บริเวณลานจอดรถด้านหน้ามีการจอดซ้อนคันของรถบัสทัวร์ขนาดใหญ่ ทำให้รถยนต์หมุนเวียนติดขัดช่วงเที่ยง'
+  },
+  'ordinary souvenir shops': {
+    en: 'Neutral Observation: Shops sell typical local crafts. Prices and selections are plain and expected.',
+    th: 'ข้อสังเกตทั่วไป: ร้านจำหน่ายสินค้าที่ระลึกรอบวัดขายสินค้าหัตถกรรมพื้นเมืองรูปแบบทั่วไป ราคาและของฝากอยู่ในเกณฑ์ปกติ'
+  },
+  'ร้านขายของที่ระลึกระดับธรรมดาทั่วไป': {
+    en: 'Neutral Observation: Shops sell typical local crafts. Prices and selections are plain and expected.',
+    th: 'ข้อสังเกตทั่วไป: ร้านจำหน่ายสินค้าที่ระลึกรอบวัดขายสินค้าหัตถกรรมพื้นเมืองรูปแบบทั่วไป ราคาและของฝากอยู่ในเกณฑ์ปกติ'
+  },
+  'crowded public restrooms': {
+    en: 'Amenity Issue: Peak traveler loads occasionally overwhelm cleaning cycles during winter seasons.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: ห้องน้ำสีทองที่งดงามบางช่วงเวลาสุขภัณฑ์หนาแน่นเกินไป ทำให้ระบบทำความสะอาดรอบเช้ามืดไม่ทัน'
+  },
+  'ห้องน้ำสาธารณะมีความหนาแน่นแออัด': {
+    en: 'Amenity Issue: Peak traveler loads occasionally overwhelm cleaning cycles during winter seasons.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: ห้องน้ำสีทองที่งดงามบางช่วงเวลาสุขภัณฑ์หนาแน่นเกินไป ทำให้ระบบทำความสะอาดรอบเช้ามืดไม่ทัน'
+  },
+  'fascinating art viewing': {
+    en: 'Activity Praise: Tourists are deeply engaged by the profound heaven-and-hell philosophical architecture.',
+    th: 'คำชมกิจกรรม: ผู้เข้าชมเพลิดเพลินกับการเดินชมภาพจำลองสะพานวัฏสงสารและศิลปะที่สื่อถึงสัจธรรมนรก-สวรรค์ลึกซึ้ง'
+  },
+  'การเข้าชมงานศิลปะที่น่าหลงใหล': {
+    en: 'Activity Praise: Tourists are deeply engaged by the profound heaven-and-hell philosophical architecture.',
+    th: 'คำชมกิจกรรม: ผู้เข้าชมเพลิดเพลินกับการเดินชมภาพจำลองสะพานวัฏสงสารและศิลปะที่สื่อถึงสัจธรรมนรก-สวรรค์ลึกซึ้ง'
+  },
+  'restrictive photo rules': {
+    en: 'Activity Friction: Heavy enforcement of strict no-camera bans inside the primary white pavilion.',
+    th: 'ข้อขัดแย้งกิจกรรม: มีกฎระเบียบและเจ้าหน้าที่คุมเข้มงวดห้ามใช้กล้องบันทึกภาพถ่ายภายในพระอุโบสถหลักเด็ดขาด'
+  },
+  'กฎระเบียบการห้ามถ่ายภาพที่เข้มงวดเกินไป': {
+    en: 'Activity Friction: Heavy enforcement of strict no-camera bans inside the primary white pavilion.',
+    th: 'ข้อขัดแย้งกิจกรรม: มีกฎระเบียบและเจ้าหน้าที่คุมเข้มงวดห้ามใช้กล้องบันทึกภาพถ่ายภายในพระอุโบสถหลักเด็ดขาด'
+  },
 
   // === Khao Kheow Open Zoo ===
-  'adorable pygmy hippo': 'Attraction Insight: Global viral phenomenon generates near 100% positive data clustering for visual cuteness.',
-  'ลูกฮิปโปแคระที่น่ารักน่าเอ็นดู': 'ข้อมูลสิ่งดึงดูดใจ: ปรากฏการณ์ไวรัลระดับโลกสร้างคะแนนบวกเกือบ 100% จากความน่ารักน่าเอ็นดูของสัตว์ดึงดูดใจหลัก',
-  'interactive animal feeding': 'Activity Praise: Highly rated by families for safe, direct contact experiences with giraffes and elephants.',
-  'กิจกรรมให้อาหารสัตว์อย่างใกล้ชิด': 'คำชมกิจกรรม: ได้รับคะแนนความพึงพอใจสูงมากจากกลุ่มครอบครัวในแง่ประสบการณ์การสัมผัสและให้อาหารยีราฟและช้างอย่างปลอดภัย',
-  'standard golf cart rental': 'Neutral Fact: Cart rentals operate via standard registration. Visitors find the booking track regular but necessary.',
-  'การเช่ารถกอล์ฟระดับบริการทั่วไป': 'ข้อเท็จจริงทั่วไป: บริการเช่ารถกอล์ฟดำเนินการตามระบบลงทะเบียนมาตรฐาน นักท่องเที่ยวเห็นว่าเป็นกระบวนการปกติแต่จำเป็นต้องใช้ในการเดินทาง',
-  'long queues on holidays': 'Friction Point: Text mining signals massive wait times for vehicle processing during weekend holiday gridlocks.',
-  'การรอคิวยาวนานในวันหยุด': 'จุดติดขัด: ระบบขุดข้อความตรวจพบปัญหารอคิวนานมากในการจัดสรรยานพาหนะช่วงวันหยุดเทศกาลที่รถหนาแน่น',
-  'spacious natural enclosures': 'Amenity Praise: Applauded by eco-conscious travelers for maintaining high animal welfare standards.',
-  'ส่วนจัดแสดงธรรมชาติที่กว้างขวาง': 'คำชมสิ่งอำนวยความสะดวก: ได้รับคำชื่นชมจากกลุ่มนักท่องเที่ยวสายอนุรักษ์ในเรื่องการจัดสภาพแวดล้อมตามมาตรฐานสวัสดิภาพสัตว์ที่ดี',
-  'hot weather walking routes': 'Friction Point: Massive open areas require golf carts or vehicles due to heavy heat exhaustion during noon loops.',
-  'เส้นทางการเดินชมมีอากาศร้อนจัด': 'จุดติดขัด: พื้นที่จัดแสดงกว้างขวางกลางแจ้งทำให้เกิดความเหนื่อยล้าจากความร้อนจัดในช่วงบ่าย แนะนำให้ใช้รถกอล์ฟหรือรถบริการ',
-  'wonderful wildlife education': 'Activity Praise: Informative signage and shows present valuable biodiversity learning for international students.',
-  'การเรียนรู้ชีวิตสัตว์ป่าที่ยอดเยี่ยม': 'คำชมกิจกรรม: ป้ายข้อมูลและการแสดงสัตว์ป่ามอบองค์ความรู้ที่มีคุณค่าเกี่ยวกับความหลากหลายทางชีวภาพให้แก่กลุ่มนักเรียนนักศึกษาต่างชาติ',
-  'limited shuttle buses': 'Critical Infrastructure Issue: Waiting lines for internal public trams are heavily criticized during peak load hours.',
-  'รถบริการรับส่งภายในมีจำนวนจำกัด': 'ปัญหาโครงสร้างพื้นฐานวิกฤต: แถวรอคิวรถรางบริการสาธารณะภายในอุทยานถูกบ่นอย่างหนักในช่วงเวลาที่มีปริมาณนักท่องเที่ยวหนาแน่นสูงสุด',
+  'adorable pygmy hippo': {
+    en: 'Attraction Insight: Global viral phenomenon generates near 100% positive data clustering for visual cuteness.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ปรากฏการณ์ฮิปโปแคระไวรัลระดับโลก ดึงดูดคะแนนบวกความประทับใจและความน่ารักพุ่งขึ้นแตะ 100%'
+  },
+  'ลูกฮิปโปแคระที่น่ารักน่าเอ็นดู': {
+    en: 'Attraction Insight: Global viral phenomenon generates near 100% positive data clustering for visual cuteness.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ปรากฏการณ์ฮิปโปแคระไวรัลระดับโลก ดึงดูดคะแนนบวกความประทับใจและความน่ารักพุ่งขึ้นแตะ 100%'
+  },
+  'interactive animal feeding': {
+    en: 'Activity Praise: Highly rated by families for safe, direct contact experiences with giraffes and elephants.',
+    th: 'คำชมกิจกรรม: ได้รับคำชมสูงมากจากกลุ่มครอบครัวในแง่การเปิดพื้นที่ให้อาหารฝูงยีราฟ แรด และนกยูงอย่างใกล้ชิดและปลอดภัย'
+  },
+  'กิจกรรมให้อาหารสัตว์อย่างใกล้ชิด': {
+    en: 'Activity Praise: Highly rated by families for safe, direct contact experiences with giraffes and elephants.',
+    th: 'คำชมกิจกรรม: ได้รับคำชมสูงมากจากกลุ่มครอบครัวในแง่การเปิดพื้นที่ให้อาหารฝูงยีราฟ แรด และนกยูงอย่างใกล้ชิดและปลอดภัย'
+  },
+  'standard golf cart rental': {
+    en: 'Neutral Fact: Cart rentals operate via standard registration. Visitors find the booking track regular but necessary.',
+    th: 'ข้อเท็จจริงทั่วไป: ระบบเช่ารถกอล์ฟขับชมสวนสัตว์เป็นไปตามเกณฑ์ลงทะเบียนปกติ นักท่องเที่ยวเห็นว่าเป็นเรื่องปกติแต่จำเป็นต้องเช่าเพื่อเดินทาง'
+  },
+  'การเช่ารถกอล์ฟระดับบริการทั่วไป': {
+    en: 'Neutral Fact: Cart rentals operate via standard registration. Visitors find the booking track regular but necessary.',
+    th: 'ข้อเท็จจริงทั่วไป: ระบบเช่ารถกอล์ฟขับชมสวนสัตว์เป็นไปตามเกณฑ์ลงทะเบียนปกติ นักท่องเที่ยวเห็นว่าเป็นเรื่องปกติแต่จำเป็นต้องเช่าเพื่อเดินทาง'
+  },
+  'long queues on holidays': {
+    en: 'Friction Point: Text mining signals massive wait times for vehicle processing during weekend holiday gridlocks.',
+    th: 'จุดติดขัด: ช่วงวันหยุดนักขัตฤกษ์มีปริมาณรถยนต์หนาแน่นมาก ทำให้เกิดแถวรอคิวจองรถกอล์ฟและการเคลื่อนตัวในสวนสัตว์ติดขัดยาวนาน'
+  },
+  'การรอคิวยาวนานในวันหยุด': {
+    en: 'Friction Point: Text mining signals massive wait times for vehicle processing during weekend holiday gridlocks.',
+    th: 'จุดติดขัด: ช่วงวันหยุดนักขัตฤกษ์มีปริมาณรถยนต์หนาแน่นมาก ทำให้เกิดแถวรอคิวจองรถกอล์ฟและการเคลื่อนตัวในสวนสัตว์ติดขัดยาวนาน'
+  },
+  'spacious natural enclosures': {
+    en: 'Amenity Praise: Applauded by eco-conscious travelers for maintaining high animal welfare standards.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ได้รับคำชมเชยจากนักอนุรักษ์ธรรมชาติในแง่การจัดสภาพแวดล้อมส่วนจัดแสดงที่เปิดกว้างและดูแลสวัสดิภาพสัตว์ได้ดี'
+  },
+  'ส่วนจัดแสดงธรรมชาติที่กวางขวาง': {
+    en: 'Amenity Praise: Applauded by eco-conscious travelers for maintaining high animal welfare standards.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ได้รับคำชมเชยจากนักอนุรักษ์ธรรมชาติในแง่การจัดสภาพแวดล้อมส่วนจัดแสดงที่เปิดกว้างและดูแลสวัสดิภาพสัตว์ได้ดี'
+  },
+  'hot weather walking routes': {
+    en: 'Friction Point: Massive open areas require golf carts or vehicles due to heavy heat exhaustion during noon loops.',
+    th: 'จุดติดขัด: ผืนป่ากว้างขวางมาก หากเลือกใช้วิธีเดินเท้าเปล่าในช่วงบ่าย อากาศแดดร้อนจัดอาจทำให้ร่างกายเพลียแดดได้ง่าย'
+  },
+  'เส้นทางการเดินชมมีอากาศร้อนจัด': {
+    en: 'Friction Point: Massive open areas require golf carts or vehicles due to heavy heat exhaustion during noon loops.',
+    th: 'จุดติดขัด: ผืนป่ากว้างขวางมาก หากเลือกใช้วิธีเดินเท้าเปล่าในช่วงบ่าย อากาศแดดร้อนจัดอาจทำให้ร่างกายเพลียแดดได้ง่าย'
+  },
+  'wonderful wildlife education': {
+    en: 'Activity Praise: Informative signage and shows present valuable biodiversity learning for international students.',
+    th: 'คำชมกิจกรรม: ป้ายแสดงข้อมูลการอนุรักษ์และรอบกิจกรรมวิชาการสัตว์ป่ามอบสาระความรู้ที่ดีเยี่ยมให้แก่เยาวชนและนักท่องเที่ยวต่างชาติ'
+  },
+  'การเรียนรู้ชีวิตสัตว์ป่าที่ยอดเยี่ยม': {
+    en: 'Activity Praise: Informative signage and shows present valuable biodiversity learning for international students.',
+    th: 'คำชมกิจกรรม: ป้ายแสดงข้อมูลการอนุรักษ์และรอบกิจกรรมวิชาการสัตว์ป่ามอบสาระความรู้ที่ดีเยี่ยมให้แก่เยาวชนและนักท่องเที่ยวต่างชาติ'
+  },
+  'limited shuttle buses': {
+    en: 'Critical Infrastructure Issue: Waiting lines for internal public trams are heavily criticized during peak load hours.',
+    th: 'ปัญหาโครงสร้างพื้นฐาน: รถรางลากของสวนสัตว์มีปริมาณคิวรอคิวยาวเกินไปในช่วงเวลาเร่งด่วน ทำให้นักท่องเที่ยวบางส่วนรอนาน'
+  },
+  'รถบริการรับส่งภายในมีจำนวนจำกัด': {
+    en: 'Critical Infrastructure Issue: Waiting lines for internal public trams are heavily criticized during peak load hours.',
+    th: 'ปัญหาโครงสร้างพื้นฐาน: รถรางลากของสวนสัตว์มีปริมาณคิวรอคิวยาวเกินไปในช่วงเวลาเร่งด่วน ทำให้นักท่องเที่ยวบางส่วนรอนาน'
+  },
 
-// === Safari World ===
-  'incredible drive-through safari': 'Attraction Insight: Review analytics indicate top-tier ratings for the open enclosure allowing close visual contact with apex predators.',
-  'โซนขับรถชมสัตว์ป่าเปิดที่น่าตื่นตาตื่นใจ': 'ข้อมูลสิ่งดึงดูดใจ: ผลวิเคราะห์รีวิวระบุคะแนนระดับสูงสุดให้แก่โซนจัดแสดงแบบเปิดที่เปิดโอกาสให้สัมผัสทัศนียภาพสัตว์ป่าและสัตว์นักล่าอย่างใกล้ชิด',
-  'world-class dolphin show': 'Attraction Insight: Highly recommended across family travel blogs for exceptional choreography and animal welfare care.',
-  'การแสดงปลาโลมามาตรฐานระดับโลก': 'ข้อมูลสิ่งดึงดูดใจ: ได้รับคำแนะนำอย่างสูงในบล็อกท่องเที่ยวกลุ่มครอบครัวในแง่การจัดการแสดงที่ยอดเยี่ยมและการดูแลสวัสดิภาพสัตว์',
-  'standard double pricing': 'Neutral Comment: Foreign ticket counters follow localized agent rates. Most tourists accept this as a typical commercial policy.',
-  'การเก็บราคาตั๋วแบบสองมาตรฐานทั่วไป': 'ความคิดเห็นทั่วไป: เคาน์เตอร์จำหน่ายตั๋วชาวต่างชาติดำเนินการตามเรทตัวแทนท่องเที่ยว ซึ่งนักท่องเที่ยวส่วนใหญ่ยอมรับว่าเป็นนโยบายเชิงพาณิชย์ทั่วไป',
-  'extremely expensive food': 'Amenity Issue: Severe negative clustering on strict policy banning external lunch boxes combined with high internal restaurant prices.',
-  'อาหารและน้ำดื่มด้านในราคาแพงมาก': 'ปัญหาสิ่งอำนวยความสะดวก: มีกระแสลบหนาแน่นเกี่ยวกับการห้ามนำอาหารเครื่องดื่มภายนอกเข้าอุทยาน ประกอบกับราคาอาหารด้านในที่ปรับตัวสูงเกินไป',
-  'clean theme park facilities': 'Amenity Praise: Walking zones, rest benches, and public restrooms are heavily commended for high-frequency cleaning schedules.',
-  'สิ่งอำนวยความสะดวกในธีมปาร์คสะอาดดี': 'คำชมสิ่งอำนวยความสะดวก: พื้นที่ทางเดิน ม้านั่งพัก และห้องน้ำสาธารณะได้รับคำชื่นชมอย่างมากในแง่ความถี่รอบการทำความสะอาดที่สม่ำเสมอ',
-  'heavy weekend crowds': 'Friction Point: Massive school excursions and tour groups trigger long queue blocks near main show arenas around 11 AM.',
-  'ฝูงชนหนาแน่นมากในช่วงวันหยุด': 'จุดติดขัด: ทริปทัศนศึกษาของโรงเรียนและกลุ่มทัวร์ขนาดใหญ่ทำให้เกิดการต่อคิวยาวนานและแออัดบริเวณหน้าอารีน่าแสดงสัตว์ช่วงเวลาใกล้เที่ยง',
-  'amazing giraffe feeding': 'Activity Praise: Identified as an unmatched interactive encounter, allowing continuous feeding from an elevated wooden terrace.',
-  'กิจกรรมป้อนอาหารฝูงยีราฟที่น่าประทับใจ': 'คำชมกิจกรรม: ถูกยกให้เป็นกิจกรรมอินเตอร์แอคทีฟที่ไม่มีใครเทียบได้ โดยนักท่องเที่ยวสามารถยื่นป้อนอาหารฝูงยีราฟจากศาลาไม้ระเบียงสูงได้อย่างเพลิดเพลิน',
-  'exhausting walking loops': 'Activity Warning: Sprawling Marine Park walkways under tropical humidity induce swift physical fatigue; umbrella use encouraged.',
-  'เส้นทางการเดินชมกว้างขวางจนเหนื่อยล้า': 'คำเตือนกิจกรรม: ทางเดินเท้าที่ทอดยาวรอบมารีนปาร์คท่ามกลางสภาพอากาศร้อนชื้นทำให้ร่างกายเหนื่อยล้าได้ง่าย แนะนำให้พกสิ่งกำบังแดดหรือร่มติดตัวไปด้วย',
+  // === Safari World ===
+  'incredible drive-through safari': {
+    en: 'Attraction Insight: Review analytics indicate top-tier ratings for the open enclosure allowing close visual contact with apex predators.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การขับรถเข้าส่องดูสิงโต เสือหมี ในโซนซาฟารีปาร์คเปิด ได้รับการรีวิวให้เป็นไฮไลท์อันดับหนึ่งที่น่าตื่นเต้นที่สุด'
+  },
+  'โซนขับรถชมสัตว์ป่าเปิดที่น่าตื่นตาตื่นใจ': {
+    en: 'Attraction Insight: Review analytics indicate top-tier ratings for the open enclosure allowing close visual contact with apex predators.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การขับรถเข้าส่องดูสิงโต เสือหมี ในโซนซาฟารีปาร์คเปิด ได้รับการรีวิวให้เป็นไฮไลท์อันดับหนึ่งที่น่าตื่นเต้นที่สุด'
+  },
+  'world-class dolphin show': {
+    en: 'Attraction Insight: Highly recommended across family travel blogs for exceptional choreography and animal welfare care.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การแสดงโลมาอัจฉริยะได้รับคะแนนชื่นชมสูงสุดในกลุ่มบล็อกเกอร์ทริปครอบครัวในแง่ความสนุกและการดูแลที่ดี'
+  },
+  'การแสดงปลาโลมามาตรฐานระดับโลก': {
+    en: 'Attraction Insight: Highly recommended across family travel blogs for exceptional choreography and animal welfare care.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: การแสดงโลมาอัจฉริยะได้รับคะแนนชื่นชมสูงสุดในกลุ่มบล็อกเกอร์ทริปครอบครัวในแง่ความสนุกและการดูแลที่ดี'
+  },
+  'standard double pricing': {
+    en: 'Neutral Comment: Foreign ticket counters follow localized agent rates. Most tourists accept this as a typical commercial policy.',
+    th: 'ความคิดเห็นทั่วไป: ราคาขายตั๋วหน้างานของชาวต่างชาติเป็นระบบเรทสากล นักท่องเที่ยวส่วนใหญ่เข้าใจว่าเป็นกลยุทธ์พาณิชย์ของสวนสัตว์'
+  },
+  'การเก็บราคาตั๋วแบบสองมาตรฐานทั่วไป': {
+    en: 'Neutral Comment: Foreign ticket counters follow localized agent rates. Most tourists accept this as a typical commercial policy.',
+    th: 'ความคิดเห็นทั่วไป: ราคาขายตั๋วหน้างานของชาวต่างชาติเป็นระบบเรทสากล นักท่องเที่ยวส่วนใหญ่เข้าใจว่าเป็นกลยุทธ์พาณิชย์ของสวนสัตว์'
+  },
+  'extremely expensive food': {
+    en: 'Amenity Issue: Severe negative clustering on strict policy banning external lunch boxes combined with high internal restaurant prices.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: มีกระแสบ่นลบหนาแน่นเรื่องกฎห้ามนำน้ำและอาหารจากภายนอกเข้า ประกอบกับราคาศูนย์อาหารด้านในที่แพงเกินควร'
+  },
+  'อาหารและน้ำดื่มด้านในราคาแพงมาก': {
+    en: 'Amenity Issue: Severe negative clustering on strict policy banning external lunch boxes combined with high internal restaurant prices.',
+    th: 'ปัญหาสิ่งอำนวยความสะดวก: มีกระแสบ่นลบหนาแน่นเรื่องกฎห้ามนำน้ำและอาหารจากภายนอกเข้า ประกอบกับราคาศูนย์อาหารด้านในที่แพงเกินควร'
+  },
+  'clean theme park facilities': {
+    en: 'Amenity Praise: Walking zones, rest benches, and public restrooms are heavily commended for high-frequency cleaning schedules.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ลานเดินมารีนปาร์ค ม้านั่ง จุดพักผ่อนหลบแดด และห้องน้ำได้รับการทำความสะอาดดูแลได้ดีถี่ถ้วน'
+  },
+  'สิ่งอำนวยความสะดวกในธีมปาร์คสะอาดดี': {
+    en: 'Amenity Praise: Walking zones, rest benches, and public restrooms are heavily commended for high-frequency cleaning schedules.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ลานเดินมารีนปาร์ค ม้านั่ง จุดพักผ่อนหลบแดด และห้องน้ำได้รับการทำความสะอาดดูแลได้ดีถี่ถ้วน'
+  },
+  'heavy weekend crowds': {
+    en: 'Friction Point: Massive school excursions and tour groups trigger long queue blocks near main show arenas around 11 AM.',
+    th: 'จุดติดขัด: ขบวนทัศนศึกษาของโรงเรียนและคณะทัวร์ต่างชาติทำให้บริเวณหน้าอาคารจัดการแสดงนกและสิงโตทะเลแออัดช่วงสาย'
+  },
+  'ฝูงชนหนาแน่นมากในช่วงวันหยุด': {
+    en: 'Friction Point: Massive school excursions and tour groups trigger long queue blocks near main show arenas around 11 AM.',
+    th: 'จุดติดขัด: ขบวนทัศนศึกษาของโรงเรียนและคณะทัวร์ต่างชาติทำให้บริเวณหน้าอาคารจัดการแสดงนกและสิงโตทะเลแออัดช่วงสาย'
+  },
+  'amazing giraffe feeding': {
+    en: 'Activity Praise: Identified as an unmatched interactive encounter, allowing continuous feeding from an elevated wooden terrace.',
+    th: 'คำชมกิจกรรม: กิจกรรมซื้อกล้วยป้อนอาหารฝูงยีราฟบนระเบียงศาลาไม้สูงยาว สร้างความตื่นเต้นและประทับใจแก่เด็กๆ สูงสุด'
+  },
+  'กิจกรรมป้อนอาหารฝูงยีราฟที่น่าประทับใจ': {
+    en: 'Activity Praise: Identified as an unmatched interactive encounter, allowing continuous feeding from an elevated wooden terrace.',
+    th: 'คำชมกิจกรรม: กิจกรรมซื้อกล้วยป้อนอาหารฝูงยีราฟบนระเบียงศาลาไม้สูงยาว สร้างความตื่นเต้นและประทับใจแก่เด็กๆ สูงสุด'
+  },
+  'exhausting walking loops': {
+    en: 'Activity Warning: Sprawling Marine Park walkways under tropical humidity induce swift physical fatigue; umbrella use encouraged.',
+    th: 'คำเตือนกิจกรรม: แผนผังทางเดินค่อนข้างกว้างไกลมากท่ามกลางอากาศร้อนชื้นแนะให้เตรียมร่ม หมวก หรือรถเข็นเด็กมาด้วยจะดีที่สุด'
+  },
+  'เส้นทางการเดินชมกว้างขวางจนเหนื่อยล้า': {
+    en: 'Activity Warning: Sprawling Marine Park walkways under tropical humidity induce swift physical fatigue; umbrella use encouraged.',
+    th: 'คำเตือนกิจกรรม: แผนผังทางเดินค่อนข้างกว้างไกลมากท่ามกลางอากาศร้อนชื้นแนะให้เตรียมร่ม หมวก หรือรถเข็นเด็กมาด้วยจะดีที่สุด'
+  },
 
   // === Haad Rin ===
-  'vibrant party atmosphere': 'Attraction Insight: Highly rated by international backpackers for event spacing and electronic music subcultures.',
-  'บรรยากาศงานปาร์ตี้ที่คึกคักเต็มไปด้วยพลัง': 'ข้อมูลสิ่งดึงดูดใจ: ได้รับเกรดความพึงพอใจสูงจากกลุ่มแบ็คแพ็คเกอร์ต่างชาติในด้านการจัดพื้นที่กิจกรรมและวัฒนธรรมย่อยดนตรีอิเล็กทรอนิกส์',
-  'beautiful morning shoreline': 'Attraction Insight: Reviews confirm the beach returns to a highly scenic, pristine state 48 hours post-event.',
-  'แนวชายหาดยามเช้าที่สวยงามสงบ': 'ข้อมูลสิ่งดึงดูดใจ: รีวิวยืนยันว่าสภาพชายหาดจะกลับคืนสู่ทัศนียภาพที่งดงามและสงบเงียบอีกครั้งภายใน 48 ชั่วโมงหลังจบงาน',
-  'standard beach access': 'Neutral Data: Public walking entry pathways are open normally. No entry premiums are recorded for daytime walkers.',
-  'ทางเข้าถึงพื้นที่ชายหาดระดับทั่วไป': 'ข้อมูลทั่วไป: ช่องทางเดินเท้าสาธารณะเข้าหาดเปิดใช้งานตามปกติ ไม่มีการเรียกเก็บค่าธรรมเนียมในช่วงเวลากลางวัน',
-  'massive plastic trash': 'Critical Friction: Heavy environmental alarm. Text mining registers extreme disapproval of discarded cups and straws on the tide line.',
-  'ขยะพลาสติกตกค้างจำนวนมหาศาล': 'จุดติดขัดวิกฤต: สัญญาณเตือนภัยด้านสิ่งแวดล้อมรุนแรง ระบบขุดข้อความบันทึกความไม่พึงพอใจขั้นสูงสุดต่อปริมาณแก้วและหลอดพลาสติกที่ตกค้างตามแนวคลื่น',
-  'extremely noisy music': 'Friction Point: High negative correlation with hotel sleep quality values. Sound bleed affects non-party visitors directly.',
-  'เสียงดนตรีอึกทึกครึกโครมรบกวนการนอน': 'จุดติดขัด: มีความเชื่อมโยงเชิงลบสูงกับดัชนีคุณภาพการนอนในโรงแรม มลภาวะทางเสียงแผ่ขยายกระทบต่อนักท่องเที่ยวที่ไม่ได้มาร่วมปาร์ตี้โดยตรง',
-  'overpriced drink buckets': 'Amenity Friction: Repetitive warnings noting high pricing consistency and variable quality markers across storefront vendors.',
-  'ถังเครื่องดื่มแอลกอฮอล์ราคาแพงเกินจริง': 'ความขัดแย้งสิ่งอำนวยความสะดวก: พบคำเตือนซ้ำๆ เกี่ยวกับการตั้งราคาขายถังแอลกอฮอล์ที่แพงเกินจริงและมาตรฐานคุณภาพเหล้าที่ไม่สม่ำเสมอของร้านค้าริมหาด',
-  'exciting fire shows': 'Activity Praise: Performance precision by local artists generates outstanding visual applause markers.',
-  'การแสดงควงกระบองไฟที่ตื่นตาตื่นใจ': 'คำชมกิจกรรม: ความแม่นยำและการแสดงทักษะของศิลปินท้องถิ่นสร้างความตื่นตาตื่นใจและได้รับเสียงชื่นชมในระดับสูง',
-  'aggressive drunk tourists': 'Safety Friction: Lexicon models flag social vulnerability metrics due to minor thefts and public misconduct during peak intoxication hours.',
-  'พฤติกรรมก้าวร้าวของนักท่องเที่ยวที่มึนเมา': 'ความขัดแย้งด้านความปลอดภัย: โมเดลคำศัพท์สกัดพบประเด็นความเปราะบางทางสังคมจากพฤติกรรมไร้ระเบียบและการทะเลาะวิวาทในช่วงดึกที่ระดับแอลกอฮอล์พุ่งสูง',
+  'vibrant party atmosphere': {
+    en: 'Attraction Insight: Highly rated by international backpackers for event spacing and electronic music subcultures.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: แหล่งท่องเที่ยวชื่อดังที่สายแบ็คแพ็คเกอร์ชื่นชอบในแง่การจัดระบบความบันเทิงและดนตรีแดนซ์ยามค่ำคืน'
+  },
+  'บรรยากาศงานปาร์ตี้ที่คึกคักเต็มไปด้วยพลัง': {
+    en: 'Attraction Insight: Highly rated by international backpackers for event spacing and electronic music subcultures.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: แหล่งท่องเที่ยวชื่อดังที่สายแบ็คแพ็คเกอร์ชื่นชอบในแง่การจัดระบบความบันเทิงและดนตรีแดนซ์ยามค่ำคืน'
+  },
+  'beautiful morning shoreline': {
+    en: 'Attraction Insight: Reviews confirm the beach returns to a highly scenic, pristine state 48 hours post-event.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ทัศนียภาพชายหาดยามเช้าวันธรรมดามีความสวยงาม ทรายนุ่ม ทะเลสีฟ้าสดใสหากไม่มีการจัดงานปาร์ตี้'
+  },
+  'แนวชายหาดยามเช้าที่สวยงามสงบ': {
+    en: 'Attraction Insight: Reviews confirm the beach returns to a highly scenic, pristine state 48 hours post-event.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: ทัศนียภาพชายหาดยามเช้าวันธรรมดามีความสวยงาม ทรายนุ่ม ทะเลสีฟ้าสดใสหากไม่มีการจัดงานปาร์ตี้'
+  },
+  'standard beach access': {
+    en: 'Neutral Data: Public walking entry pathways are open normally. No entry premiums are recorded for daytime walkers.',
+    th: 'ข้อเท็จจริงทั่วไป: ทางเดินเท้าเข้าสู่ตัวหาดริ้นเปิดสาธารณะเป็นปกติ ไม่มีการเก็บค่าธรรมเนียมในช่วงเวลาปกติกลางวัน'
+  },
+  'ทางเข้าถึงพื้นที่ชายหาดระดับทั่วไป': {
+    en: 'Neutral Data: Public walking entry pathways are open normally. No entry premiums are recorded for daytime walkers.',
+    th: 'ข้อเท็จจริงทั่วไป: ทางเดินเท้าเข้าสู่ตัวหาดริ้นเปิดสาธารณะเป็นปกติ ไม่มีการเก็บค่าธรรมเนียมในช่วงเวลาปกติกลางวัน'
+  },
+  'massive plastic trash': {
+    en: 'Critical Friction: Heavy environmental alarm. Text mining registers extreme disapproval of discarded cups and straws on the tide line.',
+    th: 'จุดติดขัดวิกฤต: สัญญาณเตือนภัยสิ่งแวดล้อมรุนแรง รีวิวส่วนใหญ่ร้องเรียนเรื่องเศษแก้วและขยะพลาสติกเกลื่อนหาดหลังคืนฟูลมูน'
+  },
+  'ขยะพลาสติกตกค้างจำนวนมหาศาล': {
+    en: 'Critical Friction: Heavy environmental alarm. Text mining registers extreme disapproval of discarded cups and straws on the tide line.',
+    th: 'จุดติดขัดวิกฤต: สัญญาณเตือนภัยสิ่งแวดล้อมรุนแรง รีวิวส่วนใหญ่ร้องเรียนเรื่องเศษแก้วและขยะพลาสติกเกลื่อนหาดหลังคืนฟูลมูน'
+  },
+  'extremely noisy music': {
+    en: 'Friction Point: High negative correlation with hotel sleep quality values. Sound bleed affects non-party visitors directly.',
+    th: 'จุดติดขัด: เสียงลำโพงเบสเปิดดังสนั่นอึกทึกจากบาร์ริมหาดทะลุเข้าห้องพัก รบกวนการนอนของผู้ที่ต้องการพักผ่อนอย่างรุนแรง'
+  },
+  'เสียงดนตรีอึกทึกครึกโครมรบกวนการนอน': {
+    en: 'Friction Point: High negative correlation with hotel sleep quality values. Sound bleed affects non-party visitors directly.',
+    th: 'จุดติดขัด: เสียงลำโพงเบสเปิดดังสนั่นอึกทึกจากบาร์ริมหาดทะลุเข้าห้องพัก รบกวนการนอนของผู้ที่ต้องการพักผ่อนอย่างรุนแรง'
+  },
+  'overpriced drink buckets': {
+    en: 'Amenity Friction: Repetitive warnings noting high pricing consistency and variable quality markers across storefront vendors.',
+    th: 'ข้อขัดแย้งสิ่งอำนวยความสะดวก: มีคำเตือนหนาแน่นเรื่องเครื่องดื่มแอลกอฮอล์แบบถังผสมตั้งราคาแพงเกินจริงและคุณภาพเหล้าไม่ได้มาตรฐาน'
+  },
+  'ถังเครื่องดื่มแอลกอฮอล์ราคาแพงเกินจริง': {
+    en: 'Amenity Friction: Repetitive warnings noting high pricing consistency and variable quality markers across storefront vendors.',
+    th: 'ข้อขัดแย้งสิ่งอำนวยความสะดวก: มีคำเตือนหนาแน่นเรื่องเครื่องดื่มแอลกอฮอล์แบบถังผสมตั้งราคาแพงเกินจริงและคุณภาพเหล้าไม่ได้มาตรฐาน'
+  },
+  'exciting fire shows': {
+    en: 'Activity Praise: Performance precision by local artists generates outstanding visual applause markers.',
+    th: 'คำชมกิจกรรม: โชว์ควงกระบองไฟและพ่นไฟริมชายหาดจากทีมงานท้องถิ่นมีความตื่นตาตื่นใจและได้รับคำชมล้นหลาม'
+  },
+  'การแสดงควงกระบองไฟที่ตื่นตาตื่นใจ': {
+    en: 'Activity Praise: Performance precision by local artists generates outstanding visual applause markers.',
+    th: 'คำชมกิจกรรม: โชว์ควงกระบองไฟและพ่นไฟริมชายหาดจากทีมงานท้องถิ่นมีความตื่นตาตื่นใจและได้รับคำชมล้นหลาม'
+  },
+  'aggressive drunk tourists': {
+    en: 'Safety Friction: Lexicon models flag social vulnerability metrics due to minor thefts and public misconduct during peak intoxication hours.',
+    th: 'ข้อขัดแย้งความปลอดภัย: พฤติกรรมโวยวาย ขาดสติ และลวนลามของนักท่องเที่ยวที่มึนเมาจัดในช่วงดึก สร้างความรู้สึกไม่ปลอดภัย'
+  },
+  'พฤติกรรมก้าวร้าวของนักท่องเที่ยวที่มึนเมา': {
+    en: 'Safety Friction: Lexicon models flag social vulnerability metrics due to minor thefts and public misconduct during peak intoxication hours.',
+    th: 'ข้อขัดแย้งความปลอดภัย: พฤติกรรมโวยวาย ขาดสติ และลวนลามของนักท่องเที่ยวที่มึนเมาจัดในช่วงดึก สร้างความรู้สึกไม่ปลอดภัย'
+  },
 
   // === Damnoen Saduak ===
-  'traditional canal lifestyle': 'Attraction Insight: Historical marketing vectors pull initial curiosity, though long-term validity ranks low due to heavy commercialization.',
-  'ภาพจำวิถีชีวิตริมคลองแบบดั้งเดิม': 'ข้อมูลสิ่งดึงดูดใจ: การตลาดเชิงประวัติศาสตร์ดึงดูดความสนใจได้ดีในตอนแรก แต่ความพึงพอใจระยะยาวอยู่ในเกณฑ์ต่ำเนื่องจากสภาพแวดล้อมที่กลายสภาพเป็นพาณิชย์มากเกินไป',
-  'colorful photo opportunities': 'Attraction Insight: Visual framing scores remain positive for bright fruit boats and structural rustic canal backdrops.',
-  'โอกาสในการถ่ายภาพสีสันวิถีคลองที่สวยงาม': 'ข้อมูลสิ่งดึงดูดใจ: คะแนนการถ่ายภาพเชิงทัศนียภาพยังคงเป็นบวกจากสีสันของเรือขายผลไม้และฉากหลังคลองแบบชนบทโบราณ',
-  'standard souvenir items': 'Neutral Observation: Stalls display generic Thai crafts seen across major city night markets. Prices require heavy negotiation.',
-  'สินค้าของฝากที่ระลึกรูปแบบทั่วไป': 'ข้อสังเกตทั่วไป: แผงลอยแสดงสินค้าหัตถกรรมไทยทั่วไปเหมือนที่พบตามตลาดนัดกลางคืน ราคาขายจำเป็นต้องอาศัยการต่อรองอย่างหนัก',
-  'exorbitant boat rentals': 'CRITICAL friction alert: Systematic price price-gouging (1,500-2,000 THB) acts as the primary driver of severe negative metrics.',
-  'ค่าเช่าเรือพายราคาขูดรีดแพงมหาโหด': 'แจ้งเตือนความขัดแย้งขั้นวิกฤต: ระบบขูดรีดราคาค่าเช่าเรือพาย (1,500-2,000 บาท) ถือเป็นปัจจัยหลักที่ฉุดดัชนีคะแนนความพึงพอใจให้ดิ่งลงเหว',
-  'aggressive scam vendors': 'Critical Friction: Tourists express high anxiety levels due to pushy, forced boat detours into highly marked-up souvenir docks.',
-  'ผู้ค้าบางส่วนตื๊อขายของแกมบังคับและหลอกลวง': 'จุดติดขัดวิกฤต: นักท่องเที่ยวแสดงความวิตกกังวลสูงจากพฤติกรรมการบังคับจอดเรือแวะเทียบท่าร้านค้าของฝากที่มีการปั่นราคาสูงเกินจริง',
-  'intense canal boat traffic': 'Infrastructure Deficit: Motorized longtails block paddling routes, inducing heavy aquatic gridlocks and high passenger stress.',
-  'การจราจรทางเรือในคลองติดขัดวุ่นวาย': 'ปัญหาโครงสร้างพื้นฐาน: เรือหางยาวติดเครื่องยนต์กีดขวางเส้นทางเรือพาย ทำให้เกิดอัมพาตทางคมนาคมในน้ำและสร้างความเครียดให้แก่นักท่องเที่ยว',
-  'tasty local boat noodles': 'Amenity Praise: Small authentic vendors preparing traditional dishes on wooden longtails maintain minor positive core validation.',
-  'ก๋วยเตี๋ยวเรือท้องถิ่นรสชาติดี': 'คำชมสิ่งอำนวยความสะดวก: ร้านค้าหาบเร่พายเรือแบบโบราณที่ปรุงอาหารดั้งเดิมแท้ๆ ยังคงสามารถรักษามาตรฐานคำชมในเชิงบวกไว้ได้เล็กน้อย',
-  'unpleasant diesel fumes': 'Environmental issue: Heavy negative tagging on toxic air emissions and dark water pollution from localized boat engines.',
-  'กลิ่นควันไอเสียเรือยนต์ที่เหม็นอึดอัด': 'ปัญหาสิ่งแวดล้อม: มีการติดแท็กกระแสลบหนาแน่นในเรื่องมลพิษทางอากาศจากกลิ่นควันไอเสียและคราบน้ำมันดำจากเครื่องยนต์เรือทอดยาวตามลำคลอง'
-
+  'traditional canal lifestyle': {
+    en: 'Attraction Insight: Historical marketing vectors pull initial curiosity, though long-term validity ranks low due to heavy commercialization.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: มีภาพลักษณ์การท่องเที่ยววิถีชีวิตชาวคลองขายของบนเรือตามสไตล์ไทยโบราณที่ดึงดูดนักท่องเที่ยวต่างชาติได้ดี'
+  },
+  'ภาพจำวิถีชีวิตริมคลองแบบดั้งเดิม': {
+    en: 'Attraction Insight: Historical marketing vectors pull initial curiosity, though long-term validity ranks low due to heavy commercialization.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: มีภาพลักษณ์การท่องเที่ยววิถีชีวิตชาวคลองขายของบนเรือตามสไตล์ไทยโบราณที่ดึงดูดนักท่องเที่ยวต่างชาติได้ดี'
+  },
+  'colorful photo opportunities': {
+    en: 'Attraction Insight: Visual framing scores remain positive for bright fruit boats and structural rustic canal backdrops.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: เป็นจุดที่ถ่ายรูปออกมาได้สีสันสวยงามจากเรือพายขายผลไม้และวิวกระท่อมไม้ริมคลองแบบไทยๆ'
+  },
+  'โอกาสในการถ่ายภาพสีสันวิถีคลองที่สวยงาม': {
+    en: 'Attraction Insight: Visual framing scores remain positive for bright fruit boats and structural rustic canal backdrops.',
+    th: 'ข้อมูลสิ่งดึงดูดใจ: เป็นจุดที่ถ่ายรูปออกมาได้สีสันสวยงามจากเรือพายขายผลไม้และวิวกระท่อมไม้ริมคลองแบบไทยๆ'
+  },
+  'standard souvenir items': {
+    en: 'Neutral Observation: Stalls display generic Thai crafts seen across major city night markets. Prices require heavy negotiation.',
+    th: 'ข้อสังเกตทั่วไป: สินค้าของฝากตามซุ้มริมน้ำเป็นงานฝีมือทั่วไปเหมือนไนท์มาร์เก็ตอื่น จำเป็นต้องอาศัยทักษะการต่อรองราคาหนักๆ'
+  },
+  'สินค้าของฝากที่ระลึกรูปแบบทั่วไป': {
+    en: 'Neutral Observation: Stalls display generic Thai crafts seen across major city night markets. Prices require heavy negotiation.',
+    th: 'ข้อสังเกตทั่วไป: สินค้าของฝากตามซุ้มริมน้ำเป็นงานฝีมือทั่วไปเหมือนไนท์มาร์เก็ตอื่น จำเป็นต้องอาศัยทักษะการต่อรองราคาหนักๆ'
+  },
+  'exorbitant boat rentals': {
+    en: 'CRITICAL friction alert: Systematic price price-gouging (1,500-2,000 THB) acts as the primary driver of severe negative metrics.',
+    th: 'ข้อขัดแย้งวิกฤต: เป็นจุดโดนร้องเรียน (Scam) หนักที่สุดเรื่องมาเฟียท่าเรือโก่งราคาเช่าเรือพายสูงถึง 1,500-2,000 บาทต่อชั่วโมง'
+  },
+  'ค่าเช่าเรือพายราคาขูดรีดแพงมหาโหด': {
+    en: 'CRITICAL friction alert: Systematic price price-gouging (1,500-2,000 THB) acts as the primary driver of severe negative metrics.',
+    th: 'ข้อขัดแย้งวิกฤต: เป็นจุดโดนร้องเรียน (Scam) หนักที่สุดเรื่องมาเฟียท่าเรือโก่งราคาเช่าเรือพายสูงถึง 1,500-2,000 บาทต่อชั่วโมง'
+  },
+  'aggressive scam vendors': {
+    en: 'Critical Friction: Tourists express high anxiety levels due to pushy, forced boat detours into highly marked-up souvenir docks.',
+    th: 'จุดติดขัดวิกฤต: พ่อค้าแม่ค้าและคนพายเรือบางส่วนแสดงพฤติกรรมก้าวร้าวตื๊อขายของ ยื้อเรือบีบบังคับให้นักท่องเที่ยวต้องซื้อสินค้า'
+  },
+  'ผู้ค้าบางส่วนตื๊อขายของแกมบังคับและหลอกลวง': {
+    en: 'Critical Friction: Tourists express high anxiety levels due to pushy, forced boat detours into highly marked-up souvenir docks.',
+    th: 'จุดติดขัดวิกฤต: พ่อค้าแม่ค้าและคนพายเรือบางส่วนแสดงพฤติกรรมก้าวร้าวตื๊อขายของ ยื้อเรือบีบบังคับให้นักท่องเที่ยวต้องซื้อสินค้า'
+  },
+  'intense canal boat traffic': {
+    en: 'Infrastructure Deficit: Motorized longtails block paddling routes, inducing heavy aquatic gridlocks and high passenger stress.',
+    th: 'ปัญหาโครงสร้างพื้นฐาน: คลองค่อนข้างแคบ เมื่อเรือหางยาวติดเครื่องยนต์วิ่งมารวมกันทำจราจรในน้ำติดขัดระเนระนาดและสร้างความเครียด'
+  },
+  'การจราจรทางเรือในคลองติดขัดวุ่นวาย': {
+    en: 'Infrastructure Deficit: Motorized longtails block paddling routes, inducing heavy aquatic gridlocks and high passenger stress.',
+    th: 'ปัญหาโครงสร้างพื้นฐาน: คลองค่อนข้างแคบ เมื่อเรือหางยาวติดเครื่องยนต์วิ่งมารวมกันทำจราจรในน้ำติดขัดระเนระนาดและสร้างความเครียด'
+  },
+  'tasty local boat noodles': {
+    en: 'Amenity Praise: Small authentic vendors preparing traditional dishes on wooden longtails maintain minor positive core validation.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ก๋วยเตี๋ยวเรือต้มยำแบบพายเรือทำสดๆ รสชาติเข้มข้นอร่อย ได้บรรยากาศดั้งเดิมและราคาเป็นมิตร'
+  },
+  'ก๋วยเตี๋ยวเรือท้องถิ่นรสชาติดี': {
+    en: 'Amenity Praise: Small authentic vendors preparing traditional dishes on wooden longtails maintain minor positive core validation.',
+    th: 'คำชมสิ่งอำนวยความสะดวก: ก๋วยเตี๋ยวเรือต้มยำแบบพายเรือทำสดๆ รสชาติเข้มข้นอร่อย ได้บรรยากาศดั้งเดิมและราคาเป็นมิตร'
+  },
+  'unpleasant diesel fumes': {
+    en: 'Environmental issue: Heavy negative tagging on toxic air emissions and dark water pollution from localized boat engines.',
+    th: 'ปัญหาสิ่งแวดล้อม: เรือติดเครื่องยนต์ยนต์ปล่อยกลิ่นควันไอเสียดีเซลเหม็นคลุ้งทั่วลำคลอง และมีคราบน้ำมันเครื่องลอยทำน้ำเน่าเสีย'
+  },
+  'กลิ่นควันไอเสียเรือยนต์ที่เหม็นอึดอัด': {
+    en: 'Environmental issue: Heavy negative tagging on toxic air emissions and dark water pollution from localized boat engines.',
+    th: 'ปัญหาสิ่งแวดล้อม: เรือติดเครื่องยนต์ยนต์ปล่อยกลิ่นควันไอเสียดีเซลเหม็นคลุ้งทั่วลำคลอง และมีคราบน้ำมันเครื่องลอยทำน้ำเน่าเสีย'
+  }
 };
 
 export const FILTER_TAGS = [
   { value: 'all',     label: 'All',               labelTh: 'ทั้งหมด' },
-  { value: 'BKK',     label: 'Bangkok',           labelTh: 'กรุงเทพฯ' },    
+  { value: 'BKK',     label: 'Bangkok',           labelTh: 'กรุงเทพฯ' },
   { value: 'north',   label: 'Northern Thailand', labelTh: 'ภาคเหนือ' },
   { value: 'south',   label: 'Southern Thailand', labelTh: 'ภาคใต้' },
-  { value: 'central', label: 'Central Thailand',  labelTh: 'ภาคกลาง' },     
-  { value: 'east',    label: 'Eastern Thailand',  labelTh: 'ภาคอีสาน/ตะวันออก' }, 
+  { value: 'central', label: 'Central Thailand',  labelTh: 'ภาคกลาง' },
+  { value: 'east',    label: 'Eastern Thailand',  labelTh: 'ภาคอีสาน/ตะวันออก' },
   { value: 'nature',  label: 'Nature',            labelTh: 'ธรรมชาติ' },
   { value: 'culture', label: 'Culture',           labelTh: 'วัฒนธรรม' },
   { value: 'beach',   label: 'Beach',             labelTh: 'ชายหาด / เกาะ' },
   { value: 'zoo',     label: 'Zoo / Aquarium',    labelTh: 'สวนสัตว์ / อควาเรียม' }
 ];
-
 
 export function getSentimentLabel(pos, lang = 'en') {
   if (lang === 'th') {
@@ -583,11 +1159,9 @@ export function getSentimentLabel(pos, lang = 'en') {
   }
 }
 
-
 export function getSentimentClass(pos) {
   if (pos >= 85) return 'excellent';
   if (pos >= 70) return 'good';
   if (pos >= 55) return 'mixed';
   return 'warn';
 }
-
