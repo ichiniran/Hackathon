@@ -105,7 +105,7 @@ const getPlans = (lang) => [
   },
   {
     name: 'Professional',
-    price: '฿1,290',
+    price: '฿1,990',
     desc: lang === 'en' ? 'For hotels, restaurants, or attractions that need deep insight and real-time alerts.' : 'สำหรับโรงแรม ร้านอาหาร หรือสถานที่ท่องเที่ยวที่ต้องการอินไซต์เชิงลึกและการแจ้งเตือนแบบทันท่วงที',
     featured: true,
     badge: lang === 'en' ? '⭐ Recommended for Business' : '⭐ แนะนำสำหรับผู้ประกอบการ',
