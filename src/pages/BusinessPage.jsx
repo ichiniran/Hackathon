@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { X} from 'lucide-react';
+import { X } from 'lucide-react';
 import glowImg from '../assets/glow.png';
 import './BusinessPage.css';
 
 /* ── Login Modal ── */
-function Modal({ onClose, onLogin }) {
+function Modal({ onClose, onLogin, currentLang }) {
   const [email, setEmail]   = useState('');
   const [name,  setName]    = useState('');
   const [submitted, setSub] = useState(false);
@@ -24,22 +24,44 @@ function Modal({ onClose, onLogin }) {
         {submitted ? (
           <div style={{ textAlign: 'center', padding: '20px 0' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: 16 }}>🎉</div>
-            <div className="modal-title">You're in!</div>
-            <p className="modal-sub">We'll send your login details to <strong>{email}</strong> within 24 hours. Your 14-day free trial starts today.</p>
-            <button className="modal-submit" onClick={onClose}>Got it</button>
+            <div className="modal-title">
+              {currentLang === 'en' ? "You're in!" : "ลงทะเบียนเรียบร้อย!"}
+            </div>
+            <p className="modal-sub">
+              {currentLang === 'en' ? (
+                <>We'll send your login details to <strong>{email}</strong> within 24 hours. Your 14-day free trial starts today.</>
+              ) : (
+                <>เราจะส่งรายละเอียดการเข้าใช้งานไปยังอีเมล <strong>{email}</strong> ของคุณภายใน 24 ชั่วโมง สิทธิ์ทดลองใช้งานฟรี 14 วันของคุณเริ่มตั้งแต่วันนี้เป็นต้นไป</>
+              )}
+            </p>
+            <button className="modal-submit" onClick={onClose}>
+              {currentLang === 'en' ? "Got it" : "รับทราบ"}
+            </button>
           </div>
         ) : (
           <>
-            <div className="modal-title">Start Your Free Trial</div>
-            <p className="modal-sub">For Business Accounts to access your destination dashboard. No credit card required.</p>
+            <div className="modal-title">
+              {currentLang === 'en' ? "Start Your Free Trial" : "เริ่มทดลองใช้งานฟรี"}
+            </div>
+            <p className="modal-sub">
+              {currentLang === 'en' 
+                ? "For Business Accounts to access your destination dashboard. No credit card required."
+                : "สำหรับบัญชีธุรกิจเพื่อเข้าถึงแผงควบคุมข้อมูลเชิงลึก ไม่ต้องใช้บัตรเครดิต"}
+            </p>
             <form onSubmit={handleSubmit}>
-              <label className="modal-label">Full Name</label>
-              <input className="modal-input" placeholder="Jane Smith" value={name} onChange={e => setName(e.target.value)} />
-              <label className="modal-label">Business Email</label>
+              <label className="modal-label">{currentLang === 'en' ? "Full Name" : "ชื่อ-นามสกุล"}</label>
+              <input className="modal-input" placeholder={currentLang === 'en' ? "Jane Smith" : "สมชาย รักดี"} value={name} onChange={e => setName(e.target.value)} />
+              
+              <label className="modal-label">{currentLang === 'en' ? "Business Email" : "อีเมลองค์กร/ธุรกิจ"}</label>
               <input className="modal-input" type="email" placeholder="business@example.com" value={email} onChange={e => setEmail(e.target.value)} required />
-              <button className="modal-submit" type="submit">Start Free 14-Day Trial →</button>
+              
+              <button className="modal-submit" type="submit">
+                {currentLang === 'en' ? "Start Free 14-Day Trial →" : "เริ่มทดลองใช้งานฟรี 14 วัน →"}
+              </button>
             </form>
-            <p className="modal-note">No credit card required · Cancel anytime</p>
+            <p className="modal-note">
+              {currentLang === 'en' ? "No credit card required · Cancel anytime" : "ไม่ต้องใช้บัตรเครดิต · ยกเลิกได้ตลอดเวลา"}
+            </p>
           </>
         )}
       </div>
@@ -60,83 +82,86 @@ function TrendBar({ month, pct }) {
   );
 }
 
-const plans = [
+// 🟢 ฟังก์ชันจัดทำแผนราคาแปลภาษาแบบคู่ขนานเพื่อความสละสลวย
+const getPlans = (lang) => [
   {
     name: 'Starter',
     price: '฿490',
-    desc: 'Perfect for small businesses or getting started with monitoring one destination.',
+    desc: lang === 'en' ? 'Perfect for small businesses or getting started with monitoring one destination.' : 'เหมาะสำหรับธุรกิจขนาดเล็ก หรือเริ่มต้นติดตามวิเคราะห์ข้อมูลสำหรับ 1 จุดหมายปลายทาง',
     featured: false,
     features: [
-      { text: 'Claim 1 destination',                  ok: true },
-      { text: 'Sentiment overview (Pos/Neu/Neg)',      ok: true },
-      { text: 'Top keywords from Lexicon',             ok: true },
-      { text: 'Weekly AI Summary',                     ok: true },
-      { text: 'Read up to 50 raw reviews/month',      ok: true },
-      { text: 'Sentiment trend (6 months)',            ok: false },
-      { text: 'Negative review alerts',                ok: false },
-      { text: 'Export PDF/CSV',                        ok: false },
-      { text: 'Competitor analysis',                   ok: false },
+      { text: lang === 'en' ? 'Claim 1 destination' : 'สิทธิ์ดูแล 1 จุดหมายปลายทาง', ok: true },
+      { text: lang === 'en' ? 'Sentiment overview (Pos/Neu/Neg)' : 'ภาพรวมความรู้สึก (บวก/ทั่วไป/ลบ)', ok: true },
+      { text: lang === 'en' ? 'Top keywords from Lexicon' : 'คำสำคัญยอดนิยมจากระบบคลังคำศัพท์', ok: true },
+      { text: lang === 'en' ? 'Weekly AI Summary' : 'รายงานสรุปโดย AI รายสัปดาห์', ok: true },
+      { text: lang === 'en' ? 'Read up to 50 raw reviews/month' : 'เข้าอ่านรีวิวดิบได้สูงสุด 50 รีวิว/เดือน', ok: true },
+      { text: lang === 'en' ? 'Sentiment trend (6 months)' : 'กราฟแนวโน้มความรู้สึก (ย้อนหลัง 6 เดือน)', ok: false },
+      { text: lang === 'en' ? 'Negative review alerts' : 'ระบบแจ้งเตือนเมื่อมีรีวิวเชิงลบ', ok: false },
+      { text: lang === 'en' ? 'Export PDF/CSV' : 'ส่งออกรายงานเป็น PDF/CSV', ok: false },
+      { text: lang === 'en' ? 'Competitor analysis' : 'ฟังก์ชันวิเคราะห์คู่แข่ง', ok: false },
     ],
-    cta: 'Start Free 14 Days',
+    cta: lang === 'en' ? 'Start Free 14 Days' : 'ทดลองใช้ฟรี 14 วัน',
     ctaStyle: 'outline',
   },
   {
     name: 'Professional',
     price: '฿1,290',
-    desc: 'For hotels, restaurants, or attractions that need deep insight and real-time alerts.',
+    desc: lang === 'en' ? 'For hotels, restaurants, or attractions that need deep insight and real-time alerts.' : 'สำหรับโรงแรม ร้านอาหาร หรือสถานที่ท่องเที่ยวที่ต้องการอินไซต์เชิงลึกและการแจ้งเตือนแบบทันท่วงที',
     featured: true,
-    badge: '⭐ Recommended for Business',
+    badge: lang === 'en' ? '⭐ Recommended for Business' : '⭐ แนะนำสำหรับผู้ประกอบการ',
     features: [
-      { text: 'Claim up to 3 destinations',           ok: true },
-      { text: 'Sentiment overview + Breakdown',       ok: true },
-      { text: 'Top keywords + Topic clusters',        ok: true },
-      { text: 'Daily AI Summary',                     ok: true },
-      { text: 'Unlimited raw review access',          ok: true },
-      { text: 'Sentiment trend — last 12 months',    ok: true },
-      { text: 'Negative review alerts (real-time)',   ok: true },
-      { text: 'Export PDF/CSV reports',               ok: true },
-      { text: 'Competitor analysis',                  ok: false },
+      { text: lang === 'en' ? 'Claim up to 3 destinations' : 'สิทธิ์ดูแลสูงสุด 3 จุดหมายปลายทาง', ok: true },
+      { text: lang === 'en' ? 'Sentiment overview + Breakdown' : 'ภาพรวมความรู้สึกพร้อมระบบจำแนกแยกย่อย', ok: true },
+      { text: lang === 'en' ? 'Top keywords + Topic clusters' : 'คำสำคัญยอดนิยมและการจัดกลุ่มหัวข้อกลุ่มคำ', ok: true },
+      { text: lang === 'en' ? 'Daily AI Summary' : 'รายงานสรุปโดย AI รายวัน', ok: true },
+      { text: lang === 'en' ? 'Unlimited raw review access' : 'เข้าอ่านข้อมูลรีวิวดิบได้ไม่จำกัด', ok: true },
+      { text: lang === 'en' ? 'Sentiment trend — last 12 months' : 'กราฟแนวโน้มความรู้สึกย้อนหลัง 12 เดือน', ok: true },
+      { text: lang === 'en' ? 'Negative review alerts (real-time)' : 'ระบบแจ้งเตือนรีวิวเชิงลบแบบเรียลไทม์', ok: true },
+      { text: lang === 'en' ? 'Export PDF/CSV reports' : 'ส่งออกรายงานสรุปผลเป็น PDF/CSV', ok: true },
+      { text: lang === 'en' ? 'Competitor analysis' : 'ฟังก์ชันวิเคราะห์คู่แข่ง', ok: false },
     ],
-    cta: 'Start Free 14 Days',
+    cta: lang === 'en' ? 'Start Free 14 Days' : 'ทดลองใช้ฟรี 14 วัน',
     ctaStyle: 'primary',
   },
   {
     name: 'Enterprise',
     price: '฿2,490',
-    desc: 'For hotel chains, OTAs, or organizations managing insights across multiple locations.',
+    desc: lang === 'en' ? 'For hotel chains, OTAs, or organizations managing insights across multiple locations.' : 'สำหรับเครือโรงแรม ตัวแทนท่องเที่ยว (OTA) หรือองค์กรที่ต้องบริหารจัดการข้อมูลเชิงลึกในหลายพื้นที่',
     featured: false,
     features: [
-      { text: 'Unlimited destination claims',         ok: true },
-      { text: 'Everything in Professional',           ok: true },
-      { text: 'Competitor gap analysis',              ok: true },
-      { text: 'Regional benchmark reports',           ok: true },
-      { text: 'API access (CRM integration)',         ok: true },
-      { text: 'White-label dashboard',                ok: true },
-      { text: 'Custom alert rules',                   ok: true },
-      { text: 'Dedicated account manager',            ok: true },
-      { text: 'SLA 99.9% uptime',                    ok: true },
+      { text: lang === 'en' ? 'Unlimited destination claims' : 'สิทธิ์ดูแลจุดหมายปลายทางได้ไม่จำกัด', ok: true },
+      { text: lang === 'en' ? 'Everything in Professional' : 'รวมทุกฟังก์ชันที่มีในแพ็กเกจ Professional', ok: true },
+      { text: lang === 'en' ? 'Competitor gap analysis' : 'การวิเคราะห์ช่องว่างเพื่อเปรียบเทียบคู่แข่ง', ok: true },
+      { text: lang === 'en' ? 'Regional benchmark reports' : 'รายงานผลประเมินมาตรฐานระดับภูมิภาค', ok: true },
+      { text: lang === 'en' ? 'API access (CRM integration)' : 'สิทธิ์เข้าถึงระบบ API เพื่อเชื่อมต่อระบบ CRM', ok: true },
+      { text: lang === 'en' ? 'White-label dashboard' : 'แดชบอร์ดสไตล์คัสตอมแบรนด์ตนเอง (White-label)', ok: true },
+      { text: lang === 'en' ? 'Custom alert rules' : 'ตั้งค่าเงื่อนไขการแจ้งเตือนแบบกำหนดเอง', ok: true },
+      { text: lang === 'en' ? 'Dedicated account manager' : 'เจ้าหน้าที่ดูแลบัญชีผู้ใช้บริการโดยเฉพาะ', ok: true },
+      { text: lang === 'en' ? 'SLA 99.9% uptime' : 'การันตีระบบเสถียรตามข้อตกลง SLA 99.9%', ok: true },
     ],
-    cta: 'Contact Sales',
+    cta: lang === 'en' ? 'Contact Sales' : 'ติดต่อฝ่ายขาย',
     ctaStyle: 'outline',
   },
 ];
 
-const chips = [
-  'Real-time review monitoring',
-  'AI-powered insights',
-  'Multi-platform aggregation',
-  'Negative alert system',
-  'PDF/CSV export',
-  'API access',
+const getChips = (lang) => [
+  lang === 'en' ? 'Real-time review monitoring' : 'ติดตามรีวิวแบบเรียลไทม์',
+  lang === 'en' ? 'AI-powered insights' : 'บทวิเคราะห์อินไซต์ขับเคลื่อนด้วย AI',
+  lang === 'en' ? 'Multi-platform aggregation' : 'รวบรวมข้อมูลจากหลากหลายแพลตฟอร์ม',
+  lang === 'en' ? 'Negative alert system' : 'ระบบแจ้งเตือนกรณีมีรีวิวเชิงลบ',
+  lang === 'en' ? 'PDF/CSV export' : 'ส่งออกข้อมูลในรูปแบบ PDF/CSV',
+  lang === 'en' ? 'API access' : 'สิทธิ์การเชื่อมต่อผ่านระบบ API',
 ];
 
-export default function BusinessPage({ onLogin, autoLogin, onModalClose }) {
+export default function BusinessPage({ onLogin, autoLogin, onModalClose, currentLang = 'en' }) {
   const [showModal, setModal] = useState(false);
 
-  // เปิด modal อัตโนมัติถ้า autoLogin = true
   useEffect(() => {
     if (autoLogin) setModal(true);
   }, [autoLogin]);
+
+  const translatedPlans = getPlans(currentLang);
+  const translatedChips = getChips(currentLang);
 
   return (
     <div className="preview-page">
@@ -144,34 +169,41 @@ export default function BusinessPage({ onLogin, autoLogin, onModalClose }) {
         <Modal
           onClose={() => { setModal(false); onModalClose?.(); }}
           onLogin={() => { setModal(false); onLogin(); }}
+          currentLang={currentLang}
         />
       )}
 
       {/* ── Hero ── */}
       <div className="biz-hero">
         <img src={glowImg} alt="" className="biz-hero-glow" aria-hidden="true" />
-        <div className="biz-hero-tag">Business Intelligence Platform</div>
+        <div className="biz-hero-tag">
+          {currentLang === 'en' ? "Business Intelligence Platform" : "แพลตฟอร์มข้อมูลอัจฉริยะเพื่อธุรกิจ"}
+        </div>
         <h1>
-          Know Your Customers<br />
-          Deeper Than Ever <em>with AI</em>
+          {currentLang === 'en' ? (
+            <>Know Your Customers<br />Deeper Than Ever <em>with AI</em></>
+          ) : (
+            <>เข้าใจเสียงของลูกค้าเชิงลึก<br />มากกว่าที่เคยมีมา <em>ด้วยขุมพลัง AI</em></>
+          )}
         </h1>
         <p>
-          Track Brand Reputation, analyze reviews in depth, receive negative review alerts,
-          and export reports instantly — all from a single platform.
+          {currentLang === 'en' 
+            ? "Track Brand Reputation, analyze reviews in depth, receive negative review alerts, and export reports instantly — all from a single platform."
+            : "ติดตามความน่าเชื่อถือของแบรนด์ วิเคราะห์ความคิดเห็นเชิงลึก รับระบบแจ้งเตือนกรณีเกิดรีวิวเชิงลบ และส่งออกรายงานสรุปได้ทันที ครบจบในแพลตฟอร์มเดียว"}
         </p>
         <div className="biz-hero-btns">
           <button className="biz-btn-primary" onClick={() => setModal(true)}>
-            Start Free 14-Day Trial
+            {currentLang === 'en' ? "Start Free 14-Day Trial" : "เริ่มทดลองใช้งานฟรี 14 วัน"}
           </button>
           <button
             className="biz-btn-outline-white"
             onClick={() => document.getElementById('dashboard-preview')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           >
-            View Demo Dashboard ↓
+            {currentLang === 'en' ? "View Demo Dashboard ↓" : "ดูตัวอย่างหน้าแดชบอร์ด ↓"}
           </button>
         </div>
         <div className="biz-hero-chips">
-          {chips.map(c => (
+          {translatedChips.map(c => (
             <span key={c} className="biz-chip">
               <span className="biz-chip-dot" />
               {c}
@@ -183,17 +215,21 @@ export default function BusinessPage({ onLogin, autoLogin, onModalClose }) {
       {/* ── Pricing ── */}
       <section className="pricing-section">
         <div className="section-center">
-          <div className="section-tag">PRICING</div>
-          <h2>Choose the Plan That Fits Your Business</h2>
-          <p className="section-sub">14-day free trial on every plan — no credit card required.</p>
+          <div className="section-tag">{currentLang === 'en' ? "PRICING" : "แผนราคาและค่าบริการ"}</div>
+          <h2>
+            {currentLang === 'en' ? "Choose the Plan That Fits Your Business" : "เลือกแพ็กเกจที่ตอบโจทย์โครงสร้างธุรกิจของคุณ"}
+          </h2>
+          <p className="section-sub">
+            {currentLang === 'en' ? "14-day free trial on every plan — no credit card required." : "สิทธิ์ทดลองใช้งานฟรี 14 วันสำหรับทุกแพ็กเกจ — ไม่ต้องใช้บัตรเครดิต"}
+          </p>
         </div>
 
         <div className="pricing-grid">
-          {plans.map(plan => (
+          {translatedPlans.map(plan => (
             <div key={plan.name} className={`pricing-card${plan.featured ? ' featured' : ''}`}>
               {plan.badge && <div className="featured-badge">{plan.badge}</div>}
               <div className="plan-name">{plan.name}</div>
-              <div className="plan-price">{plan.price} <span>/ month</span></div>
+              <div className="plan-price">{plan.price} <span>{currentLang === 'en' ? '/ month' : '/ เดือน'}</span></div>
               <div className="plan-desc">{plan.desc}</div>
               <div className="plan-divider" />
               <ul className="plan-features">
@@ -215,9 +251,11 @@ export default function BusinessPage({ onLogin, autoLogin, onModalClose }) {
       {/* ── Dashboard Preview ── */}
       <section className="preview-section" id="dashboard-preview">
         <div className="section-center">
-          <div className="section-tag">DASHBOARD PREVIEW</div>
-          <h2>Everything in One Place</h2>
-          <p className="section-sub">A dashboard designed specifically for tourism businesses.</p>
+          <div className="section-tag">{currentLang === 'en' ? "DASHBOARD PREVIEW" : "ภาพตัวอย่างระบบแดชบอร์ด"}</div>
+          <h2>{currentLang === 'en' ? "Everything in One Place" : "รวมทุกมิติข้อมูลสรุปจบในหน้าเดียว"}</h2>
+          <p className="section-sub">
+            {currentLang === 'en' ? "A dashboard designed specifically for tourism businesses." : "หน้าแดชบอร์ดที่ออกแบบและพัฒนาขึ้นเพื่ออุตสาหกรรมการท่องเที่ยวโดยเฉพาะ"}
+          </p>
         </div>
 
         <div className="preview-mock">
@@ -225,59 +263,90 @@ export default function BusinessPage({ onLogin, autoLogin, onModalClose }) {
           <div className="preview-topbar">
             <span className="preview-logo">Travel<span>Sense</span></span>
             <div className="preview-tabs-row">
-              {['Overview','Reviews','Trends','Reports','Alerts'].map((t, i) => (
-                <span key={t} className={`preview-tab${i === 0 ? ' active' : ''}`}>{t}</span>
+              {[
+                { en: 'Overview', th: 'ภาพรวม' },
+                { en: 'Reviews', th: 'ความคิดเห็น' },
+                { en: 'Trends', th: 'แนวโน้มข้อมูล' },
+                { en: 'Reports', th: 'การออกรายงาน' },
+                { en: 'Alerts', th: 'ระบบแจ้งเตือน' }
+              ].map((t, i) => (
+                <span key={t.en} className={`preview-tab${i === 0 ? ' active' : ''}`}>
+                  {currentLang === 'en' ? t.en : t.th}
+                </span>
               ))}
             </div>
-            <span className="preview-verified">Khao Yai National Park · Verified ✓</span>
+            <span className="preview-verified">
+              {currentLang === 'en' ? "Khao Yai National Park · Verified ✓" : "อุทยานแห่งชาติเขาใหญ่ · ยืนยันสิทธิ์แล้ว ✓"}
+            </span>
           </div>
 
           {/* Metric cards */}
           <div className="preview-metrics">
             <div className="preview-metric-box">
-              <div className="preview-metric-lbl">Sentiment Score</div>
+              <div className="preview-metric-lbl">{currentLang === 'en' ? "Sentiment Score" : "คะแนนความรู้สึก"}</div>
               <div className="preview-metric-val pos">76%</div>
-              <div className="preview-metric-sub">↑ +3% from last month</div>
+              <div className="preview-metric-sub">{currentLang === 'en' ? "↑ +3% from last month" : "↑ +3% จากเดือนก่อนหน้า"}</div>
             </div>
             <div className="preview-metric-box">
-              <div className="preview-metric-lbl">Total Reviews</div>
-              <div className="preview-metric-val">1,247</div>
-              <div className="preview-metric-sub">+82 new reviews this month</div>
+              <div className="preview-metric-lbl">
+                {currentLang === 'en' ? "Total Reviews" : "จำนวนความคิดเห็นทั้งหมด"}
+              </div>
+              <div className="preview-mock-val" style={{ fontSize: '1.8rem', fontWeight: 700, margin: '6px 0', color: '#111' }}>1,247</div>
+              <div className="preview-metric-sub">{currentLang === 'en' ? "+82 new reviews this month" : "+82 รีวิวใหม่ในเดือนนี้"}</div>
             </div>
             <div className="preview-metric-box">
-              <div className="preview-metric-lbl">Negative Reviews</div>
+              <div className="preview-metric-lbl">{currentLang === 'en' ? "Negative Reviews" : "ความคิดเห็นเชิงลบ"}</div>
               <div className="preview-metric-val neg">87</div>
-              <div className="preview-metric-sub">7% of all reviews</div>
+              <div className="preview-metric-sub">{currentLang === 'en' ? "7% of all reviews" : "คิดเป็น 7% จากรีวิวทั้งหมด"}</div>
             </div>
             <div className="preview-metric-box">
-              <div className="preview-metric-lbl">Top Issue</div>
-              <div className="preview-metric-val warn">Overcrowding</div>
-              <div className="preview-metric-sub">Found in 34% of negative reviews</div>
+              <div className="preview-metric-lbl">{currentLang === 'en' ? "Top Issue" : "ประเด็นปัญหาหลัก"}</div>
+              <div className="preview-metric-val warn">{currentLang === 'en' ? "Overcrowding" : "ความหนาแน่นเกินไป"}</div>
+              <div className="preview-metric-sub">{currentLang === 'en' ? "Found in 34% of negative reviews" : "พบใน 34% ของรีวิวแง่ลบ"}</div>
             </div>
           </div>
 
           {/* Bottom panels */}
           <div className="preview-panels">
             <div className="preview-panel">
-              <div className="preview-panel-title">Sentiment Trend — 6 Months</div>
-              <TrendBar month="Jan" pct={68} />
-              <TrendBar month="Feb" pct={71} />
-              <TrendBar month="Mar" pct={65} />
-              <TrendBar month="Apr" pct={73} />
-              <TrendBar month="May" pct={74} />
-              <TrendBar month="Jun" pct={76} />
+              <div className="preview-panel-title">
+                {currentLang === 'en' ? "Sentiment Trend — 6 Months" : "แนวโน้มดัชนีความรู้สึก — ย้อนหลัง 6 เดือน"}
+              </div>
+              <TrendBar month={currentLang === 'en' ? "Jan" : "ม.ค."} pct={68} />
+              <TrendBar month={currentLang === 'en' ? "Feb" : "ก.พ."} pct={71} />
+              <TrendBar month={currentLang === 'en' ? "Mar" : "มี.ค."} pct={65} />
+              <TrendBar month={currentLang === 'en' ? "Apr" : "เม.ย."} pct={73} />
+              <TrendBar month={currentLang === 'en' ? "May" : "พ.ค."} pct={74} />
+              <TrendBar month={currentLang === 'en' ? "Jun" : "มิ.ย."} pct={76} />
             </div>
             <div className="preview-panel">
-              <div className="preview-panel-title">Recent Negative Alerts 🔴</div>
+              <div className="preview-panel-title">
+                {currentLang === 'en' ? "Recent Negative Alerts 🔴" : "ระบบแจ้งเตือนกรณีรีวิวเชิงลบล่าสุด 🔴"}
+              </div>
               {[
-                { color: '#F0997B', text: '"Too crowded, couldn\'t enjoy the wildlife at all during weekend"', time: 'TripAdvisor · 2 hours ago' },
-                { color: '#F0997B', text: '"Facilities are poor, no proper restrooms near the main trail"',   time: 'Google · 5 hours ago' },
-                { color: '#F59E0B', text: '"Entrance fee increased but service quality remains the same"',     time: 'Booking.com · Yesterday' },
+                { 
+                  color: '#F0997B', 
+                  en: '"Too crowded, couldn\'t enjoy the wildlife at all during weekend"', 
+                  th: '"คนเยอะและหนาแน่นเกินไป ช่วงวันหยุดเสาร์-อาทิตย์แทบไม่ได้สัมผัสธรรมชาติหรือเห็นสัตว์ป่าเลย"',
+                  time: 'TripAdvisor · 2 hours ago' 
+                },
+                { 
+                  color: '#F0997B', 
+                  en: '"Facilities are poor, no proper restrooms near the main trail"', 
+                  th: '"สิ่งอำนวยความสะดวกค่อนข้างแย่ ไม่มีห้องน้ำจัดเตรียมไว้ใกล้กับบริเวณเส้นทางเดินป่าหลักเลย"',
+                  time: 'Google · 5 hours ago' 
+                },
+                { 
+                  color: '#F59E0B', 
+                  en: '"Entrance fee increased but service quality remains the same"', 
+                  th: '"มีการปรับเพิ่มราคาค่าเข้าอุทยาน แต่คุณภาพการให้บริการและการดูแลยังคงเท่าเดิม"',
+                  time: 'Booking.com · Yesterday' 
+                },
               ].map((a, i) => (
                 <div key={i} className="alert-item">
                   <div className="alert-dot" style={{ background: a.color }} />
                   <div>
-                    <div className="alert-text">{a.text}</div>
+                    <div className="alert-text">{currentLang === 'en' ? a.en : a.th}</div>
                     <div className="alert-time">{a.time}</div>
                   </div>
                 </div>
@@ -296,15 +365,21 @@ export default function BusinessPage({ onLogin, autoLogin, onModalClose }) {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
           }}>
-            Ready to Grow Your Business?
+            {currentLang === 'en' ? "Ready to Grow Your Business?" : "พร้อมที่จะพัฒนาและขับเคลื่อนธุรกิจของคุณหรือยัง?"}
           </span>
         </h2>
-        <p>Join hundreds of tourism businesses already using TravelSense AI to understand their customers.</p>
+        <p>
+          {currentLang === 'en' 
+            ? "Join hundreds of tourism businesses already using TravelSense AI to understand their customers."
+            : "ร่วมเป็นส่วนหนึ่งกับผู้ประกอบการท่องเที่ยวหลายร้อยรายที่เลือกใช้ TravelSense AI เพื่อเข้าถึงความต้องการของลูกค้าอย่างแท้จริง"}
+        </p>
         <div className="biz-cta-btns">
           <button className="biz-btn-primary" onClick={() => setModal(true)}>
-            Start Free 14-Day Trial
+            {currentLang === 'en' ? "Start Free 14-Day Trial" : "เริ่มทดลองใช้งานฟรี 14 วัน"}
           </button>
-          <button className="biz-btn-outline-dark">View Full Feature List</button>
+          <button className="biz-btn-outline-dark">
+            {currentLang === 'en' ? "View Full Feature List" : "ดูฟีเจอร์และฟังก์ชันทั้งหมด"}
+          </button>
         </div>
       </section>
 

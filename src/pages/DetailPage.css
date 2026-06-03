@@ -2,7 +2,7 @@
 .detail-page {
   min-height: 100vh;
   background: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans Thai', sans-serif;
 }
 
 /* Back bar */
@@ -28,10 +28,11 @@
   color: #555;
   cursor: pointer;
   transition: all 0.18s;
+    font-family: 'Inter', 'Noto Sans Thai', sans-serif;
 }
 .back-btn:hover {
-  border-color: #F47C5A;
-  color: #F47C5A;
+  border-color: #ffb9ae;
+  color:  #ffb9ae;
   transform: translateX(-2px);
 }
 
@@ -199,8 +200,8 @@
 .score-big-card {
   border: 1.5px solid transparent;
   background:
-    linear-gradient(-180deg,  #ffffff, #ffedef) padding-box,
-    linear-gradient(-180deg, #f3c8c8, #ffe7e9) border-box;
+    linear-gradient(-180deg,  #ffffff, #fff5f6) padding-box,
+    linear-gradient(-180deg, #fddfdf, #ffe7e9) border-box;
   border-radius: 16px;
   padding: 28px;
   color: white;
@@ -222,9 +223,9 @@
 .score-mini-bars {font-weight: 600; display: flex; flex-direction: column; gap: 8px; }
 .score-mini-row { display: flex; align-items: center; gap: 8px; }
 .score-mini-lbl { font-size: 0.72rem; color: rgba(117, 98, 98, 0.977); width: 56px; }
-.score-mini-track { flex: 1; height: 6px; background: rgb(255, 255, 255); border-radius: 3px; overflow: hidden; }
+.score-mini-track { flex: 1; height: 6px; background: rgb(255, 255, 255); border-radius: 3px; overflow: hidden; border: 1px solid #fff0f0;}
 .score-mini-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
-.score-mini-pct { font-size: 0.72rem; color: rgba(117, 98, 98, 0.6); width: 26px; text-align: right; }
+.score-mini-pct { font-size: 0.72rem; color:rgba(117, 98, 98, 0.977); width: 26px; text-align: right; }
 
 /* Action buttons */
 .action-btns { display: flex; flex-direction: column; gap: 10px; }
@@ -242,6 +243,7 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
+  font-family: 'Inter', 'Noto Sans Thai', sans-serif;
 }
 .action-btn-primary {
   background: #f67c7c;
@@ -281,4 +283,92 @@
   .detail-content { padding: 24px 24px 60px; }
   .detail-grid { grid-template-columns: 1fr; }
   .action-sidebar { flex-direction: column; }
+}
+/* ── Categorized Sentiment Badges & Filter System ── */
+
+/* แถบเลือกหมวดหมู่หลัก 4 ด้านตามกรอบวิจัย */
+.category-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #F5F5F5;
+  border: 1.5px solid #E8E8E8;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #FFF5F4;
+  border-color: #f67c7c;
+  color: #f67c7c;
+}
+
+.tab-btn.active {
+  background: #f67c7c;
+  border-color: #f67c7c;
+  color: white;
+}
+
+/* ปรับปรุงป้ายคำสำคัญ (kw-tag) เดิม ให้รองรับการกดคลิกและเปลี่ยนสถานะ */
+.kw-tag.clickable {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.kw-tag.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* สไตล์เมื่อคีย์เวิร์ดนั้นถูกเลือกใช้งานอยู่ */
+.kw-tag.pos.active { background: #22C55E; color: white; border-color: #22C55E; }
+.kw-tag.neg.active { background: #EF4444; color: white; border-color: #EF4444; }
+.kw-tag.neu.active { background: #555555; color: white; border-color: #555555; }
+
+/* กล่อง AI Insight เวอร์ชั่น Dynamic อิงตามการฟิลเตอร์ */
+.ai-box.filtered {
+  border-color: #f67c7c;
+  background: linear-gradient(180deg, #ffffff, #FFFBFB);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ai-box.filtered::after {
+  content: '⚡ Live Filtered Summary';
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #f67c7c;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ai-reset-btn {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #f67c7c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
 }

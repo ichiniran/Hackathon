@@ -70,8 +70,8 @@
 }
 .theme-toggle:hover {
   background: var(--toggle-hover-bg);
-  border-color: #F47C5A;
-  color: #F47C5A;
+  border-color: var(--coral-dark);
+  color: var(--coral-dark);
 }
 .theme-toggle svg {
   width: 16px;
@@ -119,12 +119,12 @@
 .dash-logo-dot {
   width: 26px; height: 26px;
   border-radius: 7px;
-  background: #F47C5A;
+  background: var(--coral-dark);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .dash-logo-dot svg { width: 14px; height: 14px; fill: none; stroke: white; stroke-width: 2; }
-.dash-logo-name span { color: #F47C5A; }
+.dash-logo-name span { color: var(--coral-dark); }
 
 .dash-place-box {
   margin: 12px 10px;
@@ -167,7 +167,7 @@
 
 .dash-notif {
   margin-left: auto;
-  background: #F47C5A;
+  background: var(--coral-dark);
   color: white;
   font-size: 10px;
   padding: 1px 6px;
@@ -192,7 +192,7 @@
   border-radius: 50%;
   background: var(--report-icon-bg);
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 600; color: #F47C5A;
+  font-size: 11px; font-weight: 600; color: var(--coral-dark);
   flex-shrink: 0;
 }
 .dash-user-name { font-size: 12px; font-weight: 500; color: var(--text-primary); }
@@ -206,7 +206,7 @@
   display: block;
   transition: color 0.15s;
 }
-.dash-logout:hover { color: #F47C5A; }
+.dash-logout:hover { color: var(--coral-dark); }
 
 /* ── Main area ── */
 .dash-main {
@@ -236,11 +236,12 @@
   border-radius: 8px;
   padding: 5px 10px;
   background: var(--input-bg);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans Thai', sans-serif;
   color: var(--input-color);
   outline: none;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
+
 }
 .dash-export-btn {
   font-size: 12px; padding: 6px 14px;
@@ -249,11 +250,12 @@
   background: var(--input-bg);
   color: var(--input-color);
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans Thai', sans-serif;
   display: flex; align-items: center; gap: 5px;
   transition: all 0.2s;
+
 }
-.dash-export-btn:hover { border-color: #F47C5A; color: #F47C5A; }
+.dash-export-btn:hover { border-color: var(--coral-dark); color: var(--coral-dark); }
 .dash-export-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
 
 /* ── Content area ── */
@@ -313,14 +315,15 @@
 .dm-lbl { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
 .dm-val { font-size: 24px; font-weight: 600; line-height: 1; margin-bottom: 4px; color: var(--text-primary); }
 .dm-val.pos { color: #22C55E; }
-.dm-val.neg { color: #F47C5A; }
+.dm-val.neg { color: var(--coral-dark); }
 .dm-val.warn { color: #F59E0B; }
 .dm-delta { font-size: 11px; color: var(--text-muted); }
 .dm-delta.up { color: #22C55E; }
-.dm-delta.dn { color: #F47C5A; }
+.dm-delta.dn { color: var(--coral-dark); }
 
 /* Panel grids */
 .dash-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; width: 100%; }
+.dash-row2-overview { grid-template-columns: 0.9fr 1.1fr; }
 .dash-row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px; width: 100%; }
 .dash-panel {
   background: var(--bg-panel);
@@ -354,12 +357,12 @@
 .d-sent-pct { font-size: 12px; font-weight: 500; width: 32px; text-align: right; }
 
 /* Topic bars */
-.d-sec-lbl { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin: 12px 0 7px; }
+.d-sec-lbl { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin: 12px 0 7px; }
 .d-topic-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-.d-topic-name { font-size: 12px; color: var(--text-secondary); width: 82px; flex-shrink: 0; }
-.d-topic-track { flex: 1; height: 14px; background: var(--track-bg); border-radius: 5px; overflow: hidden; }
+.d-topic-name { font-size: 12px; color: var(--text-secondary); width: 200px; flex-shrink: 0; }
+.d-topic-track { flex: 1; height: 10px; background: var(--track-bg); border-radius: 5px; overflow: hidden; }
 .d-topic-fill { height: 100%; border-radius: 5px; }
-.d-topic-pct { font-size: 11px; color: #F47C5A; width: 28px; text-align: right; }
+.d-topic-pct { font-size: 11px; color: var(--coral-dark); width: 28px; text-align: right; }
 
 /* Keywords */
 .d-kw-cloud { display: flex; flex-wrap: wrap; gap: 5px; }
@@ -395,7 +398,7 @@
 .report-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-color); }
 .report-item:last-child { border-bottom: none; }
 .report-icon { width: 36px; height: 36px; border-radius: 9px; background: var(--report-icon-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.report-icon svg { width: 18px; height: 18px; fill: none; stroke: #F47C5A; stroke-width: 1.8; }
+.report-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--coral-dark); stroke-width: 1.8; }
 .report-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
 .report-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 .report-dl {
@@ -407,8 +410,65 @@
   display: flex; align-items: center; gap: 5px;
   transition: all 0.15s;
 }
-.report-dl:hover { border-color: #F47C5A; color: #F47C5A; }
+.report-dl:hover { border-color: var(--coral-dark); color: var(--coral-dark); }
 .report-dl svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* Review filters */
+.review-filters {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-panel);
+}
+.review-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.review-filter-group + .review-filter-group {
+  padding-left: 14px;
+  margin-left: 2px;
+  border-left: 1px solid var(--border-color);
+}
+.review-filter-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+.review-filter-chip {
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 11px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.review-filter-chip:hover {
+  border-color: var(--coral-dark);
+  color: var(--coral-dark);
+  transform: translateY(-1px);
+}
+.review-filter-chip.active {
+  background: var(--coral-dark);
+  border-color: var(--coral-dark);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(244, 124, 90, 0.18);
+}
+.review-filter-chip.source {
+  text-transform: none;
+}
 
 /* Upgrade prompt */
 .upgrade-prompt {
@@ -424,9 +484,9 @@
 .upgrade-title { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 3px; }
 .upgrade-sub { font-size: 12px; color: var(--text-secondary); }
 .upgrade-btn {
-  background: #F47C5A; color: white; border: none;
+  background: var(--coral-dark); color: white; border: none;
   padding: 8px 16px; border-radius: 8px;
-  font-size: 12px; font-family: 'Inter', sans-serif;
+  font-size: 12px; font-family: 'Inter', 'Noto Sans Thai', sans-serif;
   cursor: pointer; font-weight: 500; white-space: nowrap;
   transition: background 0.15s;
 }
@@ -438,4 +498,54 @@
   .dash-main { margin-left: 0; width: 100%; }
   .dash-metrics { grid-template-columns: 1fr 1fr; }
   .dash-row2, .dash-row3 { grid-template-columns: 1fr; }
+  .dash-row2-overview { grid-template-columns: 1fr; }
+  .review-filters { gap: 10px; padding: 10px; }
+  .review-filter-group { gap: 6px; }
+  .review-filter-group + .review-filter-group {
+    padding-left: 0;
+    margin-left: 0;
+    border-left: 0;
+  }
+}
+/* ==========================================================================
+   🟢 ปุ่มสลับภาษาแบบคัสตอมในแดชบอร์ด (Custom Swift Toggle)
+   ========================================================================== */
+
+/* ตัวกรอบนอกของสวิตช์สลับภาษา */
+.dash-lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg-secondary);     /* ดึงค่าสีพื้นหลังจาก CSS Variables */
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color); /* ดึงค่าสีเส้นขอบจาก CSS Variables */
+  transition: background 0.25s, border-color 0.25s;
+}
+
+/* ปุ่มตัวเลือกภาษาแต่ละปุ่ม (EN / TH) */
+.dash-lang-toggle button {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-secondary);          /* ใช้สีตัวอักษรรองของธีมนั้นๆ */
+  font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+  transition: all 0.15s ease;
+}
+
+/* สถานะเมื่อปุ่มภาษานั้นๆ กำลังถูกเลือกใช้งาน (Active) */
+.dash-lang-toggle button[style*="background: rgb(244, 124, 90)"],
+.dash-lang-toggle button[style*="background: var(--coral-dark)"] {
+  background: var(--coral-dark) !important;        /* ใช้สี Coral หลักของแอป */
+  color: #ffffff !important;             /* ตัวอักษรสีขาวเสมอตลอดทุกธีม */
+}
+
+/* สถานะเมื่อเอาเมาส์ไปชี้ปุ่มที่ไม่ได้เลือก */
+.dash-lang-toggle button:not([style*="background"]):hover {
+  background: var(--toggle-hover-bg);
+  color: var(--coral-dark);
 }

@@ -1,5 +1,5 @@
 /* ── ALL TEXT uses Inter ── */
-* { font-family: 'Inter', sans-serif; }
+* { font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif; }
 
 /* ── Navbar ── */
 .navbar {
@@ -145,7 +145,7 @@
 .card-header-right { display: flex; align-items: center; gap: 6px; background: #F0FDF4; border-radius: 20px; padding: 4px 10px; }
 .live-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse-dot 1.5s ease-in-out infinite; }
 .live-text { font-size: 0.72rem; font-weight: 600; color: var(--green); }
-.card-title { font-size: 1.2rem; font-weight: 700; color: var(--black); }
+.card-title { font-size: 1.2rem; font-weight: 700; color:  #434242; }
 .card-meta { font-size: 0.8rem; color: var(--gray-400); margin-top: 2px; }
 .sentiment-bars { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
 .sentiment-row { display: flex; align-items: center; gap: 12px; }
@@ -160,14 +160,13 @@
 .sentiment-pct.neutral  { color: var(--amber); }
 .sentiment-pct.negative { color: var(--red); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
-.tag { font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; border: 1.5px solid var(--gray-200); color: var(--gray-800); cursor: pointer; transition: all 0.15s; }
-.tag:hover { border-color: var(--coral); color: var(--coral); }
-.tag.highlight { background: #FEF0EB; border-color: var(--coral-light); color: var(--coral-dark); }
+.tag { font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; background: #DCFCE7; color: #15803d; border: 1px solid #BBF7D0;}
+.tag.highlight { background: #FEE2E2; color: #991b1b; border: 1px solid #FECACA; }
 .key-insight { background: var(--gray-50); border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
 .key-insight-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 4px; }
 .key-insight-text { font-size: 0.84rem; color: var(--gray-800); line-height: 1.5; }
 .source-pills { display: flex; gap: 6px; margin-top: 14px; }
-.source-pill { font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: var(--gray-100); color: var(--gray-600); }
+.source-pill { font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; border: 1.5px solid var(--gray-200); color: var(--gray-600); }
 
 /* ── How It Works ── */
 .how-section { padding: 80px; background: #FFFFFF; }
@@ -287,4 +286,32 @@
   .footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
   .navbar { padding: 0 24px; }
   .nav-links { display: none; }
+}
+
+.tag.pos-tag { background: #DCFCE7; color: #15803d; border: 1px solid #BBF7D0; }
+.tag.neu-tag { background: #F5F5F5; color: #555555; border: 1px solid #E8E8E8; }
+.tag.neg-tag { background: #FEE2E2; color: #991b1b; border: 1px solid #FECACA; }
+
+/* ซ่อนป้ายคำว่า Powered by Google และกรอบหน้าต่างเดิมบางส่วน */
+.goog-te-gadget {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.8rem !important;
+  color: transparent !important; /* ซ่อนข้อความส่วนเกิน */
+}
+.goog-te-gadget .goog-te-combo {
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  font-size: 0.8rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+}
+/* ซ่อนแถบ Top Bar ของ Google ที่จะโหลดยื่นลงมาจากขอบจอด้านบน */
+body {
+  top: 0px !important;
+}
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
 }

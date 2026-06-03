@@ -1,7 +1,7 @@
 /* ── Business Page ── */
 .preview-page {
   min-height: 100vh;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif; 
   background: #FAFAFA;
 }
 
@@ -85,7 +85,7 @@
   font-weight: 700;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s; font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif;
   
 }
 .biz-btn-primary:hover {
@@ -102,7 +102,7 @@
   font-weight: 500;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s; font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif;
 }
 .biz-btn-outline-white:hover {
   border-color: #f67c7c;
@@ -276,14 +276,14 @@
 .plan-cta-outline {
   background: white;
   border: 1.5px solid #E8E8E8;
-  color: #333;
+  color: #333; font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif;
 }
 .plan-cta-outline:hover { border-color: #FE907F; color: #FE907F; }
 .plan-cta-primary {
   background: #FE907F;
   border: none;
   color: white;
-  box-shadow: 0 4px 14px rgba(244,124,90,0.35);
+  box-shadow: 0 4px 14px rgba(244,124,90,0.35); font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif;
 }
 .plan-cta-primary:hover {
   transform: translateY(-1px);
@@ -468,7 +468,7 @@
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s; font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif;
 }
 .biz-btn-outline-dark:hover { border-color: #FE907F; color: #FE907F; }
 
@@ -541,6 +541,7 @@
   cursor: pointer;
   margin-top: 4px;
   transition: all 0.2s;
+  font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif;
   box-shadow: 0 4px 14px rgba(244,124,90,0.35);
 }
 .modal-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(244,124,90,0.45); }
