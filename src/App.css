@@ -1,6 +1,11 @@
 /* ── ALL TEXT uses Inter ── */
 * { font-family: 'Inter', sans-serif; font-family: 'Inter', 'Noto Sans Thai', sans-serif; }
 
+:root {
+  --grad-start: #f67c7c;
+  --grad-end: #a8a7b1;
+}
+
 /* ── Navbar ── */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -10,7 +15,22 @@
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--gray-200);
 }
-.nav-logo { font-weight: 800; font-size: 1.25rem; color: var(--black); }
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+.nav-logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+.nav-logo-text { display: inline-flex; align-items: center; gap: 6px; }
+.logo-sense { background: linear-gradient(90deg, var(--grad-start), var(--grad-end)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.logo-ai { color: #666; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--black); }

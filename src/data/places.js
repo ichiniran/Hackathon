@@ -1,5 +1,171 @@
 export const PLACES_DATA = [
   {
+    id: 'similan',
+    name: 'Similan Islands',
+    name_th: 'หมู่เกาะสิมิลัน',
+    nameEn: 'Similan Islands',
+    loc: 'Phang Nga', loc_th: 'พังงา',
+    province: 'Phang Nga', province_th: 'พังงา',
+    region: ['south'], type: ['nature'], pos: 94, neu: 5, neg: 1, reviews: 2100, emoji: '🏝️',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz0Ux677qlJhoqgc77042JP2qZi8VKvPj1QQ&s',
+    description: 'Crystal clear water, white sand beaches, and world-class diving spots.',
+    description_th: 'น้ำใสสะอาดราวกับคริสตัล หาดทรายขาวละเอียด และจุดดำน้ำระดับโลก',
+    activities: [{ en: 'Snorkeling', th: 'ดำน้ำตื้น' }, { en: 'Island hopping', th: 'เที่ยวเกาะ' }, { en: 'Photography', th: 'ถ่ายรูป' }],
+    highlights: [{ en: 'White sand', th: 'ทรายขาว' }, { en: 'Marine life', th: 'ปะการัง' }],
+    map_url: 'https://maps.app.goo.gl/c9HsDZNzPAo2UDdM9',
+    gallery: [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7JnVttSmf323truaXbE46eBMZqCTP5DGLgw&s',
+      'https://phuketdreamcompany.com/wp-content/uploads/2015/07/%E0%B8%97%E0%B8%B1%E0%B8%A7%E0%B8%A3%E0%B9%8C%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%A1%E0%B8%B4%E0%B8%A5%E0%B8%B1%E0%B8%99-%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%AA%E0%B8%9B%E0%B8%B5%E0%B8%94%E0%B9%82%E0%B8%9A%E0%B9%8A%E0%B8%97-sea-star-2566.jpg'],
+    kws: [{ w: 'clear water', w_th: 'น้ำใสมาก', s: 'pos' }, { w: 'long travel', w_th: 'เดินทางไกล', s: 'neg' }, { w: 'great coral', w_th: 'ปะการังสวย', s: 'pos' }, { w: 'high price', w_th: 'ราคาสูง', s: 'neg' }, { w: 'calm beach', w_th: 'หาดสงบ', s: 'pos' }, { w: 'good guide', w_th: 'ไกด์ดี', s: 'pos' }, { w: 'crowded', w_th: 'คนเยอะ', s: 'neg' }, { w: 'easy booking', w_th: 'จองง่าย', s: 'pos' }],
+    ai: 'Top destination for divers. High praise for marine life.', ai_th: 'จุดหมายปลายทางยอดนิยมของนักดำน้ำ ได้รับคำชมสูงมากเกี่ยวกับสิ่งมีชีวิตใต้ทะเล',
+  },
+  {
+    id: 'khaolak',
+    name: 'Khao Lak Beach',
+    name_th: 'หาดเขาหลัก',
+    nameEn: 'Khao Lak Beach',
+    loc: 'Phang Nga', loc_th: 'พังงา',
+    province: 'Phang Nga', province_th: 'พังงา',
+    region: ['south'], type: ['nature'], pos: 87, neu: 10, neg: 3, reviews: 650, emoji: '🌅',
+    img: 'https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/236/2024/07/10043518/Coconut-Beach.jpg',
+    description: 'Long, quiet beach perfect for relaxing and watching sunsets.',
+    description_th: 'หาดทรายยาวเงียบสงบ เหมาะแก่การพักผ่อนและชมพระอาทิตย์ตก',
+    activities: [{ en: 'Relaxing', th: 'พักผ่อน' }, { en: 'Swimming', th: 'ว่ายน้ำ' }, { en: 'Watching sunset', th: 'ชมพระอาทิตย์ตก' }],
+    highlights: [{ en: 'Quiet atmosphere', th: 'บรรยากาศเงียบสงบ' }, { en: 'Long beach', th: 'หาดทรายยาว' }],
+    map_url: 'https://maps.app.goo.gl/9R3RkxbJJeKPGEY29',
+    gallery: [
+      'https://www.phangngapao.go.th/tmp/1787cb4134353aafbe2e4e81b285b852.jpeg',
+      'https://f.ptcdn.info/134/075/000/r0wub31iliLAxpqwyEju-o.jpg'],
+    kws: [{ w: 'quiet', w_th: 'เงียบสงบ', s: 'pos' }, { w: 'clean beach', w_th: 'หาดสะอาด', s: 'pos' }, { w: 'far from town', w_th: 'ไกลเมือง', s: 'neg' }, { w: 'good service', w_th: 'บริการดี', s: 'pos' }, { w: 'relaxing', w_th: 'ผ่อนคลาย', s: 'pos' }, { w: 'limited food', w_th: 'อาหารน้อย', s: 'neg' }, { w: 'sunset view', w_th: 'วิวพระอาทิตย์ตก', s: 'pos' }, { w: 'transport cost', w_th: 'ค่าเดินทาง', s: 'neu' }],
+    ai: 'Perfect for families and quiet retreats.', ai_th: 'เหมาะสำหรับการพักผ่อนของครอบครัวและการปลีกตัวมาพักผ่อน',
+  },
+  {
+    id: 'benyaran',
+    name: 'Benyaran Museum',
+    name_th: 'พิพิธภัณฑ์เบญญารัญ',
+    nameEn: 'Benyaran Museum',
+    loc: 'Phang Nga', loc_th: 'พังงา',
+    province: 'Phang Nga', province_th: 'พังงา',
+    region: ['south'], type: ['culture'], pos: 88, neu: 10, neg: 2, reviews: 450, emoji: '🏺',
+    img: 'https://img.wongnai.com/p/1920x0/2022/05/06/65f0e875eacf4e43a0de579483b6f206.jpg',
+    description: 'Museum showcasing local Thai pottery and art.',
+    description_th: 'พิพิธภัณฑ์จัดแสดงศิลปะเครื่องปั้นดินเผาพื้นบ้านของไทย',
+    activities: [{ en: 'Touring museum', th: 'ชมพิพิธภัณฑ์' }, { en: 'Learning history', th: 'เรียนรู้ประวัติศาสตร์' }, { en: 'Photography', th: 'ถ่ายรูป' }],
+    highlights: [{ en: 'Unique collection', th: 'คอลเลกชันหายาก' }, { en: 'Local art', th: 'ศิลปะพื้นบ้าน' }],
+    map_url: 'https://maps.app.goo.gl/ajxErVM92c1kFHUw9',
+    gallery: [
+      'https://db.sac.or.th/museum/images/Museum/1633/SAC-20220814-2.jpg', 
+      'https://www.tourplanet.club/photo/blogs/1629184363_623888.jpg'],
+    kws: [{ w: 'culture', w_th: 'วัฒนธรรม', s: 'pos' }, { w: 'historical', w_th: 'ประวัติศาสตร์', s: 'pos' }, { w: 'small place', w_th: 'สถานที่เล็ก', s: 'neu' }, { w: 'hard to find', w_th: 'หาทางเข้ายาก', s: 'neg' }, { w: 'great story', w_th: 'เรื่องราวดี', s: 'pos' }, { w: 'guide helpful', w_th: 'ไกด์ให้ข้อมูลดี', s: 'pos' }, { w: 'entry fee', w_th: 'ค่าเข้า', s: 'neu' }, { w: 'no AC', w_th: 'อากาศร้อน', s: 'neg' }],
+    ai: 'A hidden gem for history lovers.', ai_th: 'แหล่งความรู้ลับสำหรับผู้ที่รักประวัติศาสตร์',
+  },
+
+
+  // --- เชียงใหม่ (Chiang Mai) ---
+  {
+  id: 'doi_luang_chiang_dao',
+  name: 'Doi Luang Chiang Dao',
+  name_th: 'ดอยหลวงเชียงดาว',
+  loc: 'Chiang Mai',
+  loc_th: 'เชียงใหม่',
+  province: 'Chiang Mai',
+  region: ['north'],
+  type: ['nature'],
+  pos: 85,
+  neu: 10,
+  neg: 5,
+  reviews: 728,
+  emoji: '⛰️',
+  img: 'https://www.sarakadeelite.com/wp-content/uploads/2022/11/chiang-dao-open.jpg',
+  description: 'The third-highest mountain in Thailand, famous for its breathtaking sea of mist and scenic views.',
+  description_th: 'สัมผัสเสน่ห์ของดอยหลวงเชียงดาว ยอดเขาที่มีความสูงเป็นอันดับ 3 ของประเทศไทย เต็มไปด้วยความอุดมสมบูรณ์ของธรรมชาติ จุดชมวิวทะเลหมอกสุดอลังการ',
+  activities: [
+    { en: 'Trekking', th: 'เดินป่า' },
+    { en: 'Camping', th: 'กางเต็นท์' },
+    { en: 'Bird Watching', th: 'ดูนก' }
+  ],
+  highlights: [
+    { en: 'Limestone mountain', th: 'ภูเขาหินปูนอันโดดเด่น' },
+    { en: 'Sea of mist', th: 'ทะเลหมอกสวยงาม' }
+  ],
+  map_url: 'https://maps.app.goo.gl/f8YwSP9KhKcoiYNz9',
+  gallery: [
+    'https://greenworld.or.th/wp-content/uploads/2017/11/Template-banner-WEB-1.jpg',
+    'https://s359.kapook.com/pagebuilder/f6704d36-38ca-4d17-9686-6c29699a8ca5.jpg'
+  ],
+  kws: [
+    { w: 'mountain view', w_th: 'วิวภูเขา', s: 'pos' },
+    { w: 'sea of mist', w_th: 'ทะเลหมอก', s: 'pos' },
+    { w: 'challenging trail', w_th: 'เส้นทางท้าทาย', s: 'neu' },
+    { w: 'steep climb', w_th: 'ทางชัน', s: 'neg' },
+    { w: 'nature', w_th: 'ธรรมชาติ', s: 'pos' },
+    { w: 'camping', w_th: 'กางเต็นท์', s: 'pos' },
+    { w: 'limited facilities', w_th: 'สิ่งอำนวยความสะดวกจำกัด', s: 'neg' },
+    { w: 'sunrise', w_th: 'ชมพระอาทิตย์ขึ้น', s: 'pos' }
+  ],
+  ai: 'Visitors highly appreciate the stunning mountain scenery and sea of mist.',
+  ai_th: 'นักท่องเที่ยวชื่นชอบวิวภูเขาและทะเลหมอกที่สวยงามเป็นพิเศษ'
+},
+  
+  { id: 'doi_suthep',
+     name: 'Wat Phra That Doi Suthep', 
+     name_th: 'วัดพระธาตุดอยสุเทพ', 
+     loc: 'Chiang Mai', loc_th: 'เชียงใหม่', 
+     province: 'Chiang Mai', 
+     region: ['north'], 
+     type: ['culture'], pos: 92, neu: 6, neg: 2, reviews: 1500, 
+     emoji: '🛕', 
+     img: 'https://www.luckypandahotel.com/upload/24442/IpmzqfWUj2.JPG', 
+     description: 'Sacred temple overlooking the city.', 
+     description_th: 'วัดศักดิ์สิทธิ์ที่มองเห็นวิวเมือง', 
+     activities: [{ en: 'Praying', th: 'กราบพระ' }, { en: 'City view', th: 'ชมวิวเมือง' }, { en: 'Stairs climbing', th: 'เดินขึ้นบันได' }], highlights: [{ en: 'Golden pagoda', th: 'พระธาตุทองคำ' }, { en: 'Sacred atmosphere', th: 'บรรยากาศศักดิ์สิทธิ์' }],
+      map_url: 'https://maps.app.goo.gl/4T1WxQaCq3fM6KNT9', 
+      gallery: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKazSRiaDzGaSwr3sR6FqZ0ZdgErBDnVKdtw&s', 
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJN9JSfAv6-rbxG9wBy-TDAzWqHGKldISlsQ&s'], 
+        kws: [{ w: 'beautiful view', w_th: 'วิวสวย', s: 'pos' }, { w: 'many stairs', 
+        w_th: 'บันไดเยอะ', s: 'neg' }, { w: 'sacred', w_th: 'ศักดิ์สิทธิ์', s: 'pos' }, { w: 'crowded', w_th: 'คนเยอะ', s: 'neg' }, { w: 'cultural', w_th: 'วัฒนธรรม', s: 'pos' }, { w: 'well maintained', w_th: 'ดูแลดี', s: 'pos' }, { w: 'entry fee', w_th: 'ค่าเข้า', s: 'neu' }, { w: 'noisy', w_th: 'เสียงดัง', s: 'neg' }], 
+        ai: 'Must-visit for culture lovers.', ai_th: 'สถานที่ที่ไม่ควรพลาดสำหรับผู้รักวัฒนธรรม', },
+  
+  { id: 'wat_umong', 
+    name: 'Wat Umong', 
+    name_th: 'วัดอุโมงค์ สวนพุทธธรรม', loc: 'Chiang Mai', 
+    loc_th: 'เชียงใหม่', province: 'Chiang Mai', 
+    region: ['north'], type: ['culture'], pos: 90, neu: 8, neg: 2, 
+    reviews: 720, emoji: '🏮', 
+    img: 'https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5x9OQFrkgsMzyDkPOfFUYt4VSwaFbhz3d9ufsPfeqaTAtyKvseG.jpg', 
+    description: 'A peaceful temple renowned for its ancient tunnels and tranquil garden surroundings.', 
+    description_th: 'สัมผัสความสงบของวัดอุโมงค์ สวนพุทธธรรม แหล่งท่องเที่ยวเชิงวัฒนธรรมที่โดดเด่นด้วยอุโมงค์โบราณและธรรมชาติอันร่มรื่น', 
+    activities: [{ en: 'Tunnel walking', th: 'เดินในอุโมงค์' }, { en: 'Meditation', th: 'นั่งสมาธิ' }, { en: 'Garden walk', th: 'เดินในสวน' }], 
+    highlights: [{ en: 'Peaceful', th: 'เงียบสงบ' }, { en: 'Ancient tunnels', th: 'อุโมงค์โบราณ' }], 
+    map_url: 'https://maps.app.goo.gl/2jnJLuJWX172s1Nu8', 
+    gallery: [
+      'https://res.klook.com/image/upload/w_500,h_313,c_fill,q_85/activities/plehn9ljlxqigcudzobx.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp9UYZtRJ1d-Va4dVr3FYTGUDUZksN17WEaw&s'], 
+      kws: [{ w: 'peaceful', w_th: 'เงียบสงบ', s: 'pos' }, { w: 'cool tunnels', w_th: 'อุโมงค์เย็น', s: 'pos' }, { w: 'old', w_th: 'เก่าแก่', s: 'pos' }, { w: 'hard to find', w_th: 'หายาก', s: 'neg' }, { w: 'nature', w_th: 'ธรรมชาติ', s: 'pos' }, { w: 'few tourists', w_th: 'นักท่องเที่ยวน้อย', s: 'pos' }, { w: 'no sign', w_th: 'ป้ายน้อย', s: 'neg' }, { w: 'meditation', w_th: 'ทำสมาธิ', s: 'pos' }], ai: 'A peaceful escape from city noise.', ai_th: 'สถานที่หลบหนีความวุ่นวายในเมืองที่เงียบสงบ', },
+  
+  { id: 'nimman', 
+    name: 'Nimman Road', 
+    name_th: 'ถนนนิมมานเหมินท์', 
+    loc: 'Chiang Mai', 
+    loc_th: 'เชียงใหม่', 
+    province: 'Chiang Mai', 
+    region: ['north'], 
+    type: ['culture'], 
+    pos: 82, neu: 12, neg: 6, reviews: 1100, emoji: '☕', 
+    img: 'https://cdn.chiangmainews.co.th/wp-content/uploads/2020/04/04213624/1-88.jpg', 
+    description: 'Trendy street with cafes and shops.', 
+    description_th: 'ถนนสายฮิปที่มีคาเฟ่และร้านค้ามากมาย', 
+    activities: [{ en: 'Cafe hopping', th: 'ตระเวนคาเฟ่' }, { en: 'Shopping', th: 'ช้อปปิ้ง' }, { en: 'Dining', th: 'ทานอาหาร' }], 
+    highlights: [{ en: 'Trendy', th: 'ทันสมัย' }, { en: 'Cafes', th: 'ร้านกาแฟ' }], 
+    map_url: 'https://maps.app.goo.gl/SBBQkhGqPPUqHtaV8', 
+    gallery: [
+      'https://f.ptcdn.info/732/055/000/p2rcg6nkn2ibp4Axye8-o.jpg', 
+      'https://image-tc.galaxy.tf/wijpeg-9n6soz0qk4l52tsnmpus0pp05/one-nimman-nimmana-haeminda-road-jpg.jpg'], 
+    kws: [{ w: 'trendy', w_th: 'ทันสมัย', s: 'pos' }, { w: 'good cafes', w_th: 'ร้านกาแฟดี', s: 'pos' }, { w: 'crowded', w_th: 'คนเยอะ', s: 'neg' }, { w: 'expensive', w_th: 'ราคาแพง', s: 'neg' }, { w: 'vibrant', w_th: 'คึกคัก', s: 'pos' }, { w: 'parking hard', w_th: 'จอดรถยาก', s: 'neg' }, { w: 'walkable', w_th: 'เดินง่าย', s: 'pos' }, { w: 'good vibes', w_th: 'บรรยากาศดี', s: 'pos' }], ai: 'The heart of modern Chiang Mai lifestyle.', ai_th: 'หัวใจสำคัญของไลฟ์สไตล์เชียงใหม่สมัยใหม่', }
+,
+//===================*/
+  {
     id: 'phangnga',
     name: 'Phang Nga Bay',
     name_th: 'อ่าวพังงา',
@@ -25,7 +191,7 @@ export const PLACES_DATA = [
       { en: 'Stunning limestone cliff formations', th: 'หน้าผาหินปูนสถาปัตยกรรมธรรมชาติตระการตา' },
       { en: 'Calm and smooth emerald waters', th: 'ผืนน้ำสีเขียวมรกตที่นิ่งสงบเดินทางสะดวก' }
     ],
-    map_url: 'https://maps.app.goo.gl/uP6uA9z7wreY3wU29',
+    map_url: 'https://maps.app.goo.gl/jaXoU1Wq8mDYC3Gn8',
     gallery: [
       'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
       'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
@@ -69,10 +235,10 @@ export const PLACES_DATA = [
       { en: 'Refreshing alpine climate year-round', th: 'สภาพอากาศหนาวเย็นสไตล์เทือกเขาสูงตลอดทั้งปี' },
       { en: 'Pristine and well-preserved nature paths', th: 'เส้นทางเดินเท้าและบันไดป่าไม้ที่อนุรักษ์ธรรมชาติอย่างดี' }
     ],
-    map_url: 'https://maps.app.goo.gl/34aX6V25dD7YFpXg6',
+    map_url: 'https://maps.app.goo.gl/23Wq7Qyb6zs46y2f9',
     gallery: [
-      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
-      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80'
+      'https://mushroomtravelpage.b-cdn.net/wp-content/uploads/2016/11/1-canva-1024x683.png',
+      'https://s.isanook.com/tr/0/ud/282/1412729/4-3_1.jpg?ip/crop/w670h402/q80/jpg'
     ],
     kws: [
       { w: 'beautiful misty sunrise', w_th: 'ทัศนียภาพพระอาทิตย์ขึ้นท่ามกลางทะเลหมอก', s: 'pos' },
@@ -113,10 +279,10 @@ export const PLACES_DATA = [
       { en: 'Magnificent and vast structural ruins', th: 'โบราณสถานขนาดใหญ่ที่งดงามและน่าอัศจรรย์ทางโบราณคดี' },
       { en: 'Very easy accessibility via train from Bangkok', th: 'การคมนาคมที่สะดวกสบายอย่างมาก สามารถนั่งรถไฟตรงจากกรุงเทพฯ' }
     ],
-    map_url: 'https://maps.app.goo.gl/uP9bV7Z7wreY3wU49',
+    map_url: 'https://maps.app.goo.gl/aGR68EiesgNhqqqE9',
     gallery: [
-      'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&q=80',
-      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80'
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/%E0%B8%AD%E0%B8%B8%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%A8%E0%B8%A3%E0%B8%B5%E0%B8%AD%E0%B8%A2%E0%B8%B8%E0%B8%98%E0%B8%A2%E0%B8%B2.jpg/3840px-%E0%B8%AD%E0%B8%B8%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%A8%E0%B8%A3%E0%B8%B5%E0%B8%AD%E0%B8%A2%E0%B8%B8%E0%B8%98%E0%B8%A2%E0%B8%B2.jpg',
+      'https://www.khaosod.co.th/wpapp/uploads/2018/04/%E0%B8%AD%E0%B8%A2%E0%B8%B8%E0%B8%98%E0%B8%A2%E0%B8%B2-1.jpg'
     ],
     kws: [
       { w: 'magnificent ancient temples', w_th: 'โบราณสถานและวัดเก่าแก่ที่งดงามวิจิตร', s: 'pos' },
@@ -157,10 +323,10 @@ export const PLACES_DATA = [
       { en: 'Breathtaking elite Thai architecture', th: 'สถาปัตยกรรมไทยชั้นสูงสีทองอร่ามวิจิตรตระการตาเหนือระดับ' },
       { en: 'Deep immersion into royal heritage', th: 'สัมผัสประสบการณ์รากเหง้าประวัติศาสตร์ราชสำนักไทยที่ลึกซึ้ง' }
     ],
-    map_url: 'https://maps.app.goo.gl/d8mBwpx7SgXGZnyL6',
+    map_url: 'https://maps.app.goo.gl/UXRNvhvvKRj7XFtF6',
     gallery: [
-      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80',
-      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+      'https://img.kapook.com/u/2023/sutasinee/04/WatPhraKaew11.jpg',
+      'https://www.novotelbkk.com/wp-content/uploads/sites/62/2024/08/Wat-Phra-Kaew.jpg'
     ],
     kws: [
       { w: 'magnificent architecture', w_th: 'สถาปัตยกรรมที่งดงามวิจิตรบรรจง', s: 'pos' },
@@ -201,10 +367,10 @@ export const PLACES_DATA = [
       { en: 'Wild elephant encounters', th: 'มีโอกาสพบเจอโขลงช้างป่าธรรมชาติสูง' },
       { en: 'Refreshing cool climate year-round', th: 'สภาพอากาศเย็นสบายสดชื่นตลอดทั้งปี' }
     ],
-    map_url: 'https://maps.app.goo.gl/d8mBwpx7SgXGZnyL6',
+    map_url: 'https://maps.app.goo.gl/hDWzA9yJU5aimzna8',
     gallery: [
-      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80'
+      'https://mpics.mgronline.com/pics/Images/564000010482201.JPEG',
+      'https://www.khaoyainationalpark.com/application/files/4116/2306/4855/slide_.jpg'
     ],
     kws: [
       { w: 'rich biodiversity', w_th: 'ความหลากหลายทางชีวภาพที่อุดมสมบูรณ์', s: 'pos' },
@@ -245,10 +411,10 @@ export const PLACES_DATA = [
       { en: 'Premium luxurious wellness resort architecture', th: 'รีสอร์ทหรูพรีเมียมริมชายหาดที่มีสปาระดับเวิลด์คลาส' },
       { en: 'Excellent island nightlife and dining options', th: 'แสงสียามค่ำคืนและร้านอาหารซีฟู้ดริมทะเลมีให้เลือกมากมาย' }
     ],
-    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    map_url: 'https://maps.app.goo.gl/ED5yKeCTjFoPY1CT7',
     gallery: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
-      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+      'https://www.agoda.com/wp-content/uploads/2024/07/Surat-Thani-Thailand-1920x1080-1-1244x700.jpg',
+      'https://blog.bangkokair.com/wp-content/uploads/2023/04/image-2.png'
     ],
     kws: [
       { w: 'gorgeous white beach', w_th: 'ชายหาดทรายขาวที่สวยงามระยิบระยับ', s: 'pos' },
@@ -289,10 +455,10 @@ export const PLACES_DATA = [
       { en: 'Vast array of budget and premium hotel choices', th: 'มีตัวเลือกโรงแรมโฮสเทลรองรับทุกระดับงบประมาณเงินทุน' },
       { en: 'Extremely high energy entertainment hotspot', th: 'พื้นที่ท่องเที่ยวเต็มไปด้วยพลังงาน ความสนุกคึกคักตลอด 24 ชม.' }
     ],
-    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    map_url: 'https://maps.app.goo.gl/8HSuGrP9Z9qyLyAt7',
     gallery: [
-      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTngy4iifCBzMDk7xdpzP1L5o1ymBFQSfR-BQ&s',
+      'https://assets.grab.com/wp-content/uploads/sites/10/2025/11/24175415/shutterstock_2546640711_1024x683.jpg'
     ],
     kws: [
       { w: 'lively beach activities', w_th: 'กิจกรรมริมชายหาดที่คึกคักมีชีวิตชีวา', s: 'pos' },
@@ -333,10 +499,10 @@ export const PLACES_DATA = [
       { en: ' Elite visual shock value and originality', th: 'คุณค่าดีไซน์ทางสายตาที่วิจิตรงดงามแปลกใหม่ระดับโลก' },
       { en: 'Profound hell-and-heaven artistic philosophy', th: 'การผสมผสานศิลปะเข้ากับคติธรรมสอนใจนรกสวรรค์ที่ลึกซึ้ง' }
     ],
-    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    map_url: 'https://maps.app.goo.gl/2czLZfeFvYQ9yrna9',
     gallery: [
-      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
-      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80'
+      'https://image-tc.galaxy.tf/wijpeg-7pqufmqti0twcdzzq3btsb5lq/wat-rong-khun_standard.jpg?crop=0%2C0%2C555%2C416',
+      'https://res.klook.com/image/upload/w_500,h_313,c_fill,q_85/activities/cktwcj1njeige6howng7.jpg'
     ],
     kws: [
       { w: 'stunning unique architecture', w_th: 'สถาปัตยกรรมที่มีเอกลักษณ์สวยงามโดดเด่น', s: 'pos' },
@@ -365,7 +531,7 @@ export const PLACES_DATA = [
     pos: 86, neu: 9, neg: 5,
     reviews: 1450,
     emoji: '🦛',
-    img: 'https://static.ticket2attraction.com/gallery/916baa58-88e5-4270-ba16-b367ba6a72a2/f66bbf8d-9853-4319-8f61-16cebcd25a37-1200.webp',
+    img: 'https://ik.imagekit.io/tvlk/blog/2024/11/%E0%B8%AA%E0%B8%A7%E0%B8%99%E0%B8%AA%E0%B8%B1%E0%B8%95%E0%B8%A7%E0%B9%8C%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%82%E0%B8%B2%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%A7-1024x555.png?tr=q-70,c-at_max,w-1000,h-600',
     description: 'A massive open concept zoo dedicated to wildlife conservation, animal enrichment, and family-friendly interaction.',
     description_th: 'สวนสัตว์เปิดขนาดใหญ่ที่มุ่งเน้นการอนุรักษ์พันธุ์สัตว์ป่า มอบประสบการณ์การสัมผัสและเรียนรู้ชีวิตสัตว์อย่างใกล้ชิดสำหรับครอบครัว',
     activities: [
@@ -377,9 +543,10 @@ export const PLACES_DATA = [
       { en: 'Close contact with friendly animals', th: 'ใกล้ชิดกับสัตว์ป่าผู้น่ารักและปลอดภัย' },
       { en: 'Spacious natural habitat enclosures', th: 'ส่วนจัดแสดงกว้างขวางเสมือนธรรมชาติแท้จริง' }
     ],
-    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    map_url: 'https://maps.app.goo.gl/VHVF9gAjQEoq48kw8',
     gallery: [
-      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+      'https://policenewsvarieties.com/wp-content/uploads/2024/04/IMG_0014.jpeg',
+      'https://res.klook.com/image/upload/w_750,h_469,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/rwmmpeytcdfoailz8ylw.jpg',
     ],
     kws: [
       { w: 'adorable pygmy hippo', w_th: 'ลูกฮิปโปแคระที่น่ารักน่าเอ็นดู', s: 'pos' },
@@ -408,7 +575,7 @@ export const PLACES_DATA = [
     pos: 84, neu: 10, neg: 6,
     reviews: 2840,
     emoji: '🦁',
-    img: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80',
+    img: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/03/c8/24/a3/safari-world.jpg?w=900&h=500&s=1',
     description: 'Thailands premier open-air zoo and leisure park, featuring a thrilling drive-through safari park and world-class educational marine mammal spectacles.',
     description_th: 'ธีมปาร์คสวนสัตว์เปิดระดับแนวหน้าของไทย โดดเด่นด้วยโซนขับรถส่องสัตว์นักล่าสไตล์แอฟริกา และฮับการแสดงสัตว์แสนรู้วิชาการระดับโลก',
     activities: [
@@ -420,9 +587,10 @@ export const PLACES_DATA = [
       { en: 'Unmatched interactive close encounters with wildlife', th: 'การเปิดมิติมอบโอกาสสัมผัสและให้อาหารสัตว์ป่าที่ใกล้ชิดที่สุด' },
       { en: 'Highly maintained theme park hub and amenities', th: 'พื้นที่สะอาด ระบบสิ่งอำนวยความสะดวกธีมปาร์คจัดการได้ดีเยี่ยม' }
     ],
-    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    map_url: 'https://maps.app.goo.gl/gmXvAeQKitN4C1wF7',
     gallery: [
-      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+      'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2000514244322/Safari-World-Bangkok-Tickets-dfba7bcf-db12-4d4e-86a6-f9f5ecebf945.jpeg?tr=q-100,c-at_max,w-1000,h-750,_src=imagekit&tr=c-at_max',
+      'https://www.blackstreetstore.com/wp-content/uploads/2024/11/%E0%B8%8B%E0%B8%B2%E0%B8%9F%E0%B8%B2%E0%B8%A3%E0%B8%B5%E0%B9%80%E0%B8%A7%E0%B8%B4%E0%B8%A5%E0%B8%94%E0%B9%8C-%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E-1.jpg'
     ],
     kws: [
       { w: 'incredible drive-through safari', w_th: 'โซนขับรถชมสัตว์ป่าเปิดที่น่าตื่นตาตื่นใจ', s: 'pos' },
@@ -451,7 +619,7 @@ export const PLACES_DATA = [
     pos: 48, neu: 20, neg: 32,
     reviews: 1980,
     emoji: '🌕',
-    img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+    img: 'https://f.ptcdn.info/350/021/000/1405615190-IMG8204-o.jpg',
     description: 'A vibrant beach on Koh Phangan globally renowned for hosting the high-energy Full Moon Party, alongside a scenic white sand coastline.',
     description_th: 'ชายหาดชื่อดังแห่งเกาะพะงันที่เป็นศูนย์กลางการจัดงานฟูลมูนปาร์ตี้ระดับโลก โดดเด่นด้วยทัศนียภาพหาดโค้งทรายนุ่มยามไม่มีการจัดงาน',
     activities: [
@@ -463,9 +631,10 @@ export const PLACES_DATA = [
       { en: 'Unrivaled tropical nightlife and electronic music hubs', th: 'ฮับความบันเทิงและปาร์ตี้ริมทะเลเขตร้อนที่เต็มไปด้วยพลังงานอันดับหนึ่ง' },
       { en: 'Gorgeous scenic sand quality during off-peak days', th: 'ผืนทรายและน้ำทะเลมีความสวยงามนุ่มนวลมากในช่วงไร้เทศกาล' }
     ],
-    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    map_url: 'https://maps.app.goo.gl/DKW3EJsJ9syqNEU86',
     gallery: [
-      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80'
+      'https://www.luxetravelagent.com/wp-content/uploads/2020/08/full-moon-party.jpg',
+      'https://mushroomtravelpage.b-cdn.net/wp-content/uploads/2020/01/thailand-full-moon-party-2020.jpeg',
     ],
     kws: [
       { w: 'vibrant party atmosphere', w_th: 'บรรยากาศงานปาร์ตี้ที่คึกคักเต็มไปด้วยพลัง', s: 'pos' },
@@ -494,7 +663,7 @@ export const PLACES_DATA = [
     pos: 42, neu: 18, neg: 40,
     reviews: 3120,
     emoji: '🛶',
-    img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&q=80',
+    img: 'https://static.thairath.co.th/media/B6FtNKtgSqRqbnNsbKFfTBhbnJ29nvkMh0CXoaBPslAHkkUd52iMrv8vGxA6mo2vAsX0Y.webp',
     description: 'The most famous historic floating market in Thailand, bustling with vendor paddle boats selling local fruits and traditional dishes.',
     description_th: 'ตลาดน้ำเก่าแก่ที่มีชื่อเสียงที่สุดของไทย คึกคักด้วยภาพวิถีชีวิตชาวสวนพายเรือขายผลไม้และอาหารคาวหวานดั้งเดิมสองฝั่งคลอง',
     activities: [
@@ -506,9 +675,10 @@ export const PLACES_DATA = [
       { en: 'Iconic and historic Thai river canal visual metrics', th: 'ภาพจำประวัติศาสตร์ตลาดน้ำริมคลองที่เป็นแลนด์มาร์คสำคัญของไทย' },
       { en: 'Great availability of fresh local fruits and snacks', th: 'มีแผงขายผลไม้สดจากสวน ขนมไทย และของกินท้องถิ่นหลากหลาย' }
     ],
-    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    map_url: 'https://maps.app.goo.gl/1CsXu7WEWabZKNWB8',
     gallery: [
-      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQQQdgpOz5d1GLPMMJrrVQ4np37zyh_kyzVw&s',
+      'https://f.ptcdn.info/797/051/000/orfd65lxbFL7BQnQWT7-o.jpg'
     ],
     kws: [
       { w: 'traditional canal lifestyle', w_th: 'ภาพจำวิถีชีวิตริมคลองแบบดั้งเดิม', s: 'pos' },
@@ -1339,12 +1509,12 @@ export function getSentimentLabel(pos, lang = 'en') {
   if (lang === 'th') {
     if (pos >= 85) return 'ดีเยี่ยม';
     if (pos >= 70) return 'ดีมาก';
-    if (pos >= 55) return 'ปะปนกัน';
+    if (pos >= 55) return 'กลาง';
     return 'ควรปรับปรุง';
   } else {
     if (pos >= 85) return 'Excellent';
     if (pos >= 70) return 'Good';
-    if (pos >= 55) return 'Mixed';
+    if (pos >= 55) return 'Neutral';
     return 'Needs work';
   }
 }

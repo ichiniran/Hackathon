@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { Search, MapPin } from 'lucide-react';
 import { PLACES_DATA, FILTER_TAGS, getSentimentLabel, getSentimentClass } from '../data/places';
 import './ExplorePage.css';
@@ -107,15 +107,18 @@ export default function ExplorePage({ onSelectPlace, currentLang = 'en' }) {
   let list = PLACES_DATA.filter(p => {
     /* ── 🟢 1. การปรับปรุงช่องค้นหา (Search bar) ให้ตรวจจับคำค้นหาจากชื่อจังหวัดได้ด้วย ── */
     const q = query.toLowerCase();
+    const placeName = (p.name || '').toLowerCase();
+    const placeLoc = (p.loc || '').toLowerCase();
+    const placeNameEn = (p.nameEn || p.name || '').toLowerCase();
     const placeNameTh = p.name_th ? p.name_th.toLowerCase() : '';
     const placeLocTh = p.loc_th ? p.loc_th.toLowerCase() : '';
     const provEn = p.province ? p.province.toLowerCase() : '';
     const provTh = p.province_th ? p.province_th.toLowerCase() : '';
 
     if (q && 
-        !p.name.toLowerCase().includes(q) && 
-        !p.loc.toLowerCase().includes(q) && 
-        !p.nameEn.toLowerCase().includes(q) &&
+      !placeName.includes(q) && 
+      !placeLoc.includes(q) && 
+      !placeNameEn.includes(q) &&
         !placeNameTh.includes(q) &&
         !placeLocTh.includes(q) &&
         !provEn.includes(q) && // ตรวจจับจังหวัดภาษาอังกฤษ

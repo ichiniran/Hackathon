@@ -205,7 +205,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
                 <Compass size={15} /> {currentLang === 'en' ? 'View Tours' : 'ดูแพ็กเกจทัวร์'}
               </button>
               <button className="action-btn action-btn-outline" onClick={() => setShowCompare(true)}>
-                <BarChart2 size={15} /> {currentLang === 'en' ? 'Compare Destinations' : 'เปรียบเทียบจุดหมาย'}
+                <BarChart2 size={15} /> {currentLang === 'en' ? 'Compare Destinations' : 'เปรียบเทียบสถานที่'}
               </button>
             </div>
 
@@ -243,7 +243,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
         {/* ส่วนล่างสุด: แนะนำสถานที่ใกล้เคียงในภูมิภาค */}
         <div className="nearby-recommendations-section" style={{ marginTop: '48px', paddingTop: '24px', borderTop: '1px solid var(--border-color, #eee)' }}>
           <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '20px', color: 'var(--text-primary)' }}>
-            {currentLang === 'en' ? '⚡ Travelers Also Viewed (Nearby Attractions)' : '⚡ นักท่องเที่ยวรายอื่นยังสนใจ (สถานที่ใกล้เคียงในภูมิภาค)'}
+            {currentLang === 'en' ? 'Nearby Attractions' : 'สถานที่ใกล้เคียง'}
           </h3>
           <div className="nearby-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
             {getNearbyRecommendations().map(p => {
@@ -314,7 +314,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
         </div>
       )}
 
-      {showCompare && <CompareModal currentPlace={place} allPlaces={allPlaces} onClose={() => setShowCompare(false)} />}
+      {showCompare && <CompareModal currentPlace={place} allPlaces={allPlaces} onClose={() => setShowCompare(false)} currentLang={currentLang} />}
     </div>
   );
 }

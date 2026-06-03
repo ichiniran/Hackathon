@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Search, MessageSquare, Layers, Activity, LayoutDashboard, MapPin, Star, Globe } from "lucide-react";
+import { Search, MessageSquare, Layers, Activity, LayoutDashboard, MapPin, Star } from "lucide-react";
 import glowImg from "./assets/glow.png";
 import travelerImg from "./assets/traveler.png";
+import logoImg from "./assets/Logo_G23.png";
 import ExplorePage  from "./pages/ExplorePage";
 import DetailPage   from "./pages/DetailPage";
 import BusinessPage from "./pages/BusinessPage";
@@ -28,7 +29,6 @@ function AnimatedCounter({ end, suffix = "", duration = 1400, format = value => 
 
   useEffect(() => {
     if (!play) {
-      setValue(0);
       return;
     }
 
@@ -373,13 +373,18 @@ if (page === 'dashboard') {
     <>
       {/* ── Persistent Navbar ── */}
       <nav className="navbar">
-        <span
+        <button
           className="nav-logo"
           style={{ cursor: 'pointer' }}
           onClick={() => go('home')}
         >
-          Logo
-        </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <img src={logoImg} alt="Logo G23" className="nav-logo-img" />
+            <span className="nav-logo-text" style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary, #222)' }}>
+              <span className="logo-sense">TravelSense</span><span className="logo-ai">AI</span>
+            </span>
+          </div>
+        </button>
         <ul className="nav-links">
           <li>
             <a href="#" onClick={e => { e.preventDefault(); go('explore'); }}

@@ -119,9 +119,15 @@
 .dash-logo-dot {
   width: 26px; height: 26px;
   border-radius: 7px;
-  background: var(--coral-dark);
+  background: transparent;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+}
+.dash-logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  display: block;
 }
 .dash-logo-dot svg { width: 14px; height: 14px; fill: none; stroke: white; stroke-width: 2; }
 .dash-logo-name span { color: var(--coral-dark); }
@@ -334,6 +340,12 @@
   box-sizing: border-box;
   transition: background 0.25s, border-color 0.25s;
 }
+
+/* Red inline text for negative labels */
+.text-neg { color: #EF4444; font-weight: 600; }
+
+/* Green inline text for positive labels */
+.text-pos { color: #16A34A; font-weight: 600; }
 .dp-title {
   font-size: 11px; font-weight: 600;
   text-transform: uppercase;
