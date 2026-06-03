@@ -349,19 +349,19 @@ if (page === 'dashboard') {
         <ul className="nav-links">
           <li>
             <a href="#" onClick={e => { e.preventDefault(); go('explore'); }}
-               style={page === 'explore' || page === 'detail' ? { color: '#F47C5A', fontWeight: 600 } : {}}>
+               style={page === 'explore' || page === 'detail' ? { color: ' #f67c7c', fontWeight: 600 } : {}}>
               {lang === 'en' ? 'Explore' : 'ค้นหา'}
             </a>
           </li>
           <li>
             <a href="#" onClick={e => { e.preventDefault(); go('business'); }}
-               style={page === 'business' ? { color: '#F47C5A', fontWeight: 600 } : {}}>
+               style={page === 'business' ? { color: ' #f67c7c', fontWeight: 600 } : {}}>
               {lang === 'en' ? 'Business' : 'ภาคธุรกิจ'}
             </a>
           </li>
           <li>
             <a href="#" onClick={e => { e.preventDefault(); go('about'); }}
-                style={page === 'about' ? { color: '#F47C5A', fontWeight: 600 } : {}}>
+                style={page === 'about' ? { color: ' #f67c7c', fontWeight: 600 } : {}}>
               {lang === 'en' ? 'About' : 'เกี่ยวกับเรา'}
             </a>
           </li>
