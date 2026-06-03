@@ -334,7 +334,11 @@ export default function ExplorePage({ onSelectPlace, currentLang = 'en' }) {
             </span>
             <div className="sort-wrap">
               <label>{currentLang === 'en' ? "Sort by" : "เรียงตาม"}</label>
-              <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
+              <select
+                value={sortBy}
+                onChange={e => setSortBy(e.target.value)}
+                style={{ fontFamily: "'Inter', 'Noto Sans Thai', sans-serif" }}
+              >
                 <option value="pos">{currentLang === 'en' ? "% Positive" : "% รีวิวเชิงบวก"}</option>
                 <option value="reviews">{currentLang === 'en' ? "Review count" : "จำนวนรีวิวสูงสุด"}</option>
               </select>

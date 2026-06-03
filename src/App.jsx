@@ -8,6 +8,7 @@ import DetailPage   from "./pages/DetailPage";
 import BusinessPage from "./pages/BusinessPage";
 import DashboardPage from "./pages/DashboardPage";
 import AboutPage from "./pages/AboutPage";
+import Modal from "./components/Modal"; // 👈 แยก Modal ไปจัดการให้เป็นระบบ
 import "./App.css";
 import { PLACES_DATA } from './data/places';
 
@@ -28,9 +29,7 @@ function AnimatedCounter({ end, suffix = "", duration = 1400, format = value => 
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!play) {
-      return;
-    }
+    if (!play) return;
 
     let frameId = 0;
     const start = performance.now();
@@ -56,7 +55,6 @@ function AnimatedCounter({ end, suffix = "", duration = 1400, format = value => 
   );
 }
 
-// 🟢 ปรับเปลี่ยนเนื้อหาของขั้นตอนตามโครงสร้างภาษาที่เลือกใช้งาน
 const getSteps = (lang) => [
   { 
     icon: <MessageSquare size={18} />, 
@@ -80,7 +78,7 @@ const getSteps = (lang) => [
   },
 ];
 
-/* ─────────────────── HOME PAGE ─────────────────── */
+/* ─── HOME PAGE ─── */
 function HomePage({ onExplore, onBusiness, lang }) {
   const statsRef = useRef(null);
   const analysisRef = useRef(null);
@@ -163,7 +161,6 @@ function HomePage({ onExplore, onBusiness, lang }) {
               {lang === 'en' ? "Business Dashboard" : "แดชบอร์ดสำหรับธุรกิจ"}
             </button>
           </div>
-          {/* ── Stats ── */}
           <section className="stats-section" ref={statsRef}>
             <div className="stats-grid">
               <div className={`stat-item ${statsVisible ? "is-visible" : ""}`}>
@@ -187,11 +184,7 @@ function HomePage({ onExplore, onBusiness, lang }) {
       </section>
 
       <section className="stats-analysis-layout">
-        <section
-          className="analysis-section"
-          ref={analysisRef}
-          style={{ '--analysis-offset': `${analysisParallax}px` }}
-        >
+        <section className="analysis-section" ref={analysisRef} style={{ '--analysis-offset': `${analysisParallax}px` }}>
           <div className="analysis-card">
             <div className="card-header">
               <div>
@@ -206,24 +199,20 @@ function HomePage({ onExplore, onBusiness, lang }) {
                 <span className="live-text">{lang === 'en' ? "Real‑time" : "เรียลไทม์"}</span>
               </div>
             </div>
-            
             <div className="sentiment-bars">
               <SentimentBar label={lang === 'en' ? "Positive" : "แง่บวก"} pct={76} type="positive" animate={true} />
               <SentimentBar label={lang === 'en' ? "Neutral" : "ทั่วไป"}  pct={14} type="neutral"  animate={true} />
               <SentimentBar label={lang === 'en' ? "Negative" : "แง่ลบ"} pct={10}  type="negative" animate={true} />
             </div>
-            
             <div className="review-chip" style={{ marginTop: 0 }}>
               <Star size={13} fill="#F59E0B" stroke="none" />
               {lang === 'en' ? <>Based on <strong>12,035</strong> foreign tourist reviews</> : <>อ้างอิงจากรีวิวนักท่องเที่ยวต่างชาติ <strong>12,035</strong> รายการ</>}
             </div>
-            
             <div className="tags">
               <span className="tag pos-tag">{lang === 'en' ? "rich biodiversity" : "ความหลากหลายทางชีวภาพสูง"}</span>
               <span className="tag neu-tag">{lang === 'en' ? "basic visitor amenities" : "สิ่งอำนวยความสะดวกขั้นพื้นฐาน"}</span>
               <span className="tag neg-tag">{lang === 'en' ? "dual pricing system" : "การเก็บค่าบริการสองมาตรฐาน"}</span>
             </div>
-            
             <div className="ai-box">
               <div className="ai-box-label">{lang === 'en' ? "✦ AI Key Insight" : "✦ สรุปอินไซต์หลักโดย AI"}</div>
               <div className="ai-box-text">
@@ -304,28 +293,25 @@ function HomePage({ onExplore, onBusiness, lang }) {
   );
 }
 
-/* ─────────────────── ROOT ─────────────────── */
+/* ─── ROOT APP ─── */
 export default function App() {
   const [page, setPage] = useState(() => sessionStorage.getItem('page') || 'home');
   const [place, setPlace] = useState(null);
-  const [autoLogin, setAutoLogin] = useState(false);
+  const [showGlobalModal, setShowGlobalModal] = useState(false);
+  const [modalMode, setModalMode] = useState('register'); // 'login' หรือ 'register'
   const [placeHistory, setPlaceHistory] = useState([]);
-  // 🟢 เพิ่ม State ควบคุมภาษาของระบบ (EN เป็นค่าเริ่มต้น)
   const [lang, setLang] = useState(() => localStorage.getItem('app_lang') || 'en');
 
-function go(p) {
+  function go(p) {
     sessionStorage.setItem('page', p);
     setPage(p);
     window.scrollTo(0, 0);
-    
-    // 🔥 แก้ไขจุดบั๊ก: ถ้าผู้ใช้ถอยร่นกลับมาที่หน้าบอร์ดค้นหาหลักแล้ว ให้ทำการล้างโครงสร้าง Stack ทันที ป้องกันขยะค้าง!
     if (p === 'explore' || p === 'home') {
       setPlaceHistory([]);
     }
   }
 
   const handleSelectPlace = (targetPlace) => {
-    // 🛡️ เช็คเงื่อนไขความปลอดภัย: ป้องกันการกดเบิ้ลหรือบันทึกสถานที่ซ้ำซ้อนลง Stack โดยไม่จำเป็น
     if (place && place.id !== targetPlace.id) {
       setPlaceHistory(prev => [...prev, place]);
     }
@@ -335,53 +321,45 @@ function go(p) {
 
   const handlePlaceBack = () => {
     if (placeHistory.length > 0) {
-      // ดึงสถานที่ก่อนหน้าล่าสุดขึ้นมาแสดงผลต่อ
       const previousPlace = placeHistory[placeHistory.length - 1];
-      
-      // ตัดชิ้นข้อมูลท้ายสุดออกจาก Stack อาร์เรย์ประวัติ
       setPlaceHistory(prev => prev.slice(0, -1));
       setPlace(previousPlace);
-      
-      // บังคับสแตนด์บายอยู่ที่หน้าเพจรายละเอียดเหมือนเดิมแบบไหลลื่น
       sessionStorage.setItem('page', 'detail');
       setPage('detail');
       window.scrollTo(0, 0);
     } else {
-      // 🛡️ หากแกะประวัติจนเกลี้ยงหมดตัวค้างแล้ว ให้ส่งผู้ใช้กลับสู่หน้าค้นหาพร้อมเครียร์ค่าตัวแปรทั้งหมดให้บริสุทธิ์
       setPlace(null);
       setPlaceHistory([]);
       go('explore');
     }
   };
-  // ฟังก์ชันสลับภาษา
+
   function toggleLang(selectedLang) {
     localStorage.setItem('app_lang', selectedLang);
     setLang(selectedLang);
   }
 
-if (page === 'dashboard') {
-  return (
-    <DashboardPage
-      onLogout={() => go('home')}
-      onGoPlans={() => go('business')}
-      currentLang={lang} // เพิ่มคุณสมบัตินี้เข้าไปเพื่อให้เปลี่ยนภาษาตามหน้าหลักได้ครับ
-    />
-  );
-}
+  if (page === 'dashboard') {
+    return (
+      <DashboardPage
+        onLogout={() => go('home')}
+        onGoPlans={() => go('business')}
+        currentLang={lang}
+        onToggleLang={toggleLang}
+        
+      />
+    );
+  }
 
   return (
     <>
       {/* ── Persistent Navbar ── */}
       <nav className="navbar">
-        <button
-          className="nav-logo"
-          style={{ cursor: 'pointer' }}
-          onClick={() => go('home')}
-        >
+        <button className="nav-logo" style={{ cursor: 'pointer' }} onClick={() => go('home')}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <img src={logoImg} alt="Logo G23" className="nav-logo-img" />
             <span className="nav-logo-text" style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary, #222)' }}>
-              <span className="logo-sense">TravelSense</span><span className="logo-ai">AI</span>
+              <span className="logo-sense">TravelSense</span>
             </span>
           </div>
         </button>
@@ -406,26 +384,13 @@ if (page === 'dashboard') {
           </li>
         </ul>
         <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          
-          {/* 🟢 ปุ่มสลับภาษา TH / EN แบบกำหนดเอง เสถียรและใช้งานได้แน่นอน */}
           <div className="custom-lang-switcher" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', background: '#F5F5F7', padding: '3px', borderRadius: '20px', border: '1px solid #E8E8E8' }}>
-            <button 
-              onClick={() => toggleLang('en')}
-              style={{
-                padding: '4px 10px', borderRadius: '16px', fontSize: '0.75rem', fontWeight: 600, border: 'none', cursor: 'pointer',
-                background: lang === 'en' ? 'var(--coral-dark)' : 'transparent', color: lang === 'en' ? '#fff' : '#666', transition: 'all 0.2s'
-              }}
-            >EN</button>
-            <button 
-              onClick={() => toggleLang('th')}
-              style={{
-                padding: '4px 10px', borderRadius: '16px', fontSize: '0.75rem', fontWeight: 600, border: 'none', cursor: 'pointer',
-                background: lang === 'th' ? 'var(--coral-dark)' : 'transparent', color: lang === 'th' ? '#fff' : '#666', transition: 'all 0.2s'
-              }}
-            >TH</button>
+            <button onClick={() => toggleLang('en')} style={{ padding: '4px 10px', borderRadius: '16px', fontSize: '0.75rem', fontWeight: 600, border: 'none', cursor: 'pointer', background: lang === 'en' ? 'var(--coral-dark)' : 'transparent', color: lang === 'en' ? '#fff' : '#666', transition: 'all 0.2s' }}>EN</button>
+            <button onClick={() => toggleLang('th')} style={{ padding: '4px 10px', borderRadius: '16px', fontSize: '0.75rem', fontWeight: 600, border: 'none', cursor: 'pointer', background: lang === 'th' ? 'var(--coral-dark)' : 'transparent', color: lang === 'th' ? '#fff' : '#666', transition: 'all 0.2s' }}>TH</button>
           </div>
 
-          <button className="btn-ghost" onClick={() => { setAutoLogin(true); go('business'); }}>
+          {/* 🔴 ปุ่มเข้าสู่ระบบ - เรียกใช้งาน Modal ในรูปแบบ Login UI โดยตรง */}
+          <button className="btn-ghost" onClick={() => { setModalMode('login'); setShowGlobalModal(true); }}>
             {lang === 'en' ? 'Log in' : 'เข้าสู่ระบบ'}
           </button>
           <button className="btn-coral" onClick={() => go('business')}>
@@ -435,30 +400,29 @@ if (page === 'dashboard') {
       </nav>
 
       {/* ── Pages ── */}
-  {/* ── Pages ── */}
       {page === 'home'     && <HomePage onExplore={() => go('explore')} onBusiness={() => go('business')} lang={lang} />}
       {page === 'explore'  && <ExplorePage  onSelectPlace={handleSelectPlace} currentLang={lang} />}
-      
-      {/* 🟢 ปรับจุดที่ 2: ผูกฟังก์ชัน handlePlaceBack และ handleSelectPlace ลงใน DetailPage */}
       {page === 'detail'   && place && (
-        <DetailPage 
-          place={place} 
-          onBack={handlePlaceBack} 
-          allPlaces={PLACES_DATA} 
-          currentLang={lang} 
-          onSelectPlace={handleSelectPlace} 
-        />
+        <DetailPage place={place} onBack={handlePlaceBack} allPlaces={PLACES_DATA} currentLang={lang} onSelectPlace={handleSelectPlace} />
       )}
-      
       {page === 'business' && (
         <BusinessPage
-          onLogin={() => go('dashboard')}
-          autoLogin={autoLogin}
-          onModalClose={() => setAutoLogin(false)}
+          onOpenRegisterModal={() => { setModalMode('register'); setShowGlobalModal(true); }} 
           currentLang={lang} 
+         
         />
       )}
       {page === 'about' && <AboutPage currentLang={lang} />}
+
+      {/* ── Global Multi-Mode Modal (Login / Register) ── */}
+      {showGlobalModal && (
+        <Modal
+          mode={modalMode}
+          onClose={() => setShowGlobalModal(false)}
+          onLogin={() => { setShowGlobalModal(false); go('dashboard'); }}
+          currentLang={lang}
+        />
+      )}
     </>
   );
 }

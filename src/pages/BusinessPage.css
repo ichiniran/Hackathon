@@ -140,6 +140,7 @@
 
 /* ─── Pricing ─── */
 .pricing-section {
+  margin-top: -60px;
   padding: 90px 80px;
   background: white;
 }
@@ -166,14 +167,31 @@
 .section-sub { font-size: 0.9rem; color: #888; }
 
 .pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
   gap: 22px;
-  max-width: 1000px;
+  max-width: 800px; /* จำกัดความกว้างเพื่อให้ 2 การ์ดอยู่กึ่งกลาง */
   margin: 0 auto;
+  flex-wrap: wrap; /* ให้ห่อตัวลงมาหากจอเล็ก */
+}
+.pricing-card.locked {
+  background: #fcfcfc;
+  border: 1.5px dashed #ccc;
+  opacity: 0.8;
+  background: #fafafa;
+}
+
+.plan-cta-locked {
+  background: #f0f0f0 !important;
+  color: #a0a0a0 !important;
+  cursor: not-allowed !important;
+  border: 1px solid #ddd !important;
+  box-shadow: none !important;
+  font-family: 'Inter', 'Noto Sans Thai' !important;
 }
 
 .pricing-card {
+  flex: 0 1 360px; /* กำหนดความกว้างฐานของการ์ด */
   border: 1.5px solid #E8E8E8;
   border-radius: 20px;
   padding: 32px 28px 28px;
@@ -204,10 +222,9 @@
   letter-spacing: 0.04em;
 }
 .plan-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #322929;
-  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .pricing-card.featured .plan-name { color: white; }
 .plan-price {
@@ -294,6 +311,7 @@
 .preview-page .preview-section {
   padding: 90px 80px;
   background: #ffffff;
+  margin-top: -60px;
 }
 
 .preview-page .preview-mock {
@@ -550,7 +568,11 @@
 @media (max-width: 900px) {
   .biz-hero { padding: 80px 24px 60px; }
   .pricing-section, .preview-section, .biz-cta { padding: 60px 24px; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .pricing-grid {
+    flex-direction: column;
+    align-items: center;
+    max-width: 360px;
+  }
   .preview-metrics { grid-template-columns: 1fr 1fr; }
   .preview-panels { grid-template-columns: 1fr; }
   .preview-tabs-row { display: none; }

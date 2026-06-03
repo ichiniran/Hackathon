@@ -110,7 +110,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
 
             {/* บล็อก 2: ตัวกรองคำสำคัญตามกรอบงานวิจัย */}
             <div className="detail-panel">
-              <div className="panel-title">{currentLang === 'en' ? 'Filter Keywords by Research Framework' : 'กรองคำสำคัญตามกรอบงานวิจัย'}</div>
+              <div className="panel-title">{currentLang === 'en' ? 'Filter Keywords ' : 'กรองคำสำคัญ'}</div>
               <div className="category-tabs">
                 {[
                   { id: 'ALL', label: currentLang === 'en' ? 'All Fields' : 'ทุกด้าน' },
@@ -123,16 +123,34 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
                     <Layers size={12} /> {tab.label}
                   </button>
                 ))}
+                
               </div>
-              <div className="kw-list">
-                {getFilteredKeywords().map(k => (
-                  <span key={k.w} className={`kw-tag ${k.s} clickable ${selectedKeyword === k.w ? 'active' : ''}`} onClick={() => handleKeywordClick(k.w)}>
-                    {currentLang === 'en' ? k.w : (k.w_th || k.w)}
-                  </span>
-                ))}
+              
+              <div className="kw-legend" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.75rem', fontWeight: 500, color: '#666', marginTop: '-8px', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22C55E' }} />
+                      {currentLang === 'en' ? 'Positive' : 'แง่บวก'}
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#EF4444' }} />
+                      {currentLang === 'en' ? 'Negative' : 'แง่ลบ'}
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#9CA3AF' }} />
+                      {currentLang === 'en' ? 'Neutral' : 'ทั่วไป'}
+                    </div>
+                  </div>
+
+                  {/* กล่องแสดงรายการคีย์เวิร์ด */}
+                  <div className="kw-list" style={{ marginTop: '8px' }}>
+                    {getFilteredKeywords().map(k => (
+                      <span key={k.w} className={`kw-tag ${k.s} clickable ${selectedKeyword === k.w ? 'active' : ''}`} onClick={() => handleKeywordClick(k.w)}>
+                        {currentLang === 'en' ? k.w : (k.w_th || k.w)}
+                      </span>
+                    ))}
               </div>
             </div>
-
+                
             {/* บล็อก 3: บทสรุปสกัดสดอินไซต์โดย AI */}
             <div className={`ai-box ${selectedKeyword ? 'filtered' : ''}`}>
               <div className="ai-box-label">
