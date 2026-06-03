@@ -561,3 +561,167 @@
   background: var(--toggle-hover-bg);
   color: var(--coral-dark);
 }
+
+/* ── แผ่นครอบพื้นหลังหรูหรา ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45); /* สี Slate Dark โปร่งแสง */
+  backdrop-filter: blur(8px);          /* เพิ่มการเบลอที่ซอฟต์ขึ้น */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* ── กล่อง Modal หลัก ── */
+.booking-modal {
+  background: #ffffff;
+  width: 520px;
+  max-width: 92%;
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08); /* เงาฟุ้งแบบผู้ดี */
+}
+
+.booking-modal h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.modal-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 28px 0;
+}
+
+/* ── การ์ดพาร์ทเนอร์ ── */
+.partner-card {
+  position: relative;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.partner-card:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(15, 23, 42, 0.04);
+}
+
+/* การ์ดแนะนำพรีเมียม (Best Value) */
+.partner-card.best {
+  border: 1.5px solid #f67c7c;
+  background: #fffdfd;
+}
+
+.partner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.partner-card h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+}
+
+.partner-card p {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.partner-card p strong {
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ── ป้ายสัญลักษณ์ไอคอน (Minimal Badge) ── */
+.badge {
+  position: absolute;
+  top: -11px;
+  left: 20px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; /* เว้นช่องไฟระหว่างไอคอนกับตัวหนังสือ */
+}
+
+/* ดีไซน์ป้ายของการ์ดเด่น */
+.partner-card.best .badge {
+  background: #f67c7c;
+  color: #ffffff;
+  border-color: #f67c7c;
+}
+
+/* ── ปุ่มกดภายในข้อมูลการ์ด ── */
+.partner-card button {
+  width: auto;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  background: #f67c7c;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.partner-card button:hover {
+  background: #e06868;
+}
+
+/* ปรับปุ่มพาร์ทเนอร์อื่นให้ดูสะอาดตา */
+.partner-card:not(.best) button {
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.partner-card:not(.best) button:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+/* ── ปุ่มปิดด้านล่างสุด ── */
+.close-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.close-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}

@@ -25,6 +25,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [selectedKeyword, setSelectedKeyword] = useState(null);
   const [lightboxSrc, setLightboxSrc] = useState(null);
+  const [showBookingModal, setShowBookingModal] = useState(false);
 
   useEffect(() => { 
     window.scrollTo({ top: 0, behavior: 'smooth' }); 
@@ -216,9 +217,20 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
 
             {/* แผงกลุ่มปุ่มกดจองและเปรียบเทียบ */}
             <div className="action-btns" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <button className="action-btn action-btn-primary" style={{ background: '#f67c7c', border: 'none', color: '#fff' }} onClick={() => alert(`Booking near ${place.name}`)}>
-                <Hotel size={15} /> {currentLang === 'en' ? 'Book Hotel' : 'จองโรงแรมใกล้เคียง'}
-              </button>
+              <button
+                  className="action-btn action-btn-primary"
+                  style={{
+                    background: '#f67c7c',
+                    border: 'none',
+                    color: '#fff'
+                  }}
+                  onClick={() => setShowBookingModal(true)}
+                >
+                  <Hotel size={15} />
+                  {currentLang === 'en'
+                    ? 'Book Hotel'
+                    : 'จองโรงแรมใกล้เคียง'}
+                </button>
               <button className="action-btn action-btn-outline" onClick={() => alert(`Tours at ${place.name}`)}>
                 <Compass size={15} /> {currentLang === 'en' ? 'View Tours' : 'ดูแพ็กเกจทัวร์'}
               </button>
@@ -333,6 +345,74 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
       )}
 
       {showCompare && <CompareModal currentPlace={place} allPlaces={allPlaces} onClose={() => setShowCompare(false)} currentLang={currentLang} />}
+
+{showBookingModal && (
+  <div className="modal-overlay" onClick={() => setShowBookingModal(false)}>
+    <div className="booking-modal" onClick={(e) => e.stopPropagation()}>
+      
+      <h3>{currentLang === 'en' ? 'Recommended Hotel Partners' : 'พันธมิตรผู้ให้บริการที่พักแนะนำ'}</h3>
+      <p className="modal-subtitle">
+        {currentLang === 'en' 
+          ? 'Recommended based on pricing, availability and partner reliability.' 
+          : 'ข้อเสนอที่ดีที่สุดคัดสรรตามราคา ห้องว่าง และความน่าเชื่อถือของแพลตฟอร์ม'}
+      </p>
+
+      {/* แพลตฟอร์มที่ 1: Agoda (Best Value) */}
+      <div className="partner-card best">
+        <span className="badge">
+          {/* ไอคอนรูปดาวคู่ใจพรีเมียม */}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          {currentLang === 'en' ? 'Best Value' : 'คุ้มค่าที่สุด'}
+        </span>
+        <div className="partner-info">
+          <h4>Agoda</h4>
+          <p>{currentLang === 'en' ? 'Starting from' : 'เริ่มต้นเพียง'} <strong>฿2,100</strong></p>
+        </div>
+        <button onClick={() => alert('Redirecting to Agoda...')}>
+          {currentLang === 'en' ? 'View Deal' : 'ดูข้อเสนอ'}
+        </button>
+      </div>
+
+      {/* แพลตฟอร์มที่ 2: Booking.com */}
+      <div className="partner-card">
+        <span className="badge">
+          {/* ไอคอนรูปถ้วยรางวัลสากล */}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a4.5 4.5 0 0 0-4.5 4.5V11a4.5 4.5 0 0 0 9 0V6.5A4.5 4.5 0 0 0 12 2z"/></svg>
+          {currentLang === 'en' ? 'Most Popular' : 'ยอดนิยม'}
+        </span>
+        <div className="partner-info">
+          <h4>Booking.com</h4>
+          <p>{currentLang === 'en' ? 'Starting from' : 'เริ่มต้นเพียง'} <strong>฿2,250</strong></p>
+        </div>
+        <button onClick={() => alert('Redirecting to Booking.com...')}>
+          {currentLang === 'en' ? 'View Deal' : 'ดูข้อเสนอ'}
+        </button>
+      </div>
+
+      {/* แพลตฟอร์มที่ 3: Trip.com */}
+      <div className="partner-card">
+        <span className="badge">
+          {/* ไอคอนป้ายแท็กราคาหรือเหรียญเงิน */}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          {currentLang === 'en' ? 'Lowest Price' : 'ราคาถูกที่สุด'}
+        </span>
+        <div className="partner-info">
+          <h4>Trip.com</h4>
+          <p>{currentLang === 'en' ? 'Starting from' : 'เริ่มต้นเพียง'} <strong>฿2,050</strong></p>
+        </div>
+        <button onClick={() => alert('Redirecting to Trip.com...')}>
+          {currentLang === 'en' ? 'View Deal' : 'ดูข้อเสนอ'}
+        </button>
+      </div>
+
+      {/* ปุ่มปิดมินิมอล */}
+      <button className="close-btn" onClick={() => setShowBookingModal(false)}>
+        {currentLang === 'en' ? 'Close window' : 'ปิดหน้าต่าง'}
+      </button>
+      
+    </div>
+  </div>
+)}
     </div>
   );
 }

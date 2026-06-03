@@ -37,11 +37,11 @@ const getBizItems = (lang) => [
 const getTabTitles = (lang) => ({
   overview:    lang === 'en' ? 'Overview'               : 'ภาพรวมระบบ',
   reviews:     lang === 'en' ? 'Reviews'                : 'รายการความคิดเห็น',
-  trends:      lang === 'en' ? 'Trends'                 : 'แนวโน้มการเติบโต',
-  alerts:      lang === 'en' ? 'Alerts'                 : 'กล่องแจ้งเตือนภัย',
+  trends:      lang === 'en' ? 'Trends'                 : 'แนวโน้มรีวิว',
+  alerts:      lang === 'en' ? 'Alerts'                 : 'กล่องแจ้งเตือนรีวิวเชิงลบ',
   suggestions: lang === 'en' ? 'Suggestions'            : 'คำแนะนำการปรับปรุง',
   wordcloud:   lang === 'en' ? 'Word Cloud'             : 'กลุ่มคำรีวิว',
-  reports:     lang === 'en' ? 'Reports'                : 'การออกรายงานผล',
+  reports:     lang === 'en' ? 'Reports'                : 'การออกรายงาน',
   places:      lang === 'en' ? 'My Places'              : 'สถานที่ของฉัน',
 });
 
@@ -396,7 +396,7 @@ function TabReviews({ onGoPlans, currentLang }) {
           {[
             { value: 'all', label: currentLang === 'en' ? 'All' : 'ทั้งหมด' },
             { value: 'pos', label: currentLang === 'en' ? 'Positive' : 'บวก' },
-            { value: 'neu', label: currentLang === 'en' ? 'Neutral' : 'กลาง' },
+            { value: 'neu', label: currentLang === 'en' ? 'Neutral' : 'ทั่วไป' },
             { value: 'neg', label: currentLang === 'en' ? 'Negative' : 'ลบ' },
           ].map(opt => (
             <button key={opt.value} type="button" className={`review-filter-chip${selectedSentiment === opt.value ? ' active' : ''}`} onClick={() => setSelectedSentiment(opt.value)} style={{ padding: '4px 10px', fontSize: '11px' }}>
