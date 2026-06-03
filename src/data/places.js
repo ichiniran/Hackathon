@@ -14,6 +14,22 @@ export const PLACES_DATA = [
     reviews: 876,
     emoji: '🌊',
     img: 'https://www.khaosok.com/wp-content/uploads/2023/11/Phang-Nga-Bay-e1700882609161-845x684.jpeg',
+    description: 'A spectacular bay filled with dramatic limestone islets, sunken caverns, and beautiful mangrove forests located in the Andaman Sea.',
+    description_th: 'อ่าวที่งดงามตระการตาเต็มไปด้วยเกาะแก่งหินปูนตระการตา ถ้ำทะเลที่ซ่อนอยู่ และผืนป่าชายเลนอันอุดมสมบูรณ์ในฝั่งทะเลอันดามัน',
+    activities: [
+      { en: 'Canoeing through hidden sea caves', th: 'พายเรือแคนูสำรวจถ้ำลอดและห้องลับทางทะเล' },
+      { en: 'Visiting the famous James Bond Island', th: 'นั่งเรือชมเขาตาปูและเขาพิงกันอันเลื่องชื่อ' },
+      { en: 'Exploring Panyee stilt fishing village', th: 'สัมผัสวิถีชีวิตชาวเลบนเกาะปันหยีหมู่บ้านกลางน้ำ' }
+    ],
+    highlights: [
+      { en: 'Stunning limestone cliff formations', th: 'หน้าผาหินปูนสถาปัตยกรรมธรรมชาติตระการตา' },
+      { en: 'Calm and smooth emerald waters', th: 'ผืนน้ำสีเขียวมรกตที่นิ่งสงบเดินทางสะดวก' }
+    ],
+    map_url: 'https://maps.app.goo.gl/uP6uA9z7wreY3wU29',
+    gallery: [
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
+      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+    ],
     kws: [
       { w: 'stunning limestone cliffs', w_th: 'หน้าผาหินปูนที่สวยงามตระการตา', s: 'pos' },
       { w: 'breathtaking scenery', w_th: 'ทัศนียภาพอันน่าทึ่ง', s: 'pos' },
@@ -42,6 +58,22 @@ export const PLACES_DATA = [
     reviews: 934,
     emoji: '🏔',
     img: 'https://www.easydaythailand.com/wp-content/uploads/2018/07/Doi-Inthanon-.jpg',
+    description: 'The highest peak in Thailand, offering refreshing cool weather, magnificent mist views, and unique montane forest ecology.',
+    description_th: 'ยอดเขาที่สูงที่สุดในประเทศไทย แหล่งท่องเที่ยวแดนสยามที่มอบอากาศเย็นสบายตลอดปี ทิวทัศน์ทะเลหมอกอันตระการตา และระบบนิเวศป่าต้นน้ำที่สมบูรณ์',
+    activities: [
+      { en: 'Trekking the beautiful Kew Mae Pan Trail', th: 'เดินศึกษาธรรมชาติบนเส้นทางทิวทัศน์กิ่วแม่ปาน' },
+      { en: 'Chasing sunrises at the summit mist point', th: 'ชมแสงพระอาทิตย์แรกยามเช้าเหนือน่านทะเลหมอก' },
+      { en: 'Admiring Wachirathan and Mae Ya waterfalls', th: 'แวะชมและถ่ายภาพความอลังการของน้ำตกวชิรธาร' }
+    ],
+    highlights: [
+      { en: 'Refreshing alpine climate year-round', th: 'สภาพอากาศหนาวเย็นสไตล์เทือกเขาสูงตลอดทั้งปี' },
+      { en: 'Pristine and well-preserved nature paths', th: 'เส้นทางเดินเท้าและบันไดป่าไม้ที่อนุรักษ์ธรรมชาติอย่างดี' }
+    ],
+    map_url: 'https://maps.app.goo.gl/34aX6V25dD7YFpXg6',
+    gallery: [
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
+      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80'
+    ],
     kws: [
       { w: 'beautiful misty sunrise', w_th: 'ทัศนียภาพพระอาทิตย์ขึ้นท่ามกลางทะเลหมอก', s: 'pos' },
       { w: 'ordinary landmark sign', w_th: 'ป้ายจุดเช็คอินบนยอดเขาค่อนข้างธรรมดา', s: 'neu' },
@@ -70,6 +102,22 @@ export const PLACES_DATA = [
     reviews: 2156,
     emoji: '🏛',
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO4qCr4VRlDlQ5q_mAU1s0AeYyeMRishCzmA&s',
+    description: 'A famous UNESCO World Heritage site showcasing the majestic ruins of ancient temples and royal palaces from Thailands former capital golden era.',
+    description_th: 'แหล่งมรดกโลกทางวัฒนธรรมโดยยูเนสโก แหล่งอารยธรรมโบราณสถานของพระราชวังและวัดวาอารามเก่าแก่ที่สะท้อนความงดงามในอดีต',
+    activities: [
+      { en: 'Biking through the flat temple loops', th: 'เช่าจักรยานปั่นเที่ยวชมรอบกลุ่มโบราณสถานโบราณ' },
+      { en: 'Visiting Wat Mahathat Buddha head in tree', th: 'ชมความมหัศจรรย์ของเศียรพระพุทธรูปในรากไม้ ณ วัดมหาธาตุ' },
+      { en: 'Taking a scenic evening sunset boat tour', th: 'นั่งเรือพายรอบเกาะเมืองอยุธยาเพื่อชมวิวยามพระอาทิตย์ตก' }
+    ],
+    highlights: [
+      { en: 'Magnificent and vast structural ruins', th: 'โบราณสถานขนาดใหญ่ที่งดงามและน่าอัศจรรย์ทางโบราณคดี' },
+      { en: 'Very easy accessibility via train from Bangkok', th: 'การคมนาคมที่สะดวกสบายอย่างมาก สามารถนั่งรถไฟตรงจากกรุงเทพฯ' }
+    ],
+    map_url: 'https://maps.app.goo.gl/uP9bV7Z7wreY3wU49',
+    gallery: [
+      'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&q=80',
+      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80'
+    ],
     kws: [
       { w: 'magnificent ancient temples', w_th: 'โบราณสถานและวัดเก่าแก่ที่งดงามวิจิตร', s: 'pos' },
       { w: 'extremely hot weather', w_th: 'สภาพอากาศร้อนจัด', s: 'neg' },
@@ -98,6 +146,22 @@ export const PLACES_DATA = [
     reviews: 3812,
     emoji: '🛕',
     img: 'https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/62/2024/08/29074619/Wat-Phra-Kaew.jpg',
+    description: 'Thailands most sacred Buddhist temple, featuring gilded spires, exquisite murals, and the revered Emerald Buddha statue.',
+    description_th: 'พระอารามหลวงคู่บ้านคู่เมืองที่ศักดิ์สิทธิ์ที่สุดของไทย โดดเด่นด้วยสถาปัตยกรรมสีทองอร่าม จิตรกรรมฝาผนังอันวิจิตร และองค์พระแก้วมรกต',
+    activities: [
+      { en: 'Paying respects to the sacred Emerald Buddha', th: 'เข้ากราบสักการะองค์พระพุทธมหามณีรัตนปฏิมากรในอุโบสถ' },
+      { en: 'Admiring the intricate Ramayana murals', th: 'เดินชมระเบียงคดถ่ายภาพประวัติศาสตร์ภาพวาดวรรณคดีรามเกียรติ์' },
+      { en: 'Taking ferry via Chao Phraya River', th: 'นั่งเรือด่วนเจ้าพระยาเพื่อดื่มด่ำทัศนียภาพสองฝั่งแม่น้ำเมืองกรุง' }
+    ],
+    highlights: [
+      { en: 'Breathtaking elite Thai architecture', th: 'สถาปัตยกรรมไทยชั้นสูงสีทองอร่ามวิจิตรตระการตาเหนือระดับ' },
+      { en: 'Deep immersion into royal heritage', th: 'สัมผัสประสบการณ์รากเหง้าประวัติศาสตร์ราชสำนักไทยที่ลึกซึ้ง' }
+    ],
+    map_url: 'https://maps.app.goo.gl/d8mBwpx7SgXGZnyL6',
+    gallery: [
+      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80',
+      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+    ],
     kws: [
       { w: 'magnificent architecture', w_th: 'สถาปัตยกรรมที่งดงามวิจิตรบรรจง', s: 'pos' },
       { w: 'overwhelming crowds', w_th: 'ฝูงชนหนาแน่นและแออัดมากเกินไป', s: 'neg' },
@@ -119,13 +183,29 @@ export const PLACES_DATA = [
     loc: 'Nakhon Ratchasima',
     loc_th: 'นครราชสีมา',
     province: 'Nakhon Ratchasima',
-    province_th: 'นครราชสีма',
+    province_th: 'นครราชสีมา',
     region: ['central'],
     type: ['nature'],
     pos: 76, neu: 14, neg: 10,
     reviews: 12035,
     emoji: '🌿',
     img: 'https://www.pelago.com/img/products/TH-Thailand/khao-yai-national-park-tour/0713-1603_khao-yai-national-park-tour-thailand-pelago-xlarge.jpg',
+    description: 'Thailands third largest national park, featuring lush rainforests, abundant wildlife, and stunning waterfalls.',
+    description_th: 'อุทยานแห่งชาติที่ใหญ่เป็นอันดับ 3 ของไทย โดดเด่นด้วยผืนป่าฝนอันอุดมสมบูรณ์ สัตว์ป่าหลากหลายชนิด และน้ำตกที่สวยงามตระการตา',
+    activities: [
+      { en: 'Wildlife night safari trekking', th: 'ส่องสัตว์ป่าและเดินป่าท่องซาฟารียามค่ำคืน' },
+      { en: 'Birdwatching at Haew Narok Waterfall', th: 'กิจกรรมส่องนกหายากและชมน้ำตกเหวนรก' },
+      { en: 'Camping under the stars at Lam Ta Khong', th: 'กางเต็นท์นอนชมดาว ณ จุดกางเต็นท์ลำตะคอง' }
+    ],
+    highlights: [
+      { en: 'Wild elephant encounters', th: 'มีโอกาสพบเจอโขลงช้างป่าธรรมชาติสูง' },
+      { en: 'Refreshing cool climate year-round', th: 'สภาพอากาศเย็นสบายสดชื่นตลอดทั้งปี' }
+    ],
+    map_url: 'https://maps.app.goo.gl/d8mBwpx7SgXGZnyL6',
+    gallery: [
+      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80'
+    ],
     kws: [
       { w: 'rich biodiversity', w_th: 'ความหลากหลายทางชีวภาพที่อุดมสมบูรณ์', s: 'pos' },
       { w: 'stunning waterfall', w_th: 'น้ำตกที่สวยงามตระการตา', s: 'pos' },
@@ -154,6 +234,22 @@ export const PLACES_DATA = [
     reviews: 1893,
     emoji: '🏖',
     img: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
+    description: 'A cosmopolitan island paradise renowned for its palm-fringed luxury resorts, white sandy shorelines, and vibrant marine tours.',
+    description_th: 'เกาะสวรรค์ระดับสากลที่มีชื่อเสียงเลื่องลือในเรื่องชายหาดทรายขาวละเอียดทิวยอมพร้าวสวย ทะเลน้ำใส และรีสอร์ทสปาสไตล์หรูหรา',
+    activities: [
+      { en: 'Relaxing at Chaweng white sand beach', th: 'นอนพักผ่อนอาบแดดบนผืนทรายขาวของหาดเฉวง' },
+      { en: 'Taking speedboat trip to Ang Thong Marine Park', th: 'นั่งเรือสปีดโบ๊ทไปดำน้ำหมู่เกาะอ่างทอง' },
+      { en: 'Visiting the famous Big Buddha landmark', th: 'แวะเช็คอินสักการะองค์พระใหญ่เกาะฟานแลนด์มาร์คสำคัญ' }
+    ],
+    highlights: [
+      { en: 'Premium luxurious wellness resort architecture', th: 'รีสอร์ทหรูพรีเมียมริมชายหาดที่มีสปาระดับเวิลด์คลาส' },
+      { en: 'Excellent island nightlife and dining options', th: 'แสงสียามค่ำคืนและร้านอาหารซีฟู้ดริมทะเลมีให้เลือกมากมาย' }
+    ],
+    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    gallery: [
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+    ],
     kws: [
       { w: 'gorgeous white beach', w_th: 'ชายหาดทรายขาวที่สวยงามระยิบระยับ', s: 'pos' },
       { w: 'polluted beach areas', w_th: 'พบคราบขยะมลพิษบนชายหาดบางส่วน', s: 'neg' },
@@ -182,6 +278,22 @@ export const PLACES_DATA = [
     reviews: 2341,
     emoji: '🌴',
     img: 'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80',
+    description: 'The epicenter of Phukets tourism, famous for its crescent-shaped beach bay, exhilarating water sports, and world-famous Bangla Road neon nightlife.',
+    description_th: 'ศูนย์กลางความคึกคักแห่งเกาะภูเก็ต โดดเด่นด้วยอ่าวหาดทรายรูปพระจันทร์เสี้ยว กิจกรรมทางน้ำสุดเร้าใจ และแสงสียามค่ำคืนบนถนนบางลา',
+    activities: [
+      { en: 'Parasailing and jet-skiing across the bay', th: 'เล่นร่มร่อนพาราเซลลิ่งและขับเจ็ทสกีท้าคลื่น' },
+      { en: 'Exploring nightlife bars at Bangla Road', th: 'เดินเปิดประสบการณ์แสงสียามค่ำคืนในซอยบางลา' },
+      { en: 'Watching traditional beachside fire performances', th: 'ชมการแสดงควงกระบองไฟตื่นตาตื่นใจริมชายหาด' }
+    ],
+    highlights: [
+      { en: 'Vast array of budget and premium hotel choices', th: 'มีตัวเลือกโรงแรมโฮสเทลรองรับทุกระดับงบประมาณเงินทุน' },
+      { en: 'Extremely high energy entertainment hotspot', th: 'พื้นที่ท่องเที่ยวเต็มไปด้วยพลังงาน ความสนุกคึกคักตลอด 24 ชม.' }
+    ],
+    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    gallery: [
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80'
+    ],
     kws: [
       { w: 'lively beach activities', w_th: 'กิจกรรมริมชายหาดที่คึกคักมีชีวิตชีวา', s: 'pos' },
       { w: 'stressful tourist traps', w_th: 'กับดักนัดท่องเที่ยวที่ทำให้อึดอัด', s: 'neg' },
@@ -210,6 +322,22 @@ export const PLACES_DATA = [
     reviews: 1102,
     emoji: '⛩',
     img: 'https://nomadicated.com/wp-content/uploads/2023/02/White-Temple-Chiang-Rai-7.jpg',
+    description: 'An architectural masterpiece by national artist Chalermchai Kositpipat, featuring surreal all-white ornate details representing heaven and hell philosophy.',
+    description_th: 'ผลงานพุทธศิลป์ชิ้นเอกโดยอาจารย์เฉลิมชัย โฆษิตพิพัฒน์ โดดเด่นด้วยอุโบสถสีขาวบริสุทธิ์ประดับกระจกจำลองหลักปรัชญาทางธรรมะ',
+    activities: [
+      { en: 'Crossing the surreal cycle-of-rebirth bridge', th: 'เดินข้ามสะพานวัฏสงสารชมสถาปัตยกรรมเชิงสัญลักษณ์' },
+      { en: 'Viewing modern mural art inside the pavilion', th: 'เข้าชมภาพวาดจิตรกรรมฝาผนังร่วมสมัยอันน่าทึ่งภายในโบสถ์' },
+      { en: 'Visiting the luxurious golden restroom hub', th: 'แวะถ่ายภาพสถาปัตยกรรมห้องน้ำสีทองเหลืองอร่ามที่วิจิตรที่สุด' }
+    ],
+    highlights: [
+      { en: ' Elite visual shock value and originality', th: 'คุณค่าดีไซน์ทางสายตาที่วิจิตรงดงามแปลกใหม่ระดับโลก' },
+      { en: 'Profound hell-and-heaven artistic philosophy', th: 'การผสมผสานศิลปะเข้ากับคติธรรมสอนใจนรกสวรรค์ที่ลึกซึ้ง' }
+    ],
+    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    gallery: [
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',
+      'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80'
+    ],
     kws: [
       { w: 'stunning unique architecture', w_th: 'สถาปัตยกรรมที่มีเอกลักษณ์สวยงามโดดเด่น', s: 'pos' },
       { w: 'incredible artistic details', w_th: 'รายละเอียดงานศิลปะที่น่าทึ่ง', s: 'pos' },
@@ -238,6 +366,21 @@ export const PLACES_DATA = [
     reviews: 1450,
     emoji: '🦛',
     img: 'https://static.ticket2attraction.com/gallery/916baa58-88e5-4270-ba16-b367ba6a72a2/f66bbf8d-9853-4319-8f61-16cebcd25a37-1200.webp',
+    description: 'A massive open concept zoo dedicated to wildlife conservation, animal enrichment, and family-friendly interaction.',
+    description_th: 'สวนสัตว์เปิดขนาดใหญ่ที่มุ่งเน้นการอนุรักษ์พันธุ์สัตว์ป่า มอบประสบการณ์การสัมผัสและเรียนรู้ชีวิตสัตว์อย่างใกล้ชิดสำหรับครอบครัว',
+    activities: [
+      { en: 'Feeding the viral pygmy hippos', th: 'ชมความน่ารักและให้อาหารลูกฮิปโปแคระชื่อดัง' },
+      { en: 'Driving a golf cart through animal zones', th: 'เช่ารถกอล์ฟขับชมสัตว์ตามโซนต่าง ๆ อย่างอิสระ' },
+      { en: 'Watching the charming penguin parade', th: 'ชมขบวนพาเหรดนกเพนกวินสุดน่ารักยามเช้า' }
+    ],
+    highlights: [
+      { en: 'Close contact with friendly animals', th: 'ใกล้ชิดกับสัตว์ป่าผู้น่ารักและปลอดภัย' },
+      { en: 'Spacious natural habitat enclosures', th: 'ส่วนจัดแสดงกว้างขวางเสมือนธรรมชาติแท้จริง' }
+    ],
+    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    gallery: [
+      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+    ],
     kws: [
       { w: 'adorable pygmy hippo', w_th: 'ลูกฮิปโปแคระที่น่ารักน่าเอ็นดู', s: 'pos' },
       { w: 'interactive animal feeding', w_th: 'กิจกรรมให้อาหารสัตว์อย่างใกล้ชิด', s: 'pos' },
@@ -266,6 +409,21 @@ export const PLACES_DATA = [
     reviews: 2840,
     emoji: '🦁',
     img: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80',
+    description: 'Thailands premier open-air zoo and leisure park, featuring a thrilling drive-through safari park and world-class educational marine mammal spectacles.',
+    description_th: 'ธีมปาร์คสวนสัตว์เปิดระดับแนวหน้าของไทย โดดเด่นด้วยโซนขับรถส่องสัตว์นักล่าสไตล์แอฟริกา และฮับการแสดงสัตว์แสนรู้วิชาการระดับโลก',
+    activities: [
+      { en: 'Driving through the open wild safari arena', th: 'ขับรถยนต์ลุยโซนเปิดส่องฝูงเสือ สิงโต และหมีอย่างใกล้ชิด' },
+      { en: 'Feeding giraffes from the high wooden terrace', th: 'ป้อนอาหารฝูงยีราฟกว่าร้อยตัวบนระเบียงศาลาไม้สูง' },
+      { en: 'Watching the high-energy dolphin and spy war shows', th: 'เข้าชมการแสดงปลาโลมาและโชว์คาวบอยเอฟเฟกต์ตระการตา' }
+    ],
+    highlights: [
+      { en: 'Unmatched interactive close encounters with wildlife', th: 'การเปิดมิติมอบโอกาสสัมผัสและให้อาหารสัตว์ป่าที่ใกล้ชิดที่สุด' },
+      { en: 'Highly maintained theme park hub and amenities', th: 'พื้นที่สะอาด ระบบสิ่งอำนวยความสะดวกธีมปาร์คจัดการได้ดีเยี่ยม' }
+    ],
+    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    gallery: [
+      'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80'
+    ],
     kws: [
       { w: 'incredible drive-through safari', w_th: 'โซนขับรถชมสัตว์ป่าเปิดที่น่าตื่นตาตื่นใจ', s: 'pos' },
       { w: 'world-class dolphin show', w_th: 'การแสดงปลาโลมามาตรฐานระดับโลก', s: 'pos' },
@@ -294,6 +452,21 @@ export const PLACES_DATA = [
     reviews: 1980,
     emoji: '🌕',
     img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+    description: 'A vibrant beach on Koh Phangan globally renowned for hosting the high-energy Full Moon Party, alongside a scenic white sand coastline.',
+    description_th: 'ชายหาดชื่อดังแห่งเกาะพะงันที่เป็นศูนย์กลางการจัดงานฟูลมูนปาร์ตี้ระดับโลก โดดเด่นด้วยทัศนียภาพหาดโค้งทรายนุ่มยามไม่มีการจัดงาน',
+    activities: [
+      { en: 'Attending the colorful world-famous Full Moon Party', th: 'ร่วมสนุกสนานเต้นรำในคืนงานเทศกาลฟูลมูนปาร์ตี้ริมหาด' },
+      { en: 'Watching spectacular professional beach fire shows', th: 'นั่งชมการแสดงควงกระบองไฟพ่นไฟสุดตื่นตาตื่นใจริมชายหาด' },
+      { en: 'Enjoying peaceful morning swimming loops', th: 'เล่นน้ำทะเลและพักผ่อนในบรรยากาศที่เงียบสงบช่วงกลางวัน' }
+    ],
+    highlights: [
+      { en: 'Unrivaled tropical nightlife and electronic music hubs', th: 'ฮับความบันเทิงและปาร์ตี้ริมทะเลเขตร้อนที่เต็มไปด้วยพลังงานอันดับหนึ่ง' },
+      { en: 'Gorgeous scenic sand quality during off-peak days', th: 'ผืนทรายและน้ำทะเลมีความสวยงามนุ่มนวลมากในช่วงไร้เทศกาล' }
+    ],
+    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    gallery: [
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80'
+    ],
     kws: [
       { w: 'vibrant party atmosphere', w_th: 'บรรยากาศงานปาร์ตี้ที่คึกคักเต็มไปด้วยพลัง', s: 'pos' },
       { w: 'beautiful morning shoreline', w_th: 'แนวชายหาดยามเช้าที่สวยงามสงบ', s: 'pos' },
@@ -322,6 +495,21 @@ export const PLACES_DATA = [
     reviews: 3120,
     emoji: '🛶',
     img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&q=80',
+    description: 'The most famous historic floating market in Thailand, bustling with vendor paddle boats selling local fruits and traditional dishes.',
+    description_th: 'ตลาดน้ำเก่าแก่ที่มีชื่อเสียงที่สุดของไทย คึกคักด้วยภาพวิถีชีวิตชาวสวนพายเรือขายผลไม้และอาหารคาวหวานดั้งเดิมสองฝั่งคลอง',
+    activities: [
+      { en: 'Riding a traditional wooden paddle boat loop', th: 'นั่งเรือพายสัมผัสบรรยากาศการค้าขายและวิถีชีวิตริมคลองดั้งเดิม' },
+      { en: 'Tasting authentic freshly cooked boat noodles', th: 'สั่งซื้อและทานก๋วยเตี๋ยวเรือปรุงสดใหม่จากแม่ค้าบนเรือพาย' },
+      { en: 'Capturing colorful cultural market photography', th: 'ถ่ายภาพทัศนียภาพเรือพายขายของหลากสีสันอันเป็นเอกลักษณ์' }
+    ],
+    highlights: [
+      { en: 'Iconic and historic Thai river canal visual metrics', th: 'ภาพจำประวัติศาสตร์ตลาดน้ำริมคลองที่เป็นแลนด์มาร์คสำคัญของไทย' },
+      { en: 'Great availability of fresh local fruits and snacks', th: 'มีแผงขายผลไม้สดจากสวน ขนมไทย และของกินท้องถิ่นหลากหลาย' }
+    ],
+    map_url: 'https://maps.app.goo.gl/95TbeB3YtSg2v7rA7',
+    gallery: [
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80'
+    ],
     kws: [
       { w: 'traditional canal lifestyle', w_th: 'ภาพจำวิถีชีวิตริมคลองแบบดั้งเดิม', s: 'pos' },
       { w: 'colorful photo opportunities', w_th: 'โอกาสในการถ่ายภาพสีสันวิถีคลองที่สวยงาม', s: 'pos' },
@@ -336,6 +524,8 @@ export const PLACES_DATA = [
     ai_th: 'พื้นที่ที่ได้รับคำวิจารณ์เชิงลบเรื่องกับดักนักท่องเที่ยวรุนแรงที่สุดในระบบ วิเคราะห์พบบริบทข้อความเชิงลบเข้มข้นต่อเนื่องเจาะจงเรื่องราคาค่าเช่าเรือที่แพงมหาโหด (บางรายเรียกเก็บถึง 2,000 บาท) รวมถึงกลยุทธ์การขายที่ก้าวร้าวบีบบังคับ ซึ่งทำลายภาพลักษณ์สถาปัตยกรรมทางวัฒนธรรมดั้งเดิมอย่างมาก',
   }
 ];
+
+// ... (ส่วนของ KEYWORD_INSIGHTS_MAP, FILTER_TAGS, ฟังก์ชัน getSentimentLabel และ getSentimentClass ปล่อยไว้ตามเดิมได้เลยค่ะ) ...
 
 // 🟢 แก้ไขจุดสำคัญ: แปลง KEYWORD_INSIGHTS_MAP เป็นวัตถุ Object 2 ภาษา { en, th } ของทุกคำสำคัญในระบบ
 export const KEYWORD_INSIGHTS_MAP = {

@@ -396,20 +396,29 @@ if (page === 'dashboard') {
       </nav>
 
       {/* ── Pages ── */}
+  {/* ── Pages ── */}
       {page === 'home'     && <HomePage onExplore={() => go('explore')} onBusiness={() => go('business')} lang={lang} />}
       {page === 'explore'  && <ExplorePage  onSelectPlace={p => { setPlace(p); go('detail'); }} currentLang={lang} />}
       
-      {/* 🟢 ส่งตัวแปร lang ข้ามไปที่หน้า DetailPage ด้วยเพื่อสลับภาษาในหน้านั้นต่อ */}
-      {page === 'detail'   && place && <DetailPage place={place} onBack={() => go('explore')} allPlaces={PLACES_DATA} currentLang={lang} />}
+      {/* 🟢 แก้ไขจุดวิกฤต: ใส่พร็อพ onSelectPlace ส่งต่อฟังก์ชันให้ตัวลูก เพื่อกดสลับดูสถานที่แนะนําต่อได้จริง */}
+      {page === 'detail'   && place && (
+        <DetailPage 
+          place={place} 
+          onBack={() => go('explore')} 
+          allPlaces={PLACES_DATA} 
+          currentLang={lang} 
+          onSelectPlace={(targetPlace) => setPlace(targetPlace)} 
+        />
+      )}
       
       {page === 'business' && (
-      <BusinessPage
-        onLogin={() => go('dashboard')}
-        autoLogin={autoLogin}
-        onModalClose={() => setAutoLogin(false)}
-        currentLang={lang} // ส่ง State ตัวแปรภาษาข้ามไปทำงานร่วมกัน
-      />
-    )}
+        <BusinessPage
+          onLogin={() => go('dashboard')}
+          autoLogin={autoLogin}
+          onModalClose={() => setAutoLogin(false)}
+          currentLang={lang} 
+        />
+      )}
       {page === 'about' && <AboutPage currentLang={lang} />}
     </>
   );
