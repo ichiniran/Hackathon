@@ -1048,7 +1048,7 @@ function TabPlaces({ onGoPlans, currentLang }) {
   return (
     <div>
       <div className="dash-panel" style={{ marginBottom: 12 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: '1px solid var(--border-color)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0'}}>
           <div style={{ fontSize: 28 }}>🌿</div>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-primary)' }}>
