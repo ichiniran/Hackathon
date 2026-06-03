@@ -200,7 +200,7 @@
 .score-big-card {
   border: 1.5px solid transparent;
   background:
-    linear-gradient(-180deg,  #ffffff, #fff5f6) padding-box,
+    linear-gradient(-180deg,  #ffffff, #fffbfb) padding-box,
     linear-gradient(-180deg, #fddfdf, #ffe7e9) border-box;
   border-radius: 16px;
   padding: 28px;
@@ -211,14 +211,15 @@
 .score-big-num {
   font-size: 4rem;
   font-weight: 800;
-  background: #f67c7c;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f67c7c;
   line-height: 1;
   margin-bottom: 4px;
 
 }
+.score-big-num.excellent { color: #15803d; }
+.score-big-num.good { color: #22C55E; }
+.score-big-num.mixed { color: #F59E0B; }
+.score-big-num.warn { color: #EF4444; }
 .score-big-sub { font-size: 0.78rem; color: rgba(117, 98, 98, 0.977); margin-bottom: 20px;font-weight: 600; }
 .score-mini-bars {font-weight: 600; display: flex; flex-direction: column; gap: 8px; }
 .score-mini-row { display: flex; align-items: center; gap: 8px; }

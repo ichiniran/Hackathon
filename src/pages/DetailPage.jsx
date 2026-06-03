@@ -203,7 +203,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
           <div className="action-sidebar">
             <div className="score-big-card">
               <div className="score-big-label">{currentLang === 'en' ? 'Sentiment Score' : 'คะแนนความรู้สึก'}</div>
-              <div className="score-big-num">{place.pos}%</div>
+              <div className={`score-big-num ${cls}`}>{place.pos}%</div>
               <div className="score-big-sub">{currentLang === 'en' ? 'positive reviews' : 'รีวิวเชิงบวก'}</div>
               {/*<div className="score-mini-bars">
                 <div className="score-mini-row">
