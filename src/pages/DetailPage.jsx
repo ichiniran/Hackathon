@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, MapPin, Star, Hotel, Compass, BarChart2, Layers, Map, Compass as ActionIcon, Heart } from 'lucide-react';
+import { ArrowLeft, MapPin, Star, Hotel, Compass, BarChart2, Layers, Map, Compass as ActionIcon, Heart, CalendarDays } from 'lucide-react';
 import { getSentimentLabel, getSentimentClass, KEYWORD_INSIGHTS_MAP, PLACES_DATA } from '../data/places';
 import './DetailPage.css';
 import CompareModal from './CompareModal';
+import TravelPlannerModal from './TravelPlannerModal';
 
 function AnimatedBar({ pct, color, delay = 0 }) {
   const [width, setWidth] = useState(0);
@@ -26,6 +27,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
   const [selectedKeyword, setSelectedKeyword] = useState(null);
   const [lightboxSrc, setLightboxSrc] = useState(null);
   const [showBookingModal, setShowBookingModal] = useState(false);
+  const [showPlanner, setShowPlanner] = useState(false);
 
   useEffect(() => { 
     window.scrollTo({ top: 0, behavior: 'smooth' }); 
@@ -56,7 +58,12 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
     return PLACES_DATA.filter(p => 
       p.id !== place.id && 
       p.region.some(r => place.region.includes(r))
-    ).slice(0, 3);
+    ).sort((a, b) => {
+      const placeProvince = place.province || place.loc;
+      const aSameProvince = (a.province || a.loc) === placeProvince ? 1 : 0;
+      const bSameProvince = (b.province || b.loc) === placeProvince ? 1 : 0;
+      return bSameProvince - aSameProvince || b.pos - a.pos;
+    }).slice(0, 3);
   };
 
   return (
@@ -217,6 +224,9 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
 
             {/* แผงกลุ่มปุ่มกดจองและเปรียบเทียบ */}
             <div className="action-btns" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button className="action-btn action-btn-plan" onClick={() => setShowPlanner(true)}>
+                <CalendarDays size={15} /> {currentLang === 'en' ? 'Plan Your Trip' : 'วางแผนการท่องเที่ยว'}
+              </button>
               <button
                   className="action-btn action-btn-primary"
                   style={{
@@ -345,6 +355,7 @@ export default function DetailPage({ place, onBack, allPlaces, currentLang = 'en
       )}
 
       {showCompare && <CompareModal currentPlace={place} allPlaces={allPlaces} onClose={() => setShowCompare(false)} currentLang={currentLang} />}
+      {showPlanner && <TravelPlannerModal place={place} nearbyPlaces={getNearbyRecommendations()} currentLang={currentLang} onClose={() => setShowPlanner(false)} />}
 
 {showBookingModal && (
   <div className="modal-overlay" onClick={() => setShowBookingModal(false)}>

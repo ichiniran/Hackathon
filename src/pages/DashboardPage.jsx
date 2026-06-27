@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './DashboardPage.css';
 import logoImg from '../assets/Logo_G23.png';
+import { PLACES_DATA } from '../data/places';
 
 // compute base dates once at module load to avoid impure calls during render
 const BASE_TS = Date.now();
@@ -43,6 +44,7 @@ const getTabTitles = (lang) => ({
   wordcloud:   lang === 'en' ? 'Word Cloud'             : 'กลุ่มคำรีวิว',
   reports:     lang === 'en' ? 'Reports'                : 'การออกรายงาน',
   places:      lang === 'en' ? 'My Places'              : 'สถานที่ของฉัน',
+  competitor:  lang === 'en' ? 'Competitor Analysis'    : 'การวิเคราะห์คู่แข่ง',
 });
 
 // ── Theme Toggle ──
@@ -552,7 +554,7 @@ function TabTrends({ onGoPlans, currentLang }) {
 
             {/* 3. ตัวลากเส้นกราฟหลักเชื่อมต่อพิกัดแนวโน้มไดนามิก */}
             <path
-              d={currentDataset.reduce((acc, [_, p], i) => {
+              d={currentDataset.reduce((acc, [, p], i) => {
                 const x = 30 + i * 50;
                 const y = 180 - (p - 40) * 4;
                 return acc + `${i === 0 ? 'M' : 'L'} ${x} ${y} `;
@@ -1074,6 +1076,127 @@ function TabPlaces({ onGoPlans, currentLang }) {
   );
 }
 
+// ── Tab: Competitor Analysis (Enterprise preview) ──
+function keywordScore(place, startIndex) {
+  const weights = { pos: 92, neu: 68, neg: 42 };
+  const group = (place.kws || []).slice(startIndex, startIndex + 2);
+  if (!group.length) return place.pos;
+  return Math.round(group.reduce((sum, keyword) => sum + weights[keyword.s], 0) / group.length);
+}
+
+function TabCompetitor({ currentLang }) {
+  const isThai = currentLang === 'th';
+  const myPlace = PLACES_DATA.find(item => item.id === 'khaoyai') || PLACES_DATA[0];
+  const candidates = PLACES_DATA
+    .filter(item => item.id !== myPlace.id && item.type?.some(type => myPlace.type?.includes(type)))
+    .sort((a, b) => b.pos - a.pos);
+  const [competitorId, setCompetitorId] = useState(candidates[0]?.id || '');
+  const competitor = candidates.find(item => item.id === competitorId) || candidates[0];
+
+  if (!competitor) return null;
+
+  const scoreGap = competitor.pos - myPlace.pos;
+  const reviewGap = competitor.reviews - myPlace.reviews;
+  const positiveKeywords = (competitor.kws || []).filter(item => item.s === 'pos').slice(0, 3);
+  const myWeaknesses = (myPlace.kws || []).filter(item => item.s === 'neg').slice(0, 3);
+  const categories = [
+    { en: 'Attractions', th: 'สิ่งดึงดูดใจ', start: 0 },
+    { en: 'Accessibility', th: 'การเข้าถึง', start: 2 },
+    { en: 'Amenities', th: 'สิ่งอำนวยความสะดวก', start: 4 },
+    { en: 'Activities', th: 'กิจกรรม', start: 6 },
+  ].map(item => ({ ...item, mine: keywordScore(myPlace, item.start), theirs: keywordScore(competitor, item.start) }));
+
+  const competitorName = isThai ? competitor.name_th || competitor.name : competitor.name;
+  const myName = isThai ? myPlace.name_th || myPlace.name : myPlace.name;
+
+  return (
+    <div className="competitor-page">
+      <div className="competitor-toolbar dash-panel">
+        <div>
+          <span className="competitor-preview-badge">ENTERPRISE PREVIEW</span>
+          <h3>{isThai ? 'เลือกสถานที่เพื่อเปรียบเทียบ' : 'Select a destination to benchmark'}</h3>
+          <p>{isThai ? 'ระบบคัดเลือกสถานที่ประเภทใกล้เคียงจากฐานข้อมูลรีวิว' : 'Similar destination types are selected from review data.'}</p>
+        </div>
+        <label className="competitor-select-wrap">
+          <span>{isThai ? 'คู่แข่งที่ต้องการวิเคราะห์' : 'Competitor destination'}</span>
+          <select value={competitorId} onChange={event => setCompetitorId(event.target.value)}>
+            {candidates.map(item => <option key={item.id} value={item.id}>{isThai ? item.name_th || item.name : item.name}</option>)}
+          </select>
+        </label>
+      </div>
+
+      <div className="competitor-score-grid">
+        {[
+          { label: isThai ? 'คะแนนความรู้สึก' : 'Sentiment score', mine: `${myPlace.pos}%`, theirs: `${competitor.pos}%`, note: scoreGap > 0 ? (isThai ? `ตามหลัง ${scoreGap}%` : `${scoreGap}% behind`) : (isThai ? `นำอยู่ ${Math.abs(scoreGap)}%` : `${Math.abs(scoreGap)}% ahead`) },
+          { label: isThai ? 'จำนวนรีวิว' : 'Review volume', mine: myPlace.reviews.toLocaleString(), theirs: competitor.reviews.toLocaleString(), note: reviewGap > 0 ? (isThai ? `คู่แข่งมากกว่า ${reviewGap.toLocaleString()}` : `Competitor +${reviewGap.toLocaleString()}`) : (isThai ? `เรามากกว่า ${Math.abs(reviewGap).toLocaleString()}` : `We lead by ${Math.abs(reviewGap).toLocaleString()}`) },
+          { label: isThai ? 'รีวิวเชิงลบ' : 'Negative reviews', mine: `${myPlace.neg}%`, theirs: `${competitor.neg}%`, note: myPlace.neg > competitor.neg ? (isThai ? 'ควรเร่งแก้ไข' : 'Needs attention') : (isThai ? 'ทำได้ดีกว่าคู่แข่ง' : 'Outperforming') },
+          { label: isThai ? 'กิจกรรมเด่น' : 'Key activities', mine: myPlace.activities?.length || 0, theirs: competitor.activities?.length || 0, note: isThai ? 'รายการในฐานข้อมูล' : 'Items in dataset' },
+        ].map(metric => (
+          <div className="competitor-metric dash-panel" key={metric.label}>
+            <span>{metric.label}</span>
+            <div><strong>{metric.mine}</strong><em>VS</em><strong>{metric.theirs}</strong></div>
+            <small>{metric.note}</small>
+          </div>
+        ))}
+      </div>
+
+      <div className="competitor-main-grid">
+        <section className="dash-panel competitor-benchmark">
+          <div className="competitor-panel-heading">
+            <div><h3>{isThai ? 'เปรียบเทียบศักยภาพรายด้าน' : 'Category benchmark'}</h3><p>{myName} vs {competitorName}</p></div>
+            <div className="competitor-legend"><span className="mine">{isThai ? 'สถานที่ของฉัน' : 'My place'}</span><span className="theirs">{isThai ? 'คู่แข่ง' : 'Competitor'}</span></div>
+          </div>
+          <div className="competitor-category-list">
+            {categories.map(category => (
+              <div className="competitor-category" key={category.en}>
+                <div><span>{isThai ? category.th : category.en}</span><small>{category.mine} / {category.theirs}</small></div>
+                <div className="competitor-dual-bars">
+                  <div><i className="mine" style={{ width: `${category.mine}%` }} /></div>
+                  <div><i className="theirs" style={{ width: `${category.theirs}%` }} /></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="dash-panel competitor-position">
+          <div className="competitor-panel-heading"><div><h3>{isThai ? 'ตำแหน่งการแข่งขัน' : 'Competitive position'}</h3><p>{isThai ? 'อ้างอิงจากคะแนนและปริมาณรีวิว' : 'Based on sentiment and review volume'}</p></div></div>
+          <div className={`competitor-gap-ring ${scoreGap > 0 ? 'behind' : 'ahead'}`}>
+            <strong>{scoreGap > 0 ? '-' : '+'}{Math.abs(scoreGap)}%</strong>
+            <span>{isThai ? 'ช่องว่างคะแนน' : 'score gap'}</span>
+          </div>
+          <p className="competitor-position-copy">
+            {scoreGap > 0
+              ? (isThai ? `${competitorName} มีคะแนนความรู้สึกสูงกว่า แต่${myName}มีฐานรีวิวขนาดใหญ่ที่ใช้ต่อยอดความน่าเชื่อถือได้` : `${competitorName} has stronger sentiment, while ${myName} has a large review base to build trust from.`)
+              : (isThai ? `${myName}มีคะแนนเหนือกว่า${competitorName} ควรรักษาจุดแข็งและสื่อสารให้ชัดขึ้น` : `${myName} leads ${competitorName}; maintain the advantage and communicate it more clearly.`)}
+          </p>
+        </section>
+      </div>
+
+      <div className="competitor-insight-grid">
+        <section className="dash-panel competitor-keywords good">
+          <div className="competitor-panel-heading"><div><h3>{isThai ? 'จุดแข็งของคู่แข่ง' : 'Competitor strengths'}</h3><p>{isThai ? 'หัวข้อเชิงบวกที่นำมาปรับใช้ได้' : 'Positive themes worth learning from'}</p></div></div>
+          <div className="competitor-chips">{positiveKeywords.map(keyword => <span key={keyword.w}>{isThai ? keyword.w_th || keyword.w : keyword.w}</span>)}</div>
+        </section>
+        <section className="dash-panel competitor-keywords risk">
+          <div className="competitor-panel-heading"><div><h3>{isThai ? 'ช่องว่างที่ควรปรับปรุง' : 'Improvement gaps'}</h3><p>{isThai ? 'ประเด็นลบของสถานที่เรา' : 'Negative themes for our destination'}</p></div></div>
+          <div className="competitor-chips">{myWeaknesses.map(keyword => <span key={keyword.w}>{isThai ? keyword.w_th || keyword.w : keyword.w}</span>)}</div>
+        </section>
+      </div>
+
+      <section className="competitor-ai-box">
+        <div className="competitor-ai-icon">✦</div>
+        <div>
+          <span>{isThai ? 'ข้อเสนอแนะเชิงกลยุทธ์โดย AI' : 'AI COMPETITIVE RECOMMENDATION'}</span>
+          <p>{isThai
+            ? `ควรเร่งพัฒนาการเดินทางภายในพื้นที่และลดความสับสนเรื่องค่าธรรมเนียม พร้อมนำเสนอจุดแข็งด้านสัตว์ป่าให้เด่นชัด เพื่อปิดช่องว่าง ${Math.abs(scoreGap)}% เมื่อเทียบกับ${competitorName}`
+            : `Improve on-site transport and fee clarity, while promoting wildlife encounters more strongly to close the ${Math.abs(scoreGap)}% gap against ${competitorName}.`}</p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 // ─────── MAIN EXPORT ───────
 export default function DashboardPage({ onLogout, onGoPlans, currentLang = 'en', onToggleLang }) {
   const [activeTab, setTab] = useState('overview');
@@ -1146,7 +1269,7 @@ const navItems   = getNavItems(currentLang);
           {bizItems.map(item => (
             <div key={item.id}
               className={`dash-nav-item${activeTab === item.id ? ' active' : ''}`}
-              onClick={() => item.id === 'places' ? switchTab('places') : null}>
+              onClick={() => ['places', 'competitor'].includes(item.id) ? switchTab(item.id) : null}>
               {item.icon}
               {item.label}
             </div>
@@ -1205,6 +1328,7 @@ const navItems   = getNavItems(currentLang);
             <div className={`dash-content-section${activeTab === 'suggestions' ? ' active' : ''}`}><TabSuggestions currentLang={currentLang} /></div>
             <div className={`dash-content-section${activeTab === 'reports'     ? ' active' : ''}`}><TabReports     onGoPlans={onGoPlans} currentLang={currentLang} /></div>
             <div className={`dash-content-section${activeTab === 'places'      ? ' active' : ''}`}><TabPlaces      onGoPlans={onGoPlans} currentLang={currentLang} /></div>
+            <div className={`dash-content-section${activeTab === 'competitor'  ? ' active' : ''}`}><TabCompetitor  currentLang={currentLang} /></div>
           </div>
         </div>
 
